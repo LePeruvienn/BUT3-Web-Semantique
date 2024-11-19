@@ -1,0 +1,42 @@
+
+/* General container styling */
+.hub-container {
+    display: flex;
+    flex-direction: column; /* Stack sections vertically */
+    gap: 20px; /* Add space between sections */
+    padding: 20px;
+}
+
+/* Section styles */
+section {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure sections stretch the full width of the container */
+    max-width: 800px; /* Optional: Set a max width for better readability */
+    margin: 0 auto; /* Center align the sections */
+}
+
+/* Dropdown styling */
+.dropdown-section select {
+    width: 100%; /* Stretch dropdown to fit the section width */
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* Graph placeholder styling */
+.graph-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.graph-placeholder img {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 2px solid #ccc;
+}

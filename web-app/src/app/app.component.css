@@ -1,0 +1,16 @@
+header {
+    background: #0073e6;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+footer {
+    text-align: center;
+    background: #333;
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}

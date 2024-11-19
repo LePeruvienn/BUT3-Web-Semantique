@@ -1,0 +1,29 @@
+<main>
+    <div class="hub-container">
+        <!-- Graph Section -->
+
+
+        <!-- Dropdown Section -->
+        <section class="dropdown-section">
+            <h2>Choose a Monument</h2>
+            <select id="monumentDropdown">
+                <option value="" disabled selected>Select a Monument</option>
+                <option value="eiffel">Eiffel Tower</option>
+                <option value="great-wall">Great Wall of China</option>
+                <option value="statue-of-liberty">Statue of Liberty</option>
+                <option value="machu-picchu">Machu Picchu</option>
+            </select>
+        </section>
+
+        <section class="graph-section">
+            <h2>Graph</h2>
+            <div class="graph-placeholder">
+                <img src="graph-placeholder.png" alt="Graph placeholder">
+            </div>
+        </section>
+
+        <button type="button" (click)="selectHero(hero)">
+            {{hero.name}}
+          </button>
+    </div>
+</main>
