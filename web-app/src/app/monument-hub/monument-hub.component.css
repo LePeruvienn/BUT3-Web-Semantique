@@ -40,3 +40,10 @@ section {
     border-radius: 8px;
     border: 2px solid #ccc;
 }
+
+#bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
