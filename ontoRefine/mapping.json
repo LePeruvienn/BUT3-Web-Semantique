@@ -1,0 +1,698 @@
+{
+  "baseIRI": "http://example.com/base/",
+  "namespaces": {
+    "iut": "https://cours.iut-orsay.fr/qar/",
+    "mon": "https://cours.iut-orsay.fr/qar/monument",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "pays": "https://cours.iut-orsay.fr/qar/pays",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "geos": "http://www.opengis.net/ont/geosparql#",
+    "reg": "https://cours.iut-orsay.fr/qar/region"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "code"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "unique_number",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "nom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "name_en",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "en"
+                  }
+                }
+              }
+            },
+            {
+              "valueSource": {
+                "columnName": "name_fr",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "description"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "short_description_en",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "en"
+                  }
+                }
+              }
+            },
+            {
+              "valueSource": {
+                "columnName": "short_description_fr",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "justification"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "justification_en",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "en"
+                  }
+                }
+              }
+            },
+            {
+              "valueSource": {
+                "columnName": "justification_fr",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inscription"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "date_inscribed",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "date"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "retrait"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "date_end",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "date"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "danger"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "danger",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "geo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "long"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "longitude",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "geo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "lat"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "latitude",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "geos",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "area"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "area_hectares",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "categorie"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "category",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "en"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "transfrontalier"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "transboundary",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "mon",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "unique_number",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "iut",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Monument"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "code"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "iso_code",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "nom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "states_name_en",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "en"
+                  }
+                }
+              }
+            },
+            {
+              "valueSource": {
+                "columnName": "states_name_fr",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "comprend"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "mon",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "unique_number",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "pays",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "iso_code",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "iut",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Pays"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "nom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "region_en",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "en"
+                  }
+                }
+              }
+            },
+            {
+              "valueSource": {
+                "columnName": "region_fr",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "comprend"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "pays",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "iso_code",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "reg",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "region_en",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "iut",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Region"
+          }
+        }
+      ]
+    }
+  ]
+}
