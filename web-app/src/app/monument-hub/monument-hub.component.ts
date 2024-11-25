@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import * as d3 from 'd3';
+import { Parser } from 'n3';
 
 
 @Component({
@@ -32,15 +33,65 @@ export class MonumentHubComponent{
     // Add more data as needed
   ];
 
-
   onCountryChange() {
     this.showGraph = this.selectedCountry !== ''; // Show section if a country is selected
     if(this.showGraph){
+      const rdfData = `
+      @prefix ex: <http://feur.org/> .
+      ex:Arthur ex:knows ex:Bob .
+      ex:Bob ex:knows ex:Carol .
+      ex:Carol ex:knows ex:Arthur .
+    `;
+      const triples = this.parseRdf(rdfData)
+      const data = this.createDATA(triples)
+      console.log('data complete:', data);
       this.createGraph();
     }
   }
 
-  createGraph(): void { //D3 GRAPH
+  parseRdf(data: string): { subject: string; predicate: string; object: string }[] {
+    const parser = new Parser();
+    const triples: { subject: string; predicate: string; object: string }[] = [];
+  
+    // Parse the RDF data
+    parser.parse(data, (error, quad) => {
+      if (error) {
+        console.error('Error parsing RDF:', error);
+      }
+      if (quad) {
+        triples.push({
+          subject: quad.subject.value,
+          predicate: quad.predicate.value,
+          object: quad.object.value,
+        });
+      }
+    });
+  
+    console.log('Parsed Triples:', triples);
+    return triples;
+  }
+
+  createDATA(triples: { subject: string; predicate: string; object: string }[]): { State: string; value: number }[] {
+    const nodeCounts: Record<string, number> = {};
+    
+    // Count connections for each node (subject or object)
+    triples.forEach(({ subject, object }) => {
+      console.log("triples1")
+      nodeCounts[subject] = (nodeCounts[subject] || 0) + 1;
+      nodeCounts[object] = (nodeCounts[object] || 0) + 1;
+    });
+  
+    // Convert counts into an array format for the bar chart
+    const data = Object.entries(nodeCounts).map(([node, count]) => ({
+      State: node,
+      value: count,
+    }));
+  
+    // Sort by value (optional, for cleaner visualization)
+    return d3.sort(data, d => d.value);
+  }
+
+  createGraph2(): void { //D3 GRAPH
     const data = d3.sort(this.states, d => d[2019] - d[2010])
     .map(d => ({
       ...d,
@@ -125,5 +176,10 @@ export class MonumentHubComponent{
       console.error("Element with id 'chart' not found.");
     }
   }
+
+  createGraph(): void {
+
+  }
+
 }
   
