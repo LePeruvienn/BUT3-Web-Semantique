@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import * as d3 from 'd3';
-import { Parser } from 'n3';
+import * as $rdf from 'rdflib';
+import { HttpClient } from '@angular/common/http';
+import { AboutComponent } from './../about/about.component'
 
 
 @Component({
@@ -33,65 +35,71 @@ export class MonumentHubComponent{
     // Add more data as needed
   ];
 
-  onCountryChange() {
+  constructor(private http: HttpClient) {}
+
+  async onCountryChange() {
     this.showGraph = this.selectedCountry !== ''; // Show section if a country is selected
     if(this.showGraph){
-      const rdfData = `
-      @prefix ex: <http://feur.org/> .
-      ex:Arthur ex:knows ex:Bob .
-      ex:Bob ex:knows ex:Carol .
-      ex:Carol ex:knows ex:Arthur .
-    `;
-      const triples = this.parseRdf(rdfData)
-      const data = this.createDATA(triples)
-      console.log('data complete:', data);
-      this.createGraph();
+      const n3Data2 = this.importData()
+
+
+      console.log(n3Data2)
+        const n3Data = `
+        @prefix ex: <http://example.org/> .
+        @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+        ex:Person1 rdf:type ex:Person .
+        ex:Person1 ex:hasName "arthur" .
+        ex:Person1 ex:hasAge 25 .
+        ex:Person2 ex:hasName "cour" .
+        ex:Person2 ex:hasAge 22 .
+      `;
+      
+
+       
+      
+      this.queryRDF(n3Data)
+      //this.createGraph();
     }
   }
 
-  parseRdf(data: string): { subject: string; predicate: string; object: string }[] {
-    const parser = new Parser();
-    const triples: { subject: string; predicate: string; object: string }[] = [];
-  
-    // Parse the RDF data
-    parser.parse(data, (error, quad) => {
-      if (error) {
-        console.error('Error parsing RDF:', error);
-      }
-      if (quad) {
-        triples.push({
-          subject: quad.subject.value,
-          predicate: quad.predicate.value,
-          object: quad.object.value,
-        });
-      }
-    });
-  
-    console.log('Parsed Triples:', triples);
-    return triples;
+  importData() {
+    this.AboutComponent.getData() 
   }
 
-  createDATA(triples: { subject: string; predicate: string; object: string }[]): { State: string; value: number }[] {
-    const nodeCounts: Record<string, number> = {};
+
+  queryRDF(n3Data: string) {
+    const store = $rdf.graph(); // Create an RDF graph
+
+    // Parse the Turtle data into the RDF graph
+    $rdf.parse(n3Data, store, 'http://example.org/', 'text/turtle');
+
+    const query = `
+    PREFIX ex: <http://example.org/>
+    SELECT ?name WHERE {
+      ?person ex:hasName ?name .
+    }
+  `;
+
+    // Convert the SPARQL query string to a Query object
+    const sparqlQuery = $rdf.SPARQLToQuery(query , false, store);
+
+  
     
-    // Count connections for each node (subject or object)
-    triples.forEach(({ subject, object }) => {
-      console.log("triples1")
-      nodeCounts[subject] = (nodeCounts[subject] || 0) + 1;
-      nodeCounts[object] = (nodeCounts[object] || 0) + 1;
+    if (!sparqlQuery) {
+      console.error('Invalid SPARQL query.');
+      return;
+    }
+
+    // Execute the query and collect results
+    const results: any[] = [];
+    store.query(sparqlQuery, result => {
+      results.push(result);
     });
-  
-    // Convert counts into an array format for the bar chart
-    const data = Object.entries(nodeCounts).map(([node, count]) => ({
-      State: node,
-      value: count,
-    }));
-  
-    // Sort by value (optional, for cleaner visualization)
-    return d3.sort(data, d => d.value);
+
+    console.log(results);
   }
 
-  createGraph2(): void { //D3 GRAPH
+  createGraph(): void { //D3 GRAPH
     const data = d3.sort(this.states, d => d[2019] - d[2010])
     .map(d => ({
       ...d,
@@ -176,10 +184,5 @@ export class MonumentHubComponent{
       console.error("Element with id 'chart' not found.");
     }
   }
-
-  createGraph(): void {
-
-  }
-
 }
   
