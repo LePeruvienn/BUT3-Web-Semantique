@@ -1,4 +1,10 @@
-@base <http://example.com/base/> .
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class SharedService {
+  private data: string = `@base <http://example.com/base/> .
 @prefix iut: <https://cours.iut-orsay.fr/qar/> .
 @prefix mon: <https://cours.iut-orsay.fr/qar/monument> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -38,7 +44,7 @@ iut:paysaf a iut:Pays;
   iut:nom "Afghanistan"@en, "Afghanistan"@fr;
   iut:comprend iut:monument230, iut:monument234 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:paysaf, iut:paysau, iut:paysbd .
 
@@ -79,7 +85,7 @@ iut:paysal a iut:Pays;
   iut:nom "Albania"@en, "Albanie"@fr;
   iut:comprend iut:monument1590, iut:monument1563 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysal, iut:paysad, iut:paysam, iut:paysat, iut:paysaz .
 
@@ -115,7 +121,7 @@ iut:paysdz a iut:Pays;
   iut:comprend iut:monument111, iut:monument198, iut:monument209, iut:monument212, iut:monument214,
     iut:monument215, iut:monument667 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:paysdz, iut:paysbh .
 
@@ -259,7 +265,7 @@ iut:paysag a iut:Pays;
   iut:nom "Antigua and Barbuda"@en, "Antigua-et-Barbuda"@fr;
   iut:comprend iut:monument2086 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:paysag, iut:paysar .
 
@@ -1011,7 +1017,7 @@ iut:paysbd a iut:Pays;
   iut:nom "Bangladesh"@en, "Bangladesh"@fr;
   iut:comprend iut:monument943 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:paysbd .
 
@@ -1033,7 +1039,7 @@ iut:paysbb a iut:Pays;
   iut:nom "Barbados"@en, "Barbade"@fr;
   iut:comprend iut:monument1786 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:paysbb, iut:paysbz, iut:paysbo, iut:paysbr .
 
@@ -1059,7 +1065,7 @@ iut:paysby a iut:Pays;
   iut:nom "Belarus"@en, "Bélarus"@fr;
   iut:comprend iut:monument743, iut:monument1373 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysby, iut:paysbe, iut:paysba, iut:paysbg .
 
@@ -2056,7 +2062,7 @@ iut:payskh a iut:Pays;
   iut:nom "Cambodia"@en, "Cambodge"@fr;
   iut:comprend iut:monument791, iut:monument1591, iut:monument2140, iut:monument2434 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:payskh, iut:payscn .
 
@@ -2139,7 +2145,7 @@ iut:paysca a iut:Pays;
     iut:monument875, iut:monument1475, iut:monument1516, iut:monument1828, iut:monument1874,
     iut:monument2214, iut:monument2083, iut:monument2431, iut:monument2295, iut:monument2474 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysca .
 
@@ -2306,7 +2312,7 @@ iut:monument1828 a iut:Monument;
   iut:nom "Landscape of Grand Pré"@en, "Le Paysage de Grand-Pré"@fr;
   iut:description "<p>Situated in the southern Minas Basin of Nova Scotia, the Grand Pr&eacute; marshland and archaeological sites constitute a cultural landscape bearing testimony to the development of agricultural farmland using dykes and the <em>aboiteau </em>wooden sluice system, started by the Acadians in the 17th century and further developed and maintained by the Planters and present-day inhabitants. Over 1,300&nbsp;ha, the cultural landscape encompasses a large expanse of polder farmland and archaeological elements of the towns of Grand Pr&eacute; and Hortonville, which were built by the Acadians and their successors. The landscape is an exceptional example of the adaptation of the first European settlers to the conditions of the North American Atlantic coast. The site &ndash; marked by one of the most extreme tidal ranges in the world, averaging 11.6&nbsp;m &ndash; is also inscribed as a memorial to Acadian way of life and deportation, which started in 1755, known as the <em>Grand D&eacute;rangement.</em></p>"@en,
     "<p>Le &laquo;&nbsp;marais&nbsp;&raquo; de Grand-Pr&eacute; et les sites arch&eacute;ologiques, situ&eacute;s dans la partie m&eacute;ridionale de la baie Minas en Nouvelle-&eacute;cosse, constituent un paysage culturel qui t&eacute;moigne du d&eacute;veloppement de la pold&eacute;risation agricole r&eacute;alis&eacute;e &ndash; &agrave; base de digues et d&rsquo;aboiteaux (buses de bois pour l&rsquo;&eacute;vacuation des eaux) &ndash; par les Acadiens au xvii<sup>e</sup>&nbsp;si&egrave;cle et poursuivie par les Planters et les habitants actuels. L&rsquo;endroit &ndash; marqu&eacute; par une amplitude des mar&eacute;es parmi les plus fortes au monde&nbsp;: 11,6 m&egrave;tres en moyenne &ndash; est aussi un lieu m&eacute;moriel et symbolique majeur pour les Acadiens dont la d&eacute;portation, &agrave; partir de 1755, est connue comme le Grand D&eacute;rangement. Sur 1&nbsp;300 hectares, le paysage culturel comprend un polder agricole &eacute;tendu et des &eacute;l&eacute;ments arch&eacute;ologiques des villes de Grand Pr&eacute;, fond&eacute;e par les Acadiens, et de Hortonville, b&acirc;tie par leurs successeurs anglais. Le paysage constitue un exemple exceptionnel de l&rsquo;adaptation des premiers colons europ&eacute;ens aux conditions de la c&ocirc;te atlantique nord-am&eacute;ricaine.</p>"@fr;
-  iut:justification "<p align=\"left\">The Landscape of Grand Pr&eacute; is an outstanding example and enduring model of the human capacity to overcome extraordinary natural challenges and cultural ordeals.</p>"@en;
+  iut:justification "is an outstanding example and enduring model of the human capacity to overcome extraordinary natural challenges and cultural ordeals."@en;
   iut:inscription "2012"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long -64.3072222222;
@@ -2461,7 +2467,7 @@ iut:payscl a iut:Pays;
   iut:comprend iut:monument846, iut:monument1123, iut:monument2365, iut:monument2364,
     iut:monument1391, iut:monument2372 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:payscl .
 
@@ -3048,7 +3054,7 @@ iut:payscn a iut:Pays;
     iut:monument2141, iut:monument2142, iut:monument2224, iut:monument2375, iut:monument2277,
     iut:monument2574, iut:monument2573, iut:monument2430, iut:monument2532 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:payscn .
 
@@ -3304,8 +3310,6 @@ iut:monument2404 a iut:Monument;
 iut:monument2141 a iut:Monument;
   iut:code "2141"^^xsd:int;
   iut:nom "Qinghai Hoh Xil"@en, "Qinghai Hoh Xil"@fr;
-  iut:description "<p style=\"text-align: left;\">Qinghai Hoh Xil, located in the northeastern extremity of the Qinghai-Tibetan Plateau, is the largest and highest plateau in the world. This extensive area of alpine mountains and steppe systems is situated more than 4,500 m above sea level, where sub-zero average temperatures prevail all year-round. The site’s geographical and climatic conditions have nurtured a unique biodiversity. More than one third of the plant species, and all the herbivorous mammals are endemic to the plateau. The property secures the complete migratory route of the Tibetan antelope, one of the endangered large mammals that are endemic to the plateau.</p>"@en,
-    "<p style=\"text-align: left;\">Qinghai Hoh Xil se trouve à l’extrémité nord-est du vaste plateau Qinghai-Tibet, le plus grand et le plus haut plateau du monde. Cette vaste région de montagnes alpines et de steppes est située à plus de 4 500 m d’altitude au-dessus du niveau de la mer, où les températures moyennes annuelles sont en-dessous de zéro. La formation géographique et les conditions climatiques ont engendré une biodiversité unique. Plus d’un tiers des espèces de plantes et tous les mammifères herbivores sont endémiques du plateau. Le bien préserve la totalité de la voie de migration de l’antilope du Tibet, l’une des espèces de grands mammifères en danger, qui est endémique du plateau.</p>"@fr;
   iut:inscription "2017"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long 92.4391666667;
@@ -3440,7 +3444,7 @@ iut:paysco a iut:Pays;
   iut:comprend iut:monument319, iut:monument841, iut:monument876, iut:monument877, iut:monument878,
     iut:monument1787, iut:monument2213, iut:monument1393 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:paysco, iut:payscr, iut:payscu .
 
@@ -3652,7 +3656,7 @@ iut:monument2391 a iut:Monument;
   iut:code "2391"^^xsd:int;
   iut:nom "Sudanese style mosques in northern Côte d’Ivoire"@en, "Mosquées de style soudanais du Nord ivoirien"@fr;
   iut:description "<p>The eight Sudanese-style mosques located in Tengréla, Kouto, Sorobango, Samatiguila, Nambira, Kong, and Kaouara are characterized by earthen construction, projecting frameworks, vertical buttresses crowned with pottery or ostrich eggs, and high or low minarets in the form of a truncated pyramid. They present an interpretation of an architectural style that originated between the 12th and 14th centuries in the city of Djenné, which was then part of the Mali Empire and whose prosperity came from the trade of gold and salt across the Sahara to North Africa. It is especially from the 15th century that this style spread southwards, from the desert regions to the Sudanese savannah, adopting lower forms with stronger buttresses, to meet the requirements of a more humid climate. These mosques are the best preserved of the twenty that have survived in Côte d'Ivoire, out of several hundred that still existed at the beginning of the 20th century. The Sudanese style that characterizes these mosques, and which is unique to the savannah region of West Africa, developed between the eleventh and nineteenth centuries, when Islamic merchants and scholars spread southward from the Mali Empire, extending the trans-Saharan trade routes into the woodlands. The mosques are not only very important physical evidence of the trans-Saharan trade that fostered the expansion of Islam and Islamic culture, but are also a tangible expression of the fusion of two architectural forms that have endured over time: the Islamic form practiced by the Arab-Berbers and that of the indigenous animist communities.</p>"@en,
-    "<p>Les huit mosquées de style soudanais situées dans les localités de Tengréla, Kouto, Sorobango, Samatiguila, Nambira, Kong et Kaouara sont caractérisées par une construction en terre, des charpentes en saillie, des contreforts verticaux couronnés de poteries ou d’œufs d’Autruche, et par des minarets élevés ou moins importants à la forme d’une pyramide tronquée. Elles présentent une interprétation d’un style architectural dont l’origine se situerait entre les XIIe et XIVe siècles dans la ville de Djenné, qui faisait alors partie de l’empire du Mali et dont la prospérité provenait du commerce de l’or et du sel, à travers le Sahara vers l’Afrique du Nord. C’est surtout à partir du XVe siècle que ce style s’est répandu vers le Sud, des régions désertiques à la savane soudanaise, en adoptant des formes plus basses avec des contreforts plus solides, pour répondre aux exigences d’un climat plus humide. Ces mosquées sont les mieux conservées sur les vingt qui ont subsisté en Côte d’Ivoire, sur plusieurs centaines qui existaient encore au début du XXe siècle. Le style soudanais qui caractérise ces mosquées et qui est propre à la région de la savane de l’Afrique de l’Ouest, s’est développé entre les XIe et XIXe siècles, lorsque les marchands et les érudits de l’islam se sont dispersés vers le Sud à partir de l’empire du Mali, prolongeant les routes commerciales transsahariennes jusque dans la zone boisée. Les mosquées constituent non seulement des témoins matériels très importants du commerce transsaharien qui favorisa l’expansion de l’islam et de la culture islamique, mais aussi sont l’expression tangible de la fusion de<span style=\"text-decoration: line-through;\">s</span> de deux formes architecturales qui ont duré dans le temps : celle islamique pratiquée par les arabo-berbères et celle des communautés autochtones animistes.</p>"@fr;
+    "<p>Les huit mosquées de style soudanais situées dans les localités de Tengréla, Kouto, Sorobango, Samatiguila, Nambira, Kong et Kaouara sont caractérisées par une construction en terre, des charpentes en saillie, des contreforts verticaux couronnés de poteries ou d’œufs d’Autruche, et par des minarets élevés ou moins importants à la forme d’une pyramide tronquée. Elles présentent une interprétation d’un style architectural dont l’origine se situerait entre les XIIe et XIVe siècles dans la ville de Djenné, qui faisait alors partie de l’empire du Mali et dont la prospérité provenait du commerce de l’or et du sel, à travers le Sahara vers l’Afrique du Nord. C’est surtout à partir du XVe siècle que ce style s’est répandu vers le Sud, des régions désertiques à la savane soudanaise, en adoptant des formes plus basses avec des contreforts plus solides, pour répondre aux exigences d’un climat plus humide. Ces mosquées sont les mieux conservées sur les vingt qui ont subsisté en Côte d’Ivoire, sur plusieurs centaines qui existaient encore au début du XXe siècle. Le style soudanais qui caractérise ces mosquées et qui est propre à la région de la savane de l’Afrique de l’Ouest, s’est développé entre les XIe et XIXe siècles, lorsque les marchands et les érudits de l’islam se sont dispersés vers le Sud à partir de l’empire du Mali, prolongeant les routes commerciales transsahariennes jusque dans la zone boisée. Les mosquées constituent non seulement des témoins matériels très importants du commerce transsaharien qui favorisa l’expansion de l’islam et de la culture islamique, mais aussi sont l’expression tangible de la fusion de<span >s</span> de deux formes architecturales qui ont duré dans le temps : celle islamique pratiquée par les arabo-berbères et celle des communautés autochtones animistes.</p>"@fr;
   iut:inscription "2021"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long -6.4101666667;
@@ -3681,7 +3685,7 @@ iut:payshr a iut:Pays;
   iut:comprend iut:monument2315, iut:monument105, iut:monument106, iut:monument956,
     iut:monument957, iut:monument1127, iut:monument1484 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:payshr, iut:payscy, iut:payscz .
 
@@ -4008,7 +4012,7 @@ iut:payscz a iut:Pays;
     iut:monument1011, iut:monument1012, iut:monument1054, iut:monument1226, iut:monument2258,
     iut:monument2453, iut:monument2455 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:payscz, iut:paysdk, iut:paysee, iut:paysfi .
 
@@ -4211,7 +4215,7 @@ iut:payskp a iut:Pays;
   iut:nom "Democratic People's Republic of Korea"@en, "République populaire démocratique de Corée"@fr;
   iut:comprend iut:monument1269, iut:monument1878 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:payskp, iut:paysfj .
 
@@ -4456,7 +4460,7 @@ iut:paysdm a iut:Pays;
   iut:nom "Dominica"@en, "Dominique"@fr;
   iut:comprend iut:monument962 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:paysdm, iut:paysdo, iut:paysec, iut:payssv .
 
@@ -4559,7 +4563,7 @@ iut:payseg a iut:Pays;
   iut:comprend iut:monument92, iut:monument93, iut:monument94, iut:monument95, iut:monument96,
     iut:monument1116, iut:monument1363 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:payseg .
 
@@ -4995,7 +4999,7 @@ iut:paysfr a iut:Pays;
     iut:monument2422, iut:monument2525;
   iut:code "fr" .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysfr, iut:paysge, iut:paysde .
 
@@ -5079,7 +5083,7 @@ iut:monument1951 a iut:Monument;
 
 iut:monument1568 a iut:Monument;
   iut:code "1568"^^xsd:int;
-  iut:nom "Roman Theatre and its Surroundings and the \"Triumphal Arch\" of Orange"@en,
+  iut:nom "feur"@en,
     "Théâtre antique et ses abords et « Arc de Triomphe » d'Orange"@fr;
   iut:description "<p>Situated in the Rhone valley, the ancient theatre of Orange, with its 103-m-long facade, is one of the best preserved of all the great Roman theatres. Built between A.D. 10 and 25, the Roman arch is one of the most beautiful and interesting surviving examples of a provincial triumphal arch from the reign of Augustus. It is decorated with low reliefs commemorating the establishment of the Pax Romana.</p>"@en,
     "<p>Dans la vallée du Rhône, le théâtre antique d'Orange, avec son mur de façade de 103 m de long, est l'un des mieux conservés des grands théâtres romains. Construit entre 10 et 25, l'arc de triomphe romain d'Orange est l'un des plus beaux et des plus intéressants arcs de triomphe provinciaux d'époque augustéenne qui nous soit parvenu, avec des bas-reliefs qui retracent l'établissement de la <em>Pax Romana</em>.</p>"@fr;
@@ -5123,7 +5127,7 @@ iut:monument1637 a iut:Monument;
     "De la grande saline de Salins-les-Bains à la saline royale d’Arc-et-Senans, la production du sel ignigène"@fr;
   iut:description """<p>The Royal Saltworks of Arc-et-Senans, near Besançon, was built by Claude Nicolas Ledoux. Its construction, begun in 1775 during the reign of Louis XVI, was the first major achievement of industrial architecture, reflecting the ideal of progress of the Enlightenment. The vast, semicircular complex was designed to permit a rational and hierarchical organization of work and was to have been followed by the building of an ideal city, a project that was never realized.</p>
 <p>The Great Saltworks of Salins-les-Bains was active for at least 1200 years until stopping activity in 1962. From 1780 to 1895, its salt water travelled through 21 km of wood pipes to the Royal Saltworks of Arc-et-Senans. It was built near the immense Chaux Forest to ensure its supply of wood for fuel. The Saltworks of Salins shelters an underground gallery from the 13<sup>th</sup> century including a hydraulic pump from the 19<sup>th</sup> century that still functions. The boiler house demonstrates the difficulty of the saltworkers’ labour to collect the “White Gold”.</p>"""@en,
-    """<p>La Saline Royale d'Arc-et-Senans, à proximité de Besançon, est l'œuvre de Claude Nicolas Ledoux. Sa construction, qui débuta en 1775 sous le règne de Louis XVI, est la première grande réalisation d'architecture industrielle qui reflète l'idéal de progrès du siècle des Lumières. <span style=\"mso-ansi-language: FR;\" lang=\"FR\">Ce vaste ouvrage semi circulaire fut conçu pour permettre une organisation rationnelle et hiérarchisée du travail. La construction initiale devait être suivie de l'édification d'une cité idéale, qui demeura à l'état de projet. </span></p>
+    """<p>La Saline Royale d'Arc-et-Senans, à proximité de Besançon, est l'œuvre de Claude Nicolas Ledoux. Sa construction, qui débuta en 1775 sous le règne de Louis XVI, est la première grande réalisation d'architecture industrielle qui reflète l'idéal de progrès du siècle des Lumières.Ce vaste ouvrage semi circulaire fut conçu pour permettre une organisation rationnelle et hiérarchisée du travail. La construction initiale devait être suivie de l'édification d'une cité idéale, qui demeura à l'état de projet. </span></p>
 <p>La Grande Saline de Salins-les-Bains fut en activité pendant 1200 ans, jusqu’en 1962. De 1780 à 1895, son eau salée a été acheminée sur une distance de 21km par des saumoducs jusqu’à la Saline Royale d’Arc-et-Senans, construite à proximité d’un massif forestier important pour en assurer le combustible. La Saline de Salins abrite une galerie souterraine du XIIIe siècle avec une pompe hydraulique du XIXe toujours en fonctionnement. La salle des Poêles laisse imaginer la pénibilité du travail des sauniers pour récolter l’Or Blanc.</p>"""@fr;
   iut:inscription "1982"^^xsd:date;
   iut:danger "0"^^xsd:int;
@@ -5475,15 +5479,15 @@ iut:monument1776 a iut:Monument;
   iut:description "<p>Remarkable as a landscape shaped over three centuries of coal extraction from the 1700s to the 1900s, the site consists of 109 separate components over 120,000&nbsp;ha. It features mining pits (the oldest of which dates from 1850) and lift infrastructure, slag heaps (some of which cover 90&nbsp;ha and exceed 140&nbsp;m in height), coal transport infrastructure, railway stations, workers&rsquo; estates and mining villages including social habitat, schools, religious buildings, health and community facilities, company premises, owners and managers&rsquo; houses, town halls and more. The site bears testimony to the quest to create model workers&rsquo; cities from the mid 19th century to the 1960s and further illustrates a significant period in the history of industrial Europe. It documents the living conditions of workers and the solidarity to which it gave rise.</p>"@en,
     """<p>Le Nord-Pas de Calais offre un paysage remarquable fa&ccedil;onn&eacute; par trois si&egrave;cles (XVIIIe au XXe si&egrave;cle) d&rsquo;extraction du charbon. Les 120&nbsp;000 hectares du site sont constitu&eacute;s de 109 biens individuels qui peuvent &ecirc;tre des fosses (la plus vieille date de 1850), des chevalements (supportant les ascenseurs), des terrils (dont certains couvrent 90 hectares et d&eacute;passent les 140 m&egrave;tres de haut), des infrastructures de transport de la houille, des gares ferroviaires, des corons et des villages de mineurs comprenant des &eacute;coles, des &eacute;difices religieux, des &eacute;quipements collectifs et de sant&eacute;, des bureaux de compagnies mini&egrave;res, des logements de cadres et ch&acirc;teaux de dirigeants, des h&ocirc;tels de ville, etc. Le site t&eacute;moigne de la recherche du mod&egrave;le de la cit&eacute; ouvri&egrave;re, du milieu du XIXe si&egrave;cle aux ann&eacute;es 1960, et illustre une p&eacute;riode significative de l&rsquo;histoire de l&rsquo;Europe industrielle. Il informe sur les conditions de vie des mineurs et sur la solidarit&eacute; ouvri&egrave;re.</p>
 <p><span>&nbsp;</span></p>"""@fr;
-  iut:justification """<p style=\"text-align: justify;\">Le bien propos&eacute; pour inscription est consid&eacute;r&eacute; comme ayant une valeur universelle exceptionnelle en tant que bien culturel pour les raisons suivantes :</p>
+  iut:justification """<p >Le bien propos&eacute; pour inscription est consid&eacute;r&eacute; comme ayant une valeur universelle exceptionnelle en tant que bien culturel pour les raisons suivantes :</p>
 <ul>
-<li style=\"text-align: justify;\">Sur une &eacute;tendue de 120 kilom&egrave;tres, le Bassin minier du Nord-Pas de Calais offre une continuit&eacute; g&eacute;ologique et une unit&eacute; territoriale de grande ampleur qui ont fourni les donn&eacute;es pour le d&eacute;veloppement de son histoire mini&egrave;re.</li>
-<li style=\"text-align: justify;\">Le Bassin a connu une occupation mono-industrielle continue d&rsquo;extraction de la houille, longue de pr&egrave;s de trois si&egrave;cles. Celle-ci a profond&eacute;ment modifi&eacute; son environnement naturel et a form&eacute; des paysages caract&eacute;ristiques bien conserv&eacute;s.</li>
-<li style=\"text-align: justify;\">L&rsquo;exploitation houill&egrave;re continue de grande &eacute;chelle, particuli&egrave;rement intense du milieu du XIXe si&egrave;cle &agrave; la fin du XXe si&egrave;cle, a produit des t&eacute;moignages mat&eacute;riels tr&egrave;s complets, tant techniques, industriels, architecturaux qu&rsquo;urbains et sociaux.</li>
-<li style=\"text-align: justify;\">L&rsquo;exploitation houill&egrave;re a cr&eacute;&eacute; de nouveaux &eacute;tablissements humains, engendr&eacute; des migrations et d&eacute;velopp&eacute; des cultures qui s&rsquo;inscrivent &agrave; leur tour au sein du paysage.</li>
-<li style=\"text-align: justify;\">Les &eacute;l&eacute;ments techniques du Bassin demeurent suffisamment nombreux pour t&eacute;moigner, sur 120 kilom&egrave;tres, d&rsquo;une suite continue et remarquable d&rsquo;unit&eacute;s d&rsquo;exploitations, chacune avec ses traits propres. Elles constituent des paysages successifs t&eacute;moignant de l&rsquo;activit&eacute; mini&egrave;re. Leur structure et leur rythme visuel sont uniques.</li>
-<li style=\"text-align: justify;\">Le Bassin minier du Nord-Pas de Calais se distingue par l&rsquo;abondance et la diversit&eacute; exceptionnelles des r&eacute;alisations dans le domaine de l&rsquo;habitat ouvrier et des &eacute;quipements collectifs. Il t&eacute;moigne &eacute;galement de la diffusion des solidarit&eacute;s et des id&eacute;aux socialistes dans le monde des ouvriers mineurs.</li>
-<li style=\"text-align: justify;\">Le Bassin minier du Nord-Pas de Calais illustre parfaitement les bouleversements initi&eacute;s par l&rsquo;industrialisation autant sur le plan technique que sur les plans sociaux, culturels, paysagers et environnementaux.</li>
+<li >Sur une &eacute;tendue de 120 kilom&egrave;tres, le Bassin minier du Nord-Pas de Calais offre une continuit&eacute; g&eacute;ologique et une unit&eacute; territoriale de grande ampleur qui ont fourni les donn&eacute;es pour le d&eacute;veloppement de son histoire mini&egrave;re.</li>
+<li >Le Bassin a connu une occupation mono-industrielle continue d&rsquo;extraction de la houille, longue de pr&egrave;s de trois si&egrave;cles. Celle-ci a profond&eacute;ment modifi&eacute; son environnement naturel et a form&eacute; des paysages caract&eacute;ristiques bien conserv&eacute;s.</li>
+<li>L&rsquo;exploitation houill&egrave;re continue de grande &eacute;chelle, particuli&egrave;rement intense du milieu du XIXe si&egrave;cle &agrave; la fin du XXe si&egrave;cle, a produit des t&eacute;moignages mat&eacute;riels tr&egrave;s complets, tant techniques, industriels, architecturaux qu&rsquo;urbains et sociaux.</li>
+<li >L&rsquo;exploitation houill&egrave;re a cr&eacute;&eacute; de nouveaux &eacute;tablissements humains, engendr&eacute; des migrations et d&eacute;velopp&eacute; des cultures qui s&rsquo;inscrivent &agrave; leur tour au sein du paysage.</li>
+<li>Les &eacute;l&eacute;ments techniques du Bassin demeurent suffisamment nombreux pour t&eacute;moigner, sur 120 kilom&egrave;tres, d&rsquo;une suite continue et remarquable d&rsquo;unit&eacute;s d&rsquo;exploitations, chacune avec ses traits propres. Elles constituent des paysages successifs t&eacute;moignant de l&rsquo;activit&eacute; mini&egrave;re. Leur structure et leur rythme visuel sont uniques.</li>
+<li >Le Bassin minier du Nord-Pas de Calais se distingue par l&rsquo;abondance et la diversit&eacute; exceptionnelles des r&eacute;alisations dans le domaine de l&rsquo;habitat ouvrier et des &eacute;quipements collectifs. Il t&eacute;moigne &eacute;galement de la diffusion des solidarit&eacute;s et des id&eacute;aux socialistes dans le monde des ouvriers mineurs.</li>
+<li >Le Bassin minier du Nord-Pas de Calais illustre parfaitement les bouleversements initi&eacute;s par l&rsquo;industrialisation autant sur le plan technique que sur les plans sociaux, culturels, paysagers et environnementaux.</li>
 </ul>"""@fr;
   iut:inscription "2012"^^xsd:date;
   iut:danger "0"^^xsd:int;
@@ -5988,7 +5992,7 @@ iut:paysde a iut:Pays;
     iut:monument2028, iut:monument2288, iut:monument2157, iut:monument2206, iut:monument2266,
     iut:monument2326, iut:monument2374, iut:monument2418, iut:monument2523 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysde, iut:paysgr, iut:paysva, iut:payshu, iut:paysis .
 
@@ -6708,7 +6712,7 @@ iut:paysgt a iut:Pays;
   iut:nom "Guatemala"@en, "Guatemala"@fr;
   iut:comprend iut:monument68, iut:monument69, iut:monument167, iut:monument2428 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:paysgt, iut:paysht, iut:payshn .
 
@@ -6972,7 +6976,7 @@ iut:paysis a iut:Pays;
   iut:nom "Iceland"@en, "Islande"@fr;
   iut:comprend iut:monument2301 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysis .
 
@@ -7002,7 +7006,7 @@ iut:paysin a iut:Pays;
     iut:monument2089, iut:monument2105, iut:monument2144, iut:monument2310, iut:monument2309,
     iut:monument2386, iut:monument2497, iut:monument2529 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:paysin, iut:paysid, iut:paysir .
 
@@ -7901,7 +7905,7 @@ iut:monument1599 a iut:Monument;
 iut:monument1680 a iut:Monument;
   iut:code "1680"^^xsd:int;
   iut:nom "Sheikh Safi al-din Khānegāh and Shrine Ensemble in Ardabil"@en, "Ensemble du Khānegāh et du sanctuaire de Cheikh Safi al-Din à Ardabil"@fr;
-  iut:description "<p>Built between the beginning of the 16<sup><span style=\"font-size: xx-small;\">th</span> </sup> century and the end of the 18<sup><span style=\"font-size: xx-small;\">th</span> </sup> century, this place of spiritual retreat in the Sufi tradition uses Iranian traditional architectural forms to maximize use of available space to accommodate a variety of functions (including a library, a mosque, a school, mausolea, a cistern, a hospital, kitchens, a bakery, and some offices). It incorporates a route to reach the shrine of the Sheikh divided into seven segments, which mirror the seven stages of Sufi mysticism, separated by eight gates, which represent the eight attitudes of Sufism. The ensemble includes well-preserved and richly ornamented facades and interiors, with a remarkable collection of antique artefacts. It constitutes a rare ensemble of elements of medieval Islamic architecture.</p>"@en,
+  iut:description "<p>Built between the beginning of the 16<sup><span >th</span> </sup> century and the end of the 18<sup><span>th</span> </sup> century, this place of spiritual retreat in the Sufi tradition uses Iranian traditional architectural forms to maximize use of available space to accommodate a variety of functions (including a library, a mosque, a school, mausolea, a cistern, a hospital, kitchens, a bakery, and some offices). It incorporates a route to reach the shrine of the Sheikh divided into seven segments, which mirror the seven stages of Sufi mysticism, separated by eight gates, which represent the eight attitudes of Sufism. The ensemble includes well-preserved and richly ornamented facades and interiors, with a remarkable collection of antique artefacts. It constitutes a rare ensemble of elements of medieval Islamic architecture.</p>"@en,
     "<p>Construit entre le d&eacute;but du 16e si&egrave;cle et la fin du 18e si&egrave;cle, ce lieu de retraite spirituelle soufi utilise les formes architecturales traditionnelles iraniennes. Les constructeurs ont su tirer le meilleur parti de l'espace r&eacute;duit pour assurer de multiples fonctions, notamment une biblioth&egrave;que, une mosqu&eacute;e, une &eacute;cole, un mausol&eacute;e, une citerne, un h&ocirc;pital, des cuisines, une boulangerie et quelques bureaux. Le site comprend un cheminement conduisant au sanctuaire du Cheik articul&eacute; en sept &eacute;tapes qui refl&egrave;tent les sept stades du mysticisme soufi, s&eacute;par&eacute;es par huit portes qui repr&eacute;sentent les huit attitudes du soufisme. Le site comprend &eacute;galement des fa&ccedil;ades et des int&eacute;rieurs richement ornement&eacute;s ainsi qu'une remarquable collection d'objets anciens. Il forme un rare ensemble d'&eacute;l&eacute;ments d'architecture islamique m&eacute;di&eacute;vale.</p>"@fr;
   iut:inscription "2010"^^xsd:date;
   iut:danger "0"^^xsd:int;
@@ -7971,7 +7975,7 @@ iut:paysir a iut:Pays;
     iut:monument2000, iut:monument2095, iut:monument2096, iut:monument2148, iut:monument2233,
     iut:monument2339, iut:monument2389, iut:monument2438, iut:monument2534 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:paysir .
 
@@ -8149,7 +8153,7 @@ iut:paysiq a iut:Pays;
   iut:comprend iut:monument1456, iut:monument309, iut:monument2293, iut:monument1310,
     iut:monument1980, iut:monument2042 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:paysiq .
 
@@ -8240,7 +8244,7 @@ iut:paysie a iut:Pays;
   iut:nom "Ireland"@en, "Irlande"@fr;
   iut:comprend iut:monument780, iut:monument892 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysie, iut:paysil, iut:paysit .
 
@@ -8390,7 +8394,7 @@ iut:monument1818 a iut:Monument;
   iut:nom "Sites of Human Evolution at Mount Carmel: The Nahal Me’arot / Wadi el-Mughara Caves"@en,
     "Sites de l’évolution humaine du mont Carmel : les grottes de Nahal Me’arot / Wadi el-Mughara"@fr;
   iut:description """<p>Situated on the western slopes of the Mount Carmel range, the site includes the caves of Tabun, Jamal, el-Wad and Skhul. Ninety years of archaeological research have revealed a cultural sequence of unparalleled duration, providing an archive of early human life in south-west Asia. This 54 ha property contains cultural deposits representing at least 500,000 years of human evolution demonstrating the unique existence of both Neanderthals andEarly Anatomically Modern Humans within the same Middle Palaeolithic cultural framework, the Mousterian. Evidence from numerous Natufian burials and early stone architecture represents the transition from a hunter-gathering lifestyle to agriculture and animal husbandry. As a result, the caves have become a key site of the chrono-stratigraphic framework for human evolution in general, and the prehistory of the Levant in particular.</p>
-<p><span lang=\"EN\"> </span></p>"""@en,
+<p><span lang=EN> </span></p>"""@en,
     "<p>Situé sur le versant occidental du mont Carmel, ce bien comprend les grottes de Taboun, Jamal, el-Wad et Skhul. Quatre-vingt-dix années de recherche archéologique ont mis à jour une séquence culturelle, d’une durée sans équivalent, offrant des archives sur les origines  humaines en Asie du sud-ouest. Ce bien de 54 ha contient des gisements culturels représentant au moins 500000 ans d’évolution humaine, seul complexe connu contenant tout à la fois des restes d’hommes de Néandertal et des premiers humains anatomiquement modernes dans un même ensemble culturel du Paléolithique moyen, le Moustérien. Des témoignages des pratiques funéraires natoufiennes et des premières manifestations de l’architecture en pierre illustrent la transition d’un mode de vie de type chasseur-cueilleur vers l’agriculture et l’élevage. A ce titre les grottes sont devenues un site essentiel du cadre chrono-stratigraphique de l’évolution humaine en général et de la préhistoire du Levant en particulier.</p>"@fr;
   iut:inscription "2012"^^xsd:date;
   iut:danger "0"^^xsd:int;
@@ -8665,8 +8669,8 @@ iut:monument932 a iut:Monument;
   iut:nom "Historic Centre of the City of Pienza"@en, "Centre historique de la ville de Pienza"@fr;
   iut:description "<p>It was in this Tuscan town that Renaissance town-planning concepts were first put into practice after Pope Pius II decided, in 1459, to transform the look of his birthplace. He chose the architect Bernardo Rossellino, who applied the principles of his mentor, Leon Battista Alberti. This new vision of urban space was realized in the superb square known as Piazza Pio II and the buildings around it: the Piccolomini Palace, the Borgia Palace and the cathedral with its pure Renaissance exterior and an interior in the late Gothic style of south German churches.</p>"@en,
     "<p>C'est dans cette ville toscane que les concepts urbanistiques de la Renaissance furent appliqués pour la première fois, à la suite de la décision prise par le pape Pie II, en 1459, de transformer sa ville natale et de confier cette œuvre à Bernardo Rossellino. Celui-ci mit en pratique les principes de son maître Leon Battista Alberti et construisit l'extraordinaire place Pie-II, autour de laquelle s'élèvent le palais Piccolomini, le palais Borgia et la cathédrale à l'aspect purement Renaissance mais dont l'intérieur s'inspire du gothique tardif des églises d'Allemagne du Sud.</p>"@fr;
-  iut:justification "<p>The Committee decided to inscribe the nominated property on the basis of cultural criteria (i), (ii) and (iv) considering that the site is of outstanding universal value as it represents the first application of the Renaissance Humanist concept of urban design, and as such occupies a seminal position in the development of the concept of the planned \"ideal town\" which was to play a significant role in subsequent urban development in Italy and beyond. The application of this principle in Pienza, and in particular in the group of buildings around the central square, resulted in a masterpiece of human creative genius.</p>"@en,
-    "<p>Le Comité a inscrit le bien proposé sur la base des critères culturels (i), (ii) et (iv), considérant la valeur universelle exceptionnelle du site qui représente la première application du concept humaniste et Renaissance de l'urbanisme et, en tant que tel, il occupe une position riche et originale dans le développement du concept de \"ville idéale\" planifiée qui devait jouer un rôle important dans le développement urbain ultérieur en Italie et ailleurs. L'application de ce principe à Pienza, en particulier dans le groupe de bâtiments qui entourent la place centrale, a donné un chef-d'oeuvre du génie créateur humain.</p>"@fr;
+  iut:justification "<p>The Committee decided to inscribe the nominated property on the basis of cultural criteria (i), (ii) and (iv) considering that the site is of outstanding universal value as it represents the first application of the Renaissance Humanist concept of urban design, and as such occupies a seminal position in the development of the concept of the planned ideal town which was to play a significant role in subsequent urban development in Italy and beyond. The application of this principle in Pienza, and in particular in the group of buildings around the central square, resulted in a masterpiece of human creative genius.</p>"@en,
+    "<p>Le Comité a inscrit le bien proposé sur la base des critères culturels (i), (ii) et (iv), considérant la valeur universelle exceptionnelle du site qui représente la première application du concept humaniste et Renaissance de l'urbanisme et, en tant que tel, il occupe une position riche et originale dans le développement du concept de ville idéale planifiée qui devait jouer un rôle important dans le développement urbain ultérieur en Italie et ailleurs. L'application de ce principe à Pienza, en particulier dans le groupe de bâtiments qui entourent la place centrale, a donné un chef-d'oeuvre du génie créateur humain.</p>"@fr;
   iut:inscription "1996"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long 11.67861111;
@@ -8983,7 +8987,7 @@ iut:paysit a iut:Pays;
     iut:monument1971, iut:monument1910, iut:monument2048, iut:monument2409, iut:monument2327,
     iut:monument2350, iut:monument2393, iut:monument2480, iut:monument2526 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysit .
 
@@ -9251,7 +9255,7 @@ iut:paysjm a iut:Pays;
   iut:nom "Jamaica"@en, "Jamaïque"@fr;
   iut:comprend iut:monument2015 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:paysjm .
 
@@ -9277,7 +9281,7 @@ iut:paysjp a iut:Pays;
     iut:monument1770, iut:monument1883, iut:monument1992, iut:monument2045, iut:monument2216,
     iut:monument2149, iut:monument2340, iut:monument2563, iut:monument2370, iut:monument2544 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:paysjp, iut:payskz, iut:payski, iut:payskg .
 
@@ -9399,7 +9403,7 @@ iut:monument1066 a iut:Monument;
   iut:justification """<p>Criterion (i): The Nikko shrines and temples are a reflection of architectural and artistic genius; this aspect is reinforced by the harmonious integration of the buildings in a forest and a natural site laid out by people.</p>
 <p>Criterion (iv): Nikko is a perfect illustration of the architectural style of the Edo period as applied to Shinto shrines and Buddhist temples. The Gongen-zukuri style of the two mausoleums, the Tôshôgu and the Taiyû-in Reibyô, reached the peak of its expression in Nikko, and was later to exert a decisive influence. The ingenuity and creativity of its architects and decorators are revealed in an outstanding and distinguished manner.</p>
 <p>Criterion (vi): The Nikko shrines and temples, together with their environment, are an outstanding example of a traditional Japanese religious centre, associated with the Shinto perception of the relationship of man with nature, in which mountains and forests have a sacred meaning and are objects of veneration, in a religious practice that is still very much alive today.</p>"""@en,
-    "<p>Critère i : les sanctuaires et temples de Nikko portent la marque du génie architectural et artistique ; ce caractère est renforcé par la parfaite intégration des édifices dans une forêt et un site naturel aménagés par l'homme. Critère iv : Nikko offre une parfaite représentation du style architectural de la période Edo appliqué aux sanctuaires shintoïstes et aux temples bouddhistes. Le style \"Gongen-zukuri\" des deux mausolées, le Tôshôgû et le Taiyû-in Reibyô, connaît à Nikko son illustration la plus aboutie, qui allait exercer dans la suite une influence déterminante. L'ingéniosité et la créativité des architectes et des artistes décorateurs s'y révèlent d'une manière singulière et éminente. Critère vi : les sanctuaires et temples de Nikko et leur environnement évoquent un espace religieux traditionnel japonais, associé à la perception shintoïste des rapports avec la nature, où les montagnes et les forêts ont une charge sacrée et sont objets de vénération, dans une pratique religieuse encore vivante aujourd'hui.</p>"@fr;
+    "<p>Critère i : les sanctuaires et temples de Nikko portent la marque du génie architectural et artistique ; ce caractère est renforcé par la parfaite intégration des édifices dans une forêt et un site naturel aménagés par l'homme. Critère iv : Nikko offre une parfaite représentation du style architectural de la période Edo appliqué aux sanctuaires shintoïstes et aux temples bouddhistes. Le style Gongen-zukuri des deux mausolées, le Tôshôgû et le Taiyû-in Reibyô, connaît à Nikko son illustration la plus aboutie, qui allait exercer dans la suite une influence déterminante. L'ingéniosité et la créativité des architectes et des artistes décorateurs s'y révèlent d'une manière singulière et éminente. Critère vi : les sanctuaires et temples de Nikko et leur environnement évoquent un espace religieux traditionnel japonais, associé à la perception shintoïste des rapports avec la nature, où les montagnes et les forêts ont une charge sacrée et sont objets de vénération, dans une pratique religieuse encore vivante aujourd'hui.</p>"@fr;
   iut:inscription "1999"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long 139.6105556;
@@ -9413,7 +9417,7 @@ iut:monument1136 a iut:Monument;
   iut:nom "Gusuku Sites and Related Properties of the Kingdom of Ryukyu"@en, "Sites Gusuku et biens associés du royaume des Ryukyu"@fr;
   iut:description "<p>Five hundred years of Ryukyuan history (12th-17th century) are represented by this group of sites and monuments. The ruins of the castles, on imposing elevated sites, are evidence for the social structure over much of that period, while the sacred sites provide mute testimony to the rare survival of an ancient form of religion into the modern age. The wide- ranging economic and cultural contacts of the Ryukyu Islands over that period gave rise to a unique culture.</p>"@en,
     "<p>Ce groupe de sites et de monuments représente cinq cents ans d'histoire des Ryukyu (XII<sup>e</sup> -XVII<sup>e</sup> siècle). Les châteaux en ruine, qui se dressent sur d'imposantes hauteurs, illustrent la structure sociale d'une grande partie de cette période, tandis que les sites sacrés demeurent les témoins muets de la rare survivance d'une ancienne forme de religion jusque dans l'ère contemporaine. Les multiples contacts économiques et culturels des îles Ryukyu au cours de cette période s'expriment dans le caractère unique de la culture qu'elles ont forgée.</p>"@fr;
-  iut:justification "<p><span class=\"CmCaReT\" style=\"display: none;\">�</span>Criterion ii For several centuries the Ryukyu islands served as a centre of economic and cultural interchange between south-east Asia, China, Korea, and Japan, and this is vividly demonstrated by the surviving monuments. Criterion iii The culture of the Ryukyuan Kingdom evolved and flourished in a special political and economic environment, which gave its culture a unique quality. Criterion vi The Ryukyu sacred sites constitute an exceptional example of an indigenous form of nature and ancestor worship which has survived intact into the modern age alongside other established world religions.</p>"@en,
+  iut:justification "<p><span > </span>Criterion ii For several centuries the Ryukyu islands served as a centre of economic and cultural interchange between south-east Asia, China, Korea, and Japan, and this is vividly demonstrated by the surviving monuments. Criterion iii The culture of the Ryukyuan Kingdom evolved and flourished in a special political and economic environment, which gave its culture a unique quality. Criterion vi The Ryukyu sacred sites constitute an exceptional example of an indigenous form of nature and ancestor worship which has survived intact into the modern age alongside other established world religions.</p>"@en,
     "<p>Critère ii Pendant plusieurs siècles, les îles des Ryukyu ont servi de centre d’échanges économiques et culturels entre l’Asie du sud-est, la Chine, la Corée et le Japon, comme en témoignent avec force les monuments qui subsistent. Critère iii La culture du royaume des Ryukyu a évolué et s’est épanouie dans un environnement politique et économique particulier, qui lui a conféré des caractéristiques uniques. Critère vi Les sites sacrés des Ryukyu constituent un exemple exceptionnel de forme indigène de culte de la nature et des ancêtres qui a survécu intact dans l’âge moderne, aux côtés des grandes religions du monde.</p>"@fr;
   iut:inscription "2000"^^xsd:date;
   iut:danger "0"^^xsd:int;
@@ -9635,7 +9639,7 @@ iut:monument165 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "0"^^xsd:int .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:paysjo .
 
@@ -9962,7 +9966,7 @@ iut:paysla a iut:Pays;
   iut:nom "Lao People's Democratic Republic"@en, "République démocratique populaire lao"@fr;
   iut:comprend iut:monument1954, iut:monument560, iut:monument2282 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:paysla, iut:paysmy, iut:paysmh .
 
@@ -10015,7 +10019,7 @@ iut:payslv a iut:Pays;
   iut:nom "Latvia"@en, "Lettonie"@fr;
   iut:comprend iut:monument1003, iut:monument2423 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:payslv, iut:payslt, iut:payslu, iut:paysmt .
 
@@ -10050,7 +10054,7 @@ iut:payslb a iut:Pays;
   iut:comprend iut:monument329, iut:monument330, iut:monument331, iut:monument335, iut:monument1001,
     iut:monument2518 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:payslb, iut:paysly, iut:paysmr .
 
@@ -10261,7 +10265,7 @@ iut:monument2420 a iut:Monument;
   iut:code "2420"^^xsd:int;
   iut:nom "Andrefana Dry Forests"@en, "Les forêts sèches de l’Andrefana"@fr;
   iut:description "<p>This serial property in western Madagascar comprises karstic landscapes and limestone uplands cut into impressive 'tsingy' peaks and a 'forest' of limestone needles, the spectacular canyon of the Manambolo river, rolling hills and high peaks. Undisturbed forests, lakes and mangrove swamps are the habitat for rare and endangered lemurs and birds. The component parts of the property cover almost the full range of ecological and evolutionary variation within the western forests of Madagascar, including western dry forests and southwestern spiny forest-thicket. These sites contain a spectacular array of endemic and threatened biodiversity, including baobabs, flame trees (<em>Delonix</em>), as well as unique evolutionary lineages such as the Mesitornithiformes, an order of birds which is 54 million years old.</p>"@en,
-    "<p style=\"margin-top: 0cm; background: white;\"><span lang=\"FR\" style=\"font-family: 'Arial',sans-serif;\">Ce bien en série situé dans l'ouest de Madagascar comprend des paysages karstiques et des hautes terres calcaires découpées en impressionnants pics « tsingy » et une « forêt » d'aiguilles calcaires, le canyon spectaculaire de la rivière Manambolo, des collines ondulantes et de hauts sommets. Des forêts intactes, des lacs et des mangroves sont l'habitat de lémuriens et d'oiseaux rares et menacés. Les éléments constitutifs du bien couvrent presque toute la gamme des variations écologiques et évolutives au sein des forêts occidentales de Madagascar, y compris les forêts sèches occidentales et le bosquet forestier épineux du sud-ouest. Ces sites abritent un éventail spectaculaire de biodiversité endémique et menacée, notamment des baobabs, des arbres à flamme (<i>Delonix</i>), ainsi que des lignées évolutives uniques telles que les Mesitornithiformes, un ordre d'oiseaux vieux de 54 millions d'années.<o:p></o:p></span></p>"@fr;
+    "<p ><span >Ce bien en série situé dans l'ouest de Madagascar comprend des paysages karstiques et des hautes terres calcaires découpées en impressionnants pics « tsingy » et une « forêt » d'aiguilles calcaires, le canyon spectaculaire de la rivière Manambolo, des collines ondulantes et de hauts sommets. Des forêts intactes, des lacs et des mangroves sont l'habitat de lémuriens et d'oiseaux rares et menacés. Les éléments constitutifs du bien couvrent presque toute la gamme des variations écologiques et évolutives au sein des forêts occidentales de Madagascar, y compris les forêts sèches occidentales et le bosquet forestier épineux du sud-ouest. Ces sites abritent un éventail spectaculaire de biodiversité endémique et menacée, notamment des baobabs, des arbres à flamme (<i>Delonix</i>), ainsi que des lignées évolutives uniques telles que les Mesitornithiformes, un ordre d'oiseaux vieux de 54 millions d'années.<o:p></o:p></span></p>"@fr;
   iut:inscription "1990"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long 44.7673861111;
@@ -10620,7 +10624,7 @@ iut:paysmx a iut:Pays;
     iut:monument935, iut:monument936, iut:monument963, iut:monument1013, iut:monument1046,
     iut:monument1094 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:paysmx .
 
@@ -10919,7 +10923,7 @@ iut:paysmx a iut:Pays;
     iut:monument1386, iut:monument1427, iut:monument1493, iut:monument1521, iut:monument1691,
     iut:monument1693, iut:monument1858, iut:monument2024, iut:monument2102, iut:monument2287 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:paysmx, iut:paysni .
 
@@ -11058,7 +11062,7 @@ iut:monument1693 a iut:Monument;
 iut:monument1858 a iut:Monument;
   iut:code "1858"^^xsd:int;
   iut:nom "El Pinacate and Gran Desierto de Altar Biosphere Reserve"@en, "Réserve de biosphère El Pinacate et le Grand désert d’Altar"@fr;
-  iut:description "<p>The 714,566 hectare site comprises two distinct parts: the dormant volcanic Pinacate Shield of black and red lava flows and desert pavements to the east, and, in the west, the Gran Altar Desert with its ever changing and varied sand dunes that can reach a height of 200 metres. This landscape of dramatic contrast notably features linear, star and dome dunes as well as several arid granite massifs, some as high as 650 metres. The dunes emerge like islands from the sea of sand and harbour distinct and highly diverse plant and wildlife communities, including endemic freshwater fish species and the endemic Sonoran Pronghorn, which is only to be found in northwestern Sonora and in southwestern Arizona (USA). Ten enormous, deep and almost perfectly circular craters, believed to have been formed by a combination of eruptions and collapses, also contribute to the dramatic beauty of the site whose exceptional combination of features are of great scientific interest. The site is also a <a href=\"https://www.unesco.org/new/en/natural-sciences/environment/ecological-sciences/man-and-biosphere-programme/\">UNESCO Biosphere Reserve</a>.</p>"@en,
+  iut:description "<p>The 714,566 hectare site comprises two distinct parts: the dormant volcanic Pinacate Shield of black and red lava flows and desert pavements to the east, and, in the west, the Gran Altar Desert with its ever changing and varied sand dunes that can reach a height of 200 metres. This landscape of dramatic contrast notably features linear, star and dome dunes as well as several arid granite massifs, some as high as 650 metres. The dunes emerge like islands from the sea of sand and harbour distinct and highly diverse plant and wildlife communities, including endemic freshwater fish species and the endemic Sonoran Pronghorn, which is only to be found in northwestern Sonora and in southwestern Arizona (USA). Ten enormous, deep and almost perfectly circular craters, believed to have been formed by a combination of eruptions and collapses, also contribute to the dramatic beauty of the site whose exceptional combination of features are of great scientific interest. The site is also a <a href=https://www.unesco.org/new/en/natural-sciences/environment/ecological-sciences/man-and-biosphere-programme/>UNESCO Biosphere Reserve</a>.</p>"@en,
     "<p>Ce site de 714 566 hectares comprend deux types de paysages : à l’est, la zone volcanique dormante composée du bouclier du Pinacate, de vastes coulées de lave noires et rouges et d’un pavement désertique ; à l’ouest, le Grand Désert de l’Altar avec ses dunes pouvant atteindre deux cents mètres de haut. Ce paysage fortement contrasté comprend des dunes linéaires, en étoile et à coupole, ainsi que des massifs granitiques arides, pouvant culminer à 650 mètres, qui émergent comme des îles dans une mer de sable. Chaque paysage propose une communauté distincte de plantes et d’animaux, notamment des espèces endémiques de poissons d’eau douce et l’antilocapre de Sonora, espèce que l’on ne trouve qu’au sud-ouest de l’Arizona (Etats-Unis) et au nord-ouest du Sonora. La caractéristique la plus frappante du point de vue visuel est la concentration de dix maars (cratères volcaniques d’explosion), énormes, profonds et presque parfaitement circulaires. Ils seraient nés d’une association d’éruptions et d’effondrements et contribuent à la beauté tragique de ce site présentant des caractéristiques d’un grand intérêt scientifique.</p>"@fr;
   iut:inscription "2013"^^xsd:date;
   iut:danger "0"^^xsd:int;
@@ -11125,7 +11129,7 @@ iut:paysfm a iut:Pays;
   iut:nom "Micronesia (Federated States of)"@en, "Micronésie (États fédérés de)"@fr;
   iut:comprend iut:monument2093 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:paysfm, iut:paysmn, iut:paysmm, iut:paysnp, iut:paysnz .
 
@@ -11211,7 +11215,7 @@ iut:paysme a iut:Pays;
   iut:nom "Montenegro"@en, "Monténégro"@fr;
   iut:comprend iut:monument109, iut:monument2122 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysme, iut:paysnl, iut:paysno .
 
@@ -11248,7 +11252,7 @@ iut:paysma a iut:Pays;
   iut:comprend iut:monument188, iut:monument376, iut:monument515, iut:monument888, iut:monument937,
     iut:monument1625, iut:monument986, iut:monument1234, iut:monument1825 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:paysma .
 
@@ -11701,7 +11705,7 @@ iut:monument648 a iut:Monument;
 iut:monument1029 a iut:Monument;
   iut:code "1029"^^xsd:int;
   iut:nom "New Zealand Sub-Antarctic Islands"@en, "Îles sub-antarctiques de Nouvelle-Zélande"@fr;
-  iut:description "<p>The New Zealand Sub-Antarctic Islands consist of five island groups (the Snares, Bounty Islands, Antipodes Islands, Auckland Islands and Campbell Island) in the Southern Ocean south-east of New Zealand. The islands, lying between the Antarctic and Subtropical Convergences and the seas, have a high level of productivity, biodiversity, wildlife population densities and endemism among birds, plants and invertebrates. They are particularly notable for the large number and diversity of pelagic seabirds and penguins that nest there. There are 126 bird species in total, including 40 seabirds of which <span style=\"color: #212121; font-family: Inter, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: left; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: #ffffff; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; display: inline !important; float: none;\">eight<span> </span></span>breed nowhere else in the world.</p>"@en,
+  iut:description "<p>The New Zealand Sub-Antarctic Islands consist of five island groups (the Snares, Bounty Islands, Antipodes Islands, Auckland Islands and Campbell Island) in the Southern Ocean south-east of New Zealand. The islands, lying between the Antarctic and Subtropical Convergences and the seas, have a high level of productivity, biodiversity, wildlife population densities and endemism among birds, plants and invertebrates. They are particularly notable for the large number and diversity of pelagic seabirds and penguins that nest there. There are 126 bird species in total, including 40 seabirds of which <span>eight<span> </span></span>breed nowhere else in the world.</p>"@en,
     "<p>Le site se compose de cinq archipels (les îles Snares, Bounty, Antipodes, Auckland et Campbell) situés dans l'océan Austral, au sud-est de la Nouvelle-Zélande. Les îles se trouvant entre les convergences antarctique et subtropicale, la productivité marine est très élevée, il y a une riche diversité biologique, de fortes densités de population pour la faune sauvage et un important endémisme des espèces d'oiseaux, de plantes et d'invertébrés. Elles sont particulièrement remarquables pour l'abondance et la diversité des oiseaux pélagiques et des manchots nicheurs. On y trouve 126 espèces d'oiseaux au total, dont 40 d'oiseaux marins parmi lesquelles 8 ne se reproduisent nulle part ailleurs.</p>"@fr;
   iut:justification """<p><em>Criterion (ix):</em> The New Zealand Sub-Antarctic Islands display a pattern of immigration of species, diversifications and emergent endemism, offering particularly good opportunities for research into the dynamics of island ecology.</p>
 <p><em>Criterion (x):</em> The New Zealand Sub-Antarctic Islands are remarkable for their high level of biodiversity, population densities,and for endemism in birds, plants and invertebrates. The bird and plant life, especially the endemic albatrosses, cormorants, landbirds and “megaherbs” are unique to the islands.</p>"""@en,
@@ -11897,7 +11901,7 @@ iut:paysno a iut:Pays;
   iut:nom "Norway"@en, "Norvège"@fr;
   iut:comprend iut:monument2254, iut:monument1372, iut:monument2047 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysno, iut:payspl, iut:payspt .
 
@@ -11951,7 +11955,7 @@ iut:paysom a iut:Pays;
   iut:comprend iut:monument502, iut:monument503, iut:monument1180, iut:monument1384,
     iut:monument2217 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:paysom .
 
@@ -12028,7 +12032,7 @@ iut:payspk a iut:Pays;
   iut:comprend iut:monument151, iut:monument153, iut:monument154, iut:monument158, iut:monument189,
     iut:monument693 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:payspk, iut:payspw, iut:payspg, iut:paysph .
 
@@ -12138,7 +12142,7 @@ iut:payspa a iut:Pays;
   iut:nom "Panama"@en, "Panama"@fr;
   iut:comprend iut:monument148, iut:monument177, iut:monument934, iut:monument1319 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:payspa, iut:payspy, iut:payspe .
 
@@ -12639,12 +12643,12 @@ iut:monument1343 a iut:Monument;
   iut:nom "Centennial Hall in Wrocław"@en, "Halle du Centenaire de Wroclaw"@fr;
   iut:description "<p>The Centennial Hall, a landmark in the history of reinforced concrete architecture, was erected in 1911-1913 by the architect Max Berg as a multi-purpose recreational building, situated in the Exhibition Grounds. In form it is a symmetrical quatrefoil with a vast circular central space that can seat some 6,000 persons. The 23m-high dome is topped with a lantern in steel and glass. The Centennial Hall is a pioneering work of modern engineering and architecture, which exhibits an important interchange of influences in the early 20th century, becoming a key reference in the later development of reinforced concrete structures.</p>"@en,
     "<p>La Halle du centenaire, un jalon de l’histoire de l’architecture en béton armé, a été construite entre 1911 et 1913 par l’architecte Max Berg. C’est un bâtiment à plan central au cœur du Parc des Expositions servant de salle d’exposition polyvalente. La Halle du centenaire forme un quadrilobe symétrique, avec un vaste espace circulaire au centre qui peut accueillir 6 000 sièges. Le dôme nervuré de 23 m est coiffé d’une lanterne d’acier et de verre. La Halle du centenaire est un exemple précurseur du début de l’architecture et de l’ingénierie moderne ; elle illustre un important échange d’influences au début du XXe siècle et elle est devenue une référence majeur dans l’évolution postérieure des structures en béton armé.</p>"@fr;
-  iut:justification """<p><em>Criterion (i): </em>The Centennial Hall of Wroc<span style=\"font-size: 8pt; font-family: Arial; mso-fareast-font-family: SimSun; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA;\">ł</span> aw is a creative and innovative example in the development of construction technology in large reinforced concrete structures. The Centennial Hall occupies a key position in the evolution of methods of reinforcement in architecture, and one of the climax points in the history of the use of metal in structural consolidation.</p>
+  iut:justification """<p><em>Criterion (i): </em>The Centennial Hall of Wroc<span>ł</span> aw is a creative and innovative example in the development of construction technology in large reinforced concrete structures. The Centennial Hall occupies a key position in the evolution of methods of reinforcement in architecture, and one of the climax points in the history of the use of metal in structural consolidation.</p>
 <p><em>Criterion (ii): </em>The Centennial Hall is a pioneering work of modern engineering and architecture, which exhibits an important interchange of influences in the early 20th century, becoming a key reference in the later development of reinforced concrete structures.</p>
-<p><em>Criterion (iv):</em> As part of the exhibition grounds of Wroc<span style=\"font-size: 8pt; font-family: Arial; mso-fareast-font-family: SimSun; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA;\">ł</span> aw, the Centennial Hall is an outstanding example of modern recreational architecture that served a variety of purposes, ranging from conferences and exhibitions to concerts, theatre and opera.</p>"""@en,
-    """<p><em>Critère (i) : </em>La halle du Centenaire de Wroc<span style=\"font-size: 8pt; font-family: Arial; mso-fareast-font-family: SimSun; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA;\">ł</span> aw est un exemple créatif et novateur dans le développement de la technologie de construction de grandes structures en béton armé. Elle occupe une position clé dans l’évolution des méthodes de renforcement en architecture, et c’est l’un des temps les plus marquants dans l’histoire de l'utilisation du métal comme matériau de consolidation structurelle.</p>
+<p><em>Criterion (iv):</em> As part of the exhibition grounds of Wroc<span style=>ł</span> aw, the Centennial Hall is an outstanding example of modern recreational architecture that served a variety of purposes, ranging from conferences and exhibitions to concerts, theatre and opera.</p>"""@en,
+    """<p><em>Critère (i) : </em>La halle du Centenaire de Wroc<span style=>ł</span> aw est un exemple créatif et novateur dans le développement de la technologie de construction de grandes structures en béton armé. Elle occupe une position clé dans l’évolution des méthodes de renforcement en architecture, et c’est l’un des temps les plus marquants dans l’histoire de l'utilisation du métal comme matériau de consolidation structurelle.</p>
 <p><em>Critère (ii) : </em>La halle du Centenaire est une oeuvre pionnière de l’ingénierie et de l’architecture moderne, qui illustre un important échange d’influences au début du XXe siècle et qui est devenue une référence majeure dans le développement ultérieur des structures en béton armé.</p>
-<p><em>Critère (iv) : </em>En tant que partie intégrante du parc des expositions de Wroc<span style=\"font-size: 8pt; font-family: Arial; mso-fareast-font-family: SimSun; mso-ansi-language: EN-US; mso-fareast-language: ZH-CN; mso-bidi-language: AR-SA;\">ł</span> aw, la halle du Centenaire est un exemple exceptionnel d’architecture de loisirs moderne et polyvalente, accueillant à la fois colloques, expositions, concerts, pièces de théâtre et opéras.</p>"""@fr;
+<p><em>Critère (iv) : </em>En tant que partie intégrante du parc des expositions de Wroc<span>ł</span> aw, la halle du Centenaire est un exemple exceptionnel d’architecture de loisirs moderne et polyvalente, accueillant à la fois colloques, expositions, concerts, pièces de théâtre et opéras.</p>"""@fr;
   iut:inscription "2006"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long 17.0770138888;
@@ -12813,7 +12817,7 @@ iut:monument2485 a iut:Monument;
   iut:code "2485"^^xsd:int;
   iut:nom "Historic Centre of Guimarães and Couros Zone"@en, "Centre historique de Guimarães et zone du Couros"@fr;
   iut:description "<p>The historic town of Guimarães is associated with the emergence of the Portuguese national identity in the 12th century. An exceptionally well-preserved and authentic example of the evolution of a medieval settlement into a modern town, its rich building typology exemplifies the specific development of Portuguese architecture from the 15th to 19th century through the consistent use of traditional building materials and techniques. The property includes two monastic complexes and an industrial area, the Couros Zone, which, like the local river, was named after the traditional craft of leather tanning. Evidence of the craft, though no longer practiced, persists in the form of tanneries, workers' houses and urban spaces from the 19th and early 20th centuries. The property bears witness to a thousand years of Portuguese urban, architectural and societal developments.</p>"@en,
-    "<p style=\"margin-top: 0cm; background: white;\"><span lang=\"FR\" style=\"font-family: 'Arial',sans-serif;\">La ville historique de Guimarães est associée à l'émergence de l'identité nationale portugaise au XIIe siècle. Exemple exceptionnellement bien préservé et authentique de l’évolution d'une ville médiévale vers une ville moderne, sa riche typologie de bâtiments illustre le développement spécifique de l'architecture portugaise du XVe jusqu’au XIXe siècle, grâce à l'utilisation cohérente de matériaux et de techniques de construction traditionnels. Le bien comprend deux complexes monastiques et une zone industrielle, la zone de Couros, qui, comme la rivière locale, a été nommée d'après le métier traditionnel du tannage du cuir. Les traces de ce métier, bien qu'il ne soit plus pratiqué, persistent sous la forme de tanneries, de maisons d'ouvriers et d'espaces urbains datant du XIXe et du début du XXe siècle. Le bien témoigne de mille ans d'évolution urbaine, architecturale et sociétale du Portugal.<o:p></o:p></span></p>"@fr;
+    "<p><span >La ville historique de Guimarães est associée à l'émergence de l'identité nationale portugaise au XIIe siècle. Exemple exceptionnellement bien préservé et authentique de l’évolution d'une ville médiévale vers une ville moderne, sa riche typologie de bâtiments illustre le développement spécifique de l'architecture portugaise du XVe jusqu’au XIXe siècle, grâce à l'utilisation cohérente de matériaux et de techniques de construction traditionnels. Le bien comprend deux complexes monastiques et une zone industrielle, la zone de Couros, qui, comme la rivière locale, a été nommée d'après le métier traditionnel du tannage du cuir. Les traces de ce métier, bien qu'il ne soit plus pratiqué, persistent sous la forme de tanneries, de maisons d'ouvriers et d'espaces urbains datant du XIXe et du début du XXe siècle. Le bien témoigne de mille ans d'évolution urbaine, architecturale et sociétale du Portugal.<o:p></o:p></span></p>"@fr;
   iut:inscription "2001"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long -8.2927777778;
@@ -12861,7 +12865,7 @@ iut:monument1956 a iut:Monument;
   iut:nom "Garrison Border Town of Elvas and its Fortifications"@en, "Ville de garnison frontalière d’Elvas et ses fortifications"@fr;
   iut:description "<p>The site, extensively fortified from the 17<sup>th</sup> to 19<sup>th</sup> centuries, represents the largest bulwarked dry-ditch system in the world. Within its walls, the town contains barracks and other military buildings as well as churches and monasteries. While Elvas contains remains dating back to the 10th century ad, its fortification began when Portugal regained independence in 1640. The fortifications designed by Dutch Jesuit padre Cosmander represent the best surviving example of the Dutch school of fortifications anywhere. The site also contains the Amoreira aqueduct, built to enable the stronghold to withstand lengthy sieges.</p>"@en,
     "<p>Le site, fortifi&eacute; de mani&egrave;re extensive entre le XVIIe et le XIXe si&egrave;cle, repr&eacute;sente le plus grand syst&egrave;me d&eacute;fensif de remparts &agrave; douves s&egrave;ches du monde. &Agrave; l&rsquo;int&eacute;rieur de ses murs, la ville comprend de grandes casernes et d'autres b&acirc;timents militaires, ainsi que des &eacute;glises et des monast&egrave;res. Alors qu'Elvas conserve des vestiges remontant au Xe si&egrave;cle, ses fortifications remontent au moment de la restauration de l'ind&eacute;pendance du Portugal en 1640. Les fortifications, con&ccedil;ues par le p&egrave;re j&eacute;suite Cosmander, repr&eacute;sentent le meilleur exemple conserv&eacute; au monde de fortifications de l'&eacute;cole hollandaise. Le site comprend aussi l'aqueduc d'Amoreira, construit pour permettre de r&eacute;sister &agrave; un long si&egrave;ge.</p>"@fr;
-  iut:justification "<p align=\"left\"><em>Criterion (iv):</em>&nbsp;Elvas is the largest complex of dry-ditched bulwarked land fortifications in the world surviving to the present day.The bulwarked fortifications of the Historic Centre are the best extant evidence of the Old Dutch Method of fortification in the world.&nbsp;Fort of Santa Luzia is paradigmatic of the highly functional character of bulwarked military architecture, in sacrificing a perfect - and redundant -geometric regularity in order to maximize the military effectiveness of the territorial defensive system to which it belongs.&nbsp;The excellence of design and construction of the Fort of Gra&ccedil;a, in a situation also conditioned strongly by its location and available space. At the end of the 18th <span>century, </span>experienced European military men already thought so, among them Christian, Prince of Waldeck (Principality of Germany), engaged with the post of Marshal, on 10 March 1797 to assist the Commander-in-Chief of the Portuguese army. From his journey of inspection made in 1798, the following reference to the fort remains: &ldquo;The fort continues to be a masterpiece of fortification, incorporating all the skill and art available at the time (&hellip;)&rdquo;.</p>"@en;
+  iut:justification "<p align=left><em>Criterion (iv):</em>&nbsp;Elvas is the largest complex of dry-ditched bulwarked land fortifications in the world surviving to the present day.The bulwarked fortifications of the Historic Centre are the best extant evidence of the Old Dutch Method of fortification in the world.&nbsp;Fort of Santa Luzia is paradigmatic of the highly functional character of bulwarked military architecture, in sacrificing a perfect - and redundant -geometric regularity in order to maximize the military effectiveness of the territorial defensive system to which it belongs.&nbsp;The excellence of design and construction of the Fort of Gra&ccedil;a, in a situation also conditioned strongly by its location and available space. At the end of the 18th <span>century, </span>experienced European military men already thought so, among them Christian, Prince of Waldeck (Principality of Germany), engaged with the post of Marshal, on 10 March 1797 to assist the Commander-in-Chief of the Portuguese army. From his journey of inspection made in 1798, the following reference to the fort remains: &ldquo;The fort continues to be a masterpiece of fortification, incorporating all the skill and art available at the time (&hellip;)&rdquo;.</p>"@en;
   iut:inscription "2012"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long -7.1633222222;
@@ -12875,7 +12879,7 @@ iut:payspt a iut:Pays;
   iut:nom "Portugal"@en, "Portugal"@fr;
   iut:comprend iut:monument1956, iut:monument2360, iut:monument2276, iut:monument2280 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:payspt, iut:paysro, iut:paysru, iut:payssm .
 
@@ -12937,7 +12941,7 @@ iut:paysqa a iut:Pays;
   iut:nom "Qatar"@en, "Qatar"@fr;
   iut:comprend iut:monument1948 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:paysqa .
 
@@ -12962,7 +12966,7 @@ iut:payskr a iut:Pays;
     iut:monument1982, iut:monument2038, iut:monument2278, iut:monument2227, iut:monument2343,
     iut:monument2432 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:payskr .
 
@@ -13043,7 +13047,7 @@ iut:monument1141 a iut:Monument;
   iut:nom "Gochang, Hwasun and Ganghwa Dolmen Sites"@en, "Sites de dolmens de Gochang, Hwasun et Ganghwa"@fr;
   iut:description "<p>The prehistoric cemeteries at Gochang, Hwasun, and Ganghwa contain many hundreds of examples of dolmens - tombs from the 1st millennium BC constructed of large stone slabs. They form part of the Megalithic culture, found in many parts of the world, but nowhere in such a concentrated form.</p>"@en,
     "<p>Les cimetières préhistoriques de Gochang, Hwasun et Ganghwa abritent des centaines de dolmens – sépultures faites d'énormes dalles de pierre datant du Ier millénaire av. J.-C. Ils appartiennent à la culture mégalithique que l'on retrouve en de nombreux autres endroits du globe, mais jamais en si forte concentration.</p>"@fr;
-  iut:justification "<p>Criterion (iii) The global prehistoric technological and social phenomenon that resulted in the appearance in the 2nd and 3rd millennia BCE of funerary and ritual monuments constructed of large stones (the \"Megalithic Culture\") is nowhere more vividly illustrated than in the dolmen cemeteries of Gochang, Hwasun, and Ganghwa.</p>"@en,
+  iut:justification "<p>Criterion (iii) The global prehistoric technological and social phenomenon that resulted in the appearance in the 2nd and 3rd millennia BCE of funerary and ritual monuments constructed of large stones (the Megalithic Culture) is nowhere more vividly illustrated than in the dolmen cemeteries of Gochang, Hwasun, and Ganghwa.</p>"@en,
     "<p>Critère iii Le phénomène mondial préhistorique, technologique et social qui a engendré l’apparition aux IIe et IIIe millénaires avant J.-C. de monuments et rituels funéraires composés de grandes pierres (« la Culture mégalithique ») ne s’illustre nulle part aussi parfaitement que dans les cimetières de dolmens de Koch’ang, Hwasun et Kangwha.</p>"@fr;
   iut:inscription "2000"^^xsd:date;
   iut:danger "0"^^xsd:int;
@@ -13792,7 +13796,7 @@ iut:payskn a iut:Pays;
   iut:nom "Saint Kitts and Nevis"@en, "Saint-Kitts-et-Nevis"@fr;
   iut:comprend iut:monument1063 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:payskn, iut:payslc .
 
@@ -13854,7 +13858,7 @@ iut:payssa a iut:Pays;
   iut:nom "Saudi Arabia"@en, "Arabie saoudite"@fr;
   iut:comprend iut:monument1524 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:payssa .
 
@@ -14065,7 +14069,7 @@ iut:paysrs a iut:Pays;
   iut:nom "Serbia"@en, "Serbie"@fr;
   iut:comprend iut:monument104, iut:monument449, iut:monument856, iut:monument1430 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysrs, iut:payssk, iut:payssi, iut:payses .
 
@@ -14157,7 +14161,7 @@ iut:payssg a iut:Pays;
   iut:nom "Singapore"@en, "Singapour"@fr;
   iut:comprend iut:monument2044 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:payssg, iut:payssb .
 
@@ -14829,7 +14833,7 @@ iut:monument1631 a iut:Monument;
   iut:description "<p>These are two of the finest contributions to Barcelona's architecture by the Catalan art nouveau architect Lluís Domènech i Montaner. The Palau de la Música Catalana is an exuberant steel-framed structure full of light and space, and decorated by many of the leading designers of the day. The Hospital de Sant Pau is equally bold in its design and decoration, while at the same time perfectly adapted to the needs of the sick.</p>"@en,
     "<p>Ces deux édifices comptent parmi les plus belles contributions de l'architecte catalan de l'Art nouveau Lluís Domènech i Montaner, à l'architecture de Barcelone. Le Palais de la musique catalane est une construction exubérante à armature d'acier, pleine de lumière et d'espace, décorée par de nombreux grands artistes de l'époque. L'hôpital de Sant Pau manifeste la même hardiesse de conception et de décoration, tout en restant parfaitement adapté aux besoins des malades.</p>"@fr;
   iut:justification "<p>The Committee decided to inscribe these two properties on the basis of criteria (i), (ii) and (iv), considering that the Palau de la Música Catalana and the Hospital de Sant Pau in Barcelona are masterpieces of the imaginative and exuberant Art Nouveau that flowered in early 20th century Barcelona.</p>"@en,
-    "<p>Le Comité a décidé l'inscription de ces deux biens sur la base des critères (i), (ii) et (iv), considérant que le Palais de la Musique catalane et l'hôpital de Sant Pau à Barcelone constituent des exemples exceptionnels du style \"Art Nouveau\", imaginatif et exubérant, qui fleurit dans la Barcelone du 20ème siècle.</p>"@fr;
+    "<p>Le Comité a décidé l'inscription de ces deux biens sur la base des critères (i), (ii) et (iv), considérant que le Palais de la Musique catalane et l'hôpital de Sant Pau à Barcelone constituent des exemples exceptionnels du style Art Nouveau, imaginatif et exubérant, qui fleurit dans la Barcelone du 20ème siècle.</p>"@fr;
   iut:inscription "1997"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long 2.175;
@@ -14847,7 +14851,7 @@ iut:payses a iut:Pays;
     iut:monument1781, iut:monument2088, iut:monument2421, iut:monument2225, iut:monument2263,
     iut:monument2571 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:payses, iut:paysse, iut:paysch .
 
@@ -15152,7 +15156,7 @@ iut:payslk a iut:Pays;
   iut:comprend iut:monument221, iut:monument222, iut:monument223, iut:monument468, iut:monument522,
     iut:monument523, iut:monument663, iut:monument1650 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:payslk .
 
@@ -15268,7 +15272,7 @@ iut:paysps a iut:Pays;
   iut:comprend iut:monument1922, iut:monument2012, iut:monument2230, iut:monument2475,
     iut:monument2628 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:paysps, iut:payssd, iut:payssy .
 
@@ -15394,7 +15398,7 @@ iut:payssr a iut:Pays;
   iut:nom "Suriname"@en, "Suriname"@fr;
   iut:comprend iut:monument1096, iut:monument1187, iut:monument2467 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:payssr .
 
@@ -15824,7 +15828,7 @@ iut:payssy a iut:Pays;
   iut:nom "Syrian Arab Republic"@en, "République arabe syrienne"@fr;
   iut:comprend iut:monument1406, iut:monument1761 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:payssy, iut:paystn, iut:paysae .
 
@@ -15859,7 +15863,7 @@ iut:paystj a iut:Pays;
   iut:nom "Tajikistan"@en, "Tadjikistan"@fr;
   iut:comprend iut:monument1651, iut:monument1907, iut:monument2472 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:paystj, iut:paysth, iut:paystm .
 
@@ -16149,7 +16153,7 @@ iut:paystr a iut:Pays;
     iut:monument2049, iut:monument2110, iut:monument2170, iut:monument2237, iut:monument2351,
     iut:monument2439, iut:monument2482 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paystr, iut:paysua, iut:paysgb .
 
@@ -16794,7 +16798,7 @@ iut:paysgb a iut:Pays;
     iut:monument1583, iut:monument2046, iut:monument2087, iut:monument2285, iut:monument2371,
     iut:monument2540 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
   iut:comprend iut:paysgb, iut:paysus .
 
@@ -17520,7 +17524,7 @@ iut:paysuy a iut:Pays;
   iut:nom "Uruguay"@en, "Uruguay"@fr;
   iut:comprend iut:monument881, iut:monument2025, iut:monument2324 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
   iut:comprend iut:paysuy, iut:paysve .
 
@@ -17568,7 +17572,7 @@ iut:paysuz a iut:Pays;
   iut:nom "Uzbekistan"@en, "Ouzbékistan"@fr;
   iut:comprend iut:monument638, iut:monument2184, iut:monument715, iut:monument1037 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
   iut:comprend iut:paysuz, iut:paysvu, iut:paysvn .
 
@@ -17673,7 +17677,7 @@ iut:monument829 a iut:Monument;
 iut:monument1150 a iut:Monument;
   iut:code "1150"^^xsd:int;
   iut:nom "Ciudad Universitaria de Caracas"@en, "Ciudad Universitaria de Caracas"@fr;
-  iut:description "<p>The Ciudad Universitaria de Caracas, built to the design of the architect Carlos Raúl Villanueva, between 1940 and 1960, is an outstanding example of the Modern Movement in architecture. The university campus integrates the large number of buildings and functions into a clearly articulated ensemble, including masterpieces of modern architecture and visual arts, such as the Aula Magna with the \"Clouds\" of Alexander Calder, the Olympic Stadium, and the Covered Plaza.</p>"@en,
+  iut:description "<p>The Ciudad Universitaria de Caracas, built to the design of the architect Carlos Raúl Villanueva, between 1940 and 1960, is an outstanding example of the Modern Movement in architecture. The university campus integrates the large number of buildings and functions into a clearly articulated ensemble, including masterpieces of modern architecture and visual arts, such as the Aula Magna with the Clouds of Alexander Calder, the Olympic Stadium, and the Covered Plaza.</p>"@en,
     "<p>La Cité universitaire de Caracas, construite selon les plans de l'architecte Carlos Raúl Villanueva, entre 1940 et 1960, est un exemple exceptionnel du mouvement moderne en architecture. Elle regroupe un grand nombre de bâtiments et de fonctions dans un ensemble clairement articulé et mis en valeur par des chefs-d'œuvre de l'architecture moderne et des arts plastiques, tels que l'Aula Magna avec les Nuages d'Alexander Calder, le stade olympique et la Plaza Cubierta.</p>"@fr;
   iut:justification """<p><em>Criterion i </em>:The Ciudad Universitaria de Caracas is a masterpiece of modern city planning, architecture and art, created by the Venezuelan architect Carlos Raúl Villanueva and a group of distinguished avant-garde artists.</p>
 <p><em>Criterion iv </em>: The Ciudad Universitaria de Caracas is an outstanding example of the coherent realization of the urban, architectural, and artistic ideals of the early 20th century. It constitutes an ingenious interpretation of the concepts and spaces of colonial traditions and an example of an open and ventilated solution, appropriate for its tropical environment.</p>"""@en,
@@ -17691,7 +17695,7 @@ iut:monument2452 a iut:Monument;
   iut:code "2452"^^xsd:int;
   iut:nom "Ha Long Bay - Cat Ba Archipelago"@en, "Baie d’Ha Long – archipel de Cat Ba"@fr;
   iut:description "<p>Covering an area of 65,650 ha and including 1,133 islands and islets, Ha Long Bay - Cat Ba Archipelago is located in the Northeast of Viet Nam, within Quang Ninh Province and Hai Phong City. Comprised of a multitude of limestone islands of islets rising from the sea, in a variety of sizes and shapes and presenting picturesque, unspoiled nature, Ha Long Bay - Cat Ba Archipelago is a spectacular seascape sculpted by nature. <span>As the most extensive and best known example of marine - invaded tower karst, </span>Ha Long Bay - Cat Ba Archipelago <span>is one of the world’s mots important areas of fengcong (clusters of conical peaks) and fenglin (isolated tower features) karst. </span>Additionally, the exceptionally beautiful landscape is also dominated by the typical ecosystems.</p>"@en,
-    "<p style=\"margin-top: 0cm; background: white;\"><span lang=\"FR\" style=\"font-family: 'Arial',sans-serif;\">D'une superficie de 65 650 ha et comprenant 1 133 îles et îlots, la Baie d'Ha Long - archipel de Cat Ba est située dans le nord-est du Viet Nam, dans la province de Quang Ninh et la ville de Hai Phong. Composé d'une multitude d'îles et d'îlots calcaires émergeant de la mer, de tailles et de formes variées et présentant une nature pittoresque et intacte, la Baie d'Ha Long - archipel de Cat Ba est un paysage marin spectaculaire sculpté par la nature. Exemple le plus étendu et le plus connu de karst à tours envahi par la mer, la Baie d'Ha Long et l'archipel de Cat Ba constituent l'une des plus importantes zones de karst fengcong (grappes de pics coniques) et fenglin (tours isolées) au monde. En outre, ce paysage d'une beauté exceptionnelle est également dominé par des écosystèmes typiques.<br /><br /><o:p><br /></o:p></span></p>"@fr;
+    "<p ><span>D'une superficie de 65 650 ha et comprenant 1 133 îles et îlots, la Baie d'Ha Long - archipel de Cat Ba est située dans le nord-est du Viet Nam, dans la province de Quang Ninh et la ville de Hai Phong. Composé d'une multitude d'îles et d'îlots calcaires émergeant de la mer, de tailles et de formes variées et présentant une nature pittoresque et intacte, la Baie d'Ha Long - archipel de Cat Ba est un paysage marin spectaculaire sculpté par la nature. Exemple le plus étendu et le plus connu de karst à tours envahi par la mer, la Baie d'Ha Long et l'archipel de Cat Ba constituent l'une des plus importantes zones de karst fengcong (grappes de pics coniques) et fenglin (tours isolées) au monde. En outre, ce paysage d'une beauté exceptionnelle est également dominé par des écosystèmes typiques.<br /><br /><o:p><br /></o:p></span></p>"@fr;
   iut:inscription "1994"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long 107.1611111111;
@@ -17758,9 +17762,9 @@ iut:paysvn a iut:Pays;
   iut:comprend iut:monument1110, iut:monument2059, iut:monument1689, iut:monument1775,
     iut:monument2179 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
-  iut:comprend iut:paysvn, iut:payscn%2Ckg%2Ckz, iut:payskg%2Ckz%2Cuz, iut:payskz%2Ctm%2Cuz .
+  iut:comprend iut:paysvn, iut:payscnCkgCkz, iut:payskgCkzCuz, iut:payskzCtmCuz .
 
 iut:monument2059 a iut:Monument;
   iut:code "2059"^^xsd:int;
@@ -17833,7 +17837,7 @@ iut:paysye a iut:Pays;
   iut:comprend iut:monument213, iut:monument444, iut:monument725, iut:monument1548,
     iut:monument2505 .
 
-iut:regionArab%20States a iut:Region;
+iut:regionArab_States a iut:Region;
   iut:nom "Arab States"@en, "États arabes"@fr;
   iut:comprend iut:paysye .
 
@@ -17907,8 +17911,8 @@ iut:payszw a iut:Pays;
 
 iut:regionAfrica a iut:Region;
   iut:nom "Africa"@en, "Afrique"@fr;
-  iut:comprend iut:payszw, iut:paysbf%2Cbj%2Cne, iut:paysbj%2Ctg, iut:payscf%2Ccg%2Ccm,
-    iut:paysci%2Cgn, iut:paysgm%2Csn, iut:paysls%2Cza .
+  iut:comprend iut:payszw, iut:paysbfCbjCne, iut:paysbjCtg, iut:payscfCcgCcm,
+    iut:paysciCgn, iut:paysgmCsn, iut:payslsCza .
 
 iut:monument345 a iut:Monument;
   iut:code "345"^^xsd:int;
@@ -17969,22 +17973,22 @@ iut:monument2513 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysal%2Cat%2Cba%2Cbe%2Cbg%2Cch%2Ccz%2Cde%2Ces%2Cfr%2Chr%2Cit%2Cmk%2Cpl%2Cro%2Csi%2Csk%2Cua
+iut:paysalCatCbaCbeCbgCchCczCdeCesCfrChrCitCmkCplCroCsiCskCua
   a iut:Pays;
   iut:code "al,at,ba,be,bg,ch,cz,de,es,fr,hr,it,mk,pl,ro,si,sk,ua";
   iut:nom "Albania,Austria,Belgium,Bosnia and Herzegovina,Bulgaria,Croatia,Czechia,France,Germany,Italy,North Macedonia,Poland,Romania,Slovakia,Slovenia,Spain,Switzerland,Ukraine"@en,
     "Albanie,Allemagne,Autriche,Belgique,Bosnie-Herzégovine,Bulgarie,Croatie,Espagne,France,Italie,Macédoine du Nord,Pologne,Roumanie,Slovaquie,Slovénie,Suisse,Tchéquie,Ukraine"@fr;
   iut:comprend iut:monument2513 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
-  iut:comprend iut:paysal%2Cat%2Cba%2Cbe%2Cbg%2Cch%2Ccz%2Cde%2Ces%2Cfr%2Chr%2Cit%2Cmk%2Cpl%2Cro%2Csi%2Csk%2Cua,
-    iut:paysal%2Cmk, iut:paysat%2Cbe%2Ccz%2Cde%2Cfr%2Cgb%2Cit, iut:paysat%2Cch%2Cde%2Cfr%2Cit%2Csi,
-    iut:paysat%2Cde%2Csk, iut:paysat%2Chu, iut:paysby%2Cee%2Cfi%2Clt%2Clv%2Cmd%2Cno%2Cru%2Cse%2Cua,
-    iut:paysby%2Cpl, iut:paysbe%2Cfr, iut:paysbe%2Cnl, iut:paysba%2Chr%2Cme%2Crs, iut:paysca%2Cus,
-    iut:payshr%2Cit%2Cme, iut:payscz%2Cde, iut:paysde%2Cdk%2Cnl, iut:paysde%2Cdk%2Cgb%2Cus,
-    iut:paysfi%2Cse, iut:payses%2Cfr, iut:paysde%2Cnl, iut:paysde%2Cpl, iut:paysde%2Cgb,
-    iut:paysit%2Cva, iut:payshu%2Csk, iut:paysch%2Cit .
+  iut:comprend iut:paysalCatCbaCbeCbgCchCczCdeCesCfrChrCitCmkCplCroCsiCskCua,
+    iut:paysalCmk, iut:paysatCbeCczCdeCfrCgbCit, iut:paysatCchCdeCfrCitCsi,
+    iut:paysatCdeCsk, iut:paysatChu, iut:paysbyCeeCfiCltClvCmdCnoCruCseCua,
+    iut:paysbyCpl, iut:paysbeCfr, iut:paysbeCnl, iut:paysbaChrCmeCrs, iut:payscaCus,
+    iut:payshrCitCme, iut:paysczCde, iut:paysdeCdkCnl, iut:paysdeCdkCgbCus,
+    iut:paysfiCse, iut:paysesCfr, iut:paysdeCnl, iut:paysdeCpl, iut:paysdeCgb,
+    iut:paysitCva, iut:payshuCsk, iut:payschCit .
 
 iut:monument2313 a iut:Monument;
   iut:code "2313"^^xsd:int;
@@ -17999,7 +18003,7 @@ iut:monument2313 a iut:Monument;
   iut:categorie "Mixed"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysal%2Cmk a iut:Pays;
+iut:paysalCmk a iut:Pays;
   iut:code "al,mk";
   iut:nom "Albania,North Macedonia"@en, "Albanie,Macédoine du Nord"@fr;
   iut:comprend iut:monument2313 .
@@ -18018,16 +18022,16 @@ iut:monument2085 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysar%2Cbe%2Cch%2Cde%2Cfr%2Cin%2Cjp a iut:Pays;
+iut:paysarCbeCchCdeCfrCinCjp a iut:Pays;
   iut:code "ar,be,ch,de,fr,in,jp";
   iut:nom "Argentina,Belgium,France,Germany,India,Japan,Switzerland"@en, "Allemagne,Argentine,Belgique,France,Inde,Japon,Suisse"@fr;
   iut:comprend iut:monument2085 .
 
-iut:regionAsia%20and%20the%20Pacific%2CEurope%20and%20North%20America%2CLatin%20America%20and%20the%20Caribbean
+iut:regionAsia_and_the_PacificCEurope_and_North_AmericaCLatin_America_and_the_Caribbean
   a iut:Region;
   iut:nom "Asia and the Pacific,Europe and North America,Latin America and the Caribbean"@en,
     "Amérique latine et Caraïbes,Asie et Pacifique,Europe et Amérique du Nord"@fr;
-  iut:comprend iut:paysar%2Cbe%2Cch%2Cde%2Cfr%2Cin%2Cjp .
+  iut:comprend iut:paysarCbeCchCdeCfrCinCjp .
 
 iut:monument2003 a iut:Monument;
   iut:code "2003"^^xsd:int;
@@ -18043,15 +18047,15 @@ iut:monument2003 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysar%2Cbo%2Ccl%2Cco%2Cec%2Cpe a iut:Pays;
+iut:paysarCboCclCcoCecCpe a iut:Pays;
   iut:code "ar,bo,cl,co,ec,pe";
   iut:nom "Argentina,Bolivia (Plurinational State of),Chile,Colombia,Ecuador,Peru"@en,
     "Argentine,Bolivie (État plurinational de),Chili,Colombie,Équateur,Pérou"@fr;
   iut:comprend iut:monument2003 .
 
-iut:regionLatin%20America%20and%20the%20Caribbean a iut:Region;
+iut:regionLatin_America_and_the_Caribbean a iut:Region;
   iut:nom "Latin America and the Caribbean"@en, "Amérique latine et Caraïbes"@fr;
-  iut:comprend iut:paysar%2Cbo%2Ccl%2Cco%2Cec%2Cpe, iut:paysar%2Cbr, iut:payscr%2Cpa .
+  iut:comprend iut:paysarCboCclCcoCecCpe, iut:paysarCbr, iut:payscrCpa .
 
 iut:monument326 a iut:Monument;
   iut:code "326"^^xsd:int;
@@ -18067,7 +18071,7 @@ iut:monument326 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysar%2Cbr a iut:Pays;
+iut:paysarCbr a iut:Pays;
   iut:code "ar,br";
   iut:nom "Argentina,Brazil"@en, "Argentine,Brésil"@fr;
   iut:comprend iut:monument326 .
@@ -18085,7 +18089,7 @@ iut:monument2618 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysat%2Cbe%2Ccz%2Cde%2Cfr%2Cgb%2Cit a iut:Pays;
+iut:paysatCbeCczCdeCfrCgbCit a iut:Pays;
   iut:code "at,be,cz,de,fr,gb,it";
   iut:nom "Austria,Belgium,Czechia,France,Germany,Italy,United Kingdom of Great Britain and Northern Ireland"@en,
     "Allemagne,Autriche,Belgique,France,Italie,Royaume-Uni de Grande-Bretagne et d'Irlande du Nord,Tchéquie"@fr;
@@ -18104,7 +18108,7 @@ iut:monument1782 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysat%2Cch%2Cde%2Cfr%2Cit%2Csi a iut:Pays;
+iut:paysatCchCdeCfrCitCsi a iut:Pays;
   iut:code "at,ch,de,fr,it,si";
   iut:nom "Austria,France,Germany,Italy,Slovenia,Switzerland"@en, "Allemagne,Autriche,France,Italie,Slovénie,Suisse"@fr;
   iut:comprend iut:monument1782 .
@@ -18122,7 +18126,7 @@ iut:monument2617 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysat%2Cde%2Csk a iut:Pays;
+iut:paysatCdeCsk a iut:Pays;
   iut:code "at,de,sk";
   iut:nom "Austria,Germany,Slovakia"@en, "Allemagne,Autriche,Slovaquie"@fr;
   iut:comprend iut:monument2617 .
@@ -18142,7 +18146,7 @@ iut:monument913 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysat%2Chu a iut:Pays;
+iut:paysatChu a iut:Pays;
   iut:code "at,hu";
   iut:nom "Austria,Hungary"@en, "Autriche,Hongrie"@fr;
   iut:comprend iut:monument913 .
@@ -18151,7 +18155,7 @@ iut:monument2454 a iut:Monument;
   iut:code "2454"^^xsd:int;
   iut:nom "Hyrcanian Forests"@en, "Forêts hyrcaniennes"@fr;
   iut:description "<p>The Hyrcanian Forests form a unique forested massif that stretches along the Caspian Sea in Azerbaijan and Iran. The history of these broad-leaved forests dates back 25 to 50 million years, when they covered most of this Northern Temperate region. Their floristic biodiversity is remarkable with over 3,200 vascular plant species documented. To date, 180 species of birds typical of broad-leaved temperate forests and 58 mammal species have been recorded. Elements of the property comprise full ecosystems including top predators such as leopard, wolf and brown bear, and the forest has a high degree of rare and endemic tree species. The oldest trees seen here are 300-400 years old, with some possibly up to 500 years old.</p>"@en,
-    "<p style=\"margin-top: 0cm; background: white;\"><span lang=\"FR\" style=\"font-family: 'Arial',sans-serif;\">Les forêts hyrcaniennes forment un massif forestier unique qui s'étend le long de la mer Caspienne en Azerbaïdjan et en Iran. L'histoire de ces forêts de feuillus remonte à 25 à 50 millions d'années, époque à laquelle elles couvraient la majeure partie de cette région tempérée du Nord. Leur biodiversité floristique est remarquable, avec plus de 3 200 espèces de plantes vasculaires documentées. À ce jour, 180 espèces d'oiseaux typiques des forêts tempérées à feuilles larges et 58 espèces de mammifères ont été recensées. Les éléments du bien comprennent des écosystèmes complets, y compris les principaux prédateurs tels que le léopard, le loup et l'ours brun, et la forêt compte un grand nombre d'espèces d'arbres rares et endémiques. Les arbres les plus anciens vus ici ont entre 300 et 400 ans, certains pouvant même avoir jusqu'à 500 ans.<o:p></o:p></span></p>"@fr;
+    "<p ><span >Les forêts hyrcaniennes forment un massif forestier unique qui s'étend le long de la mer Caspienne en Azerbaïdjan et en Iran. L'histoire de ces forêts de feuillus remonte à 25 à 50 millions d'années, époque à laquelle elles couvraient la majeure partie de cette région tempérée du Nord. Leur biodiversité floristique est remarquable, avec plus de 3 200 espèces de plantes vasculaires documentées. À ce jour, 180 espèces d'oiseaux typiques des forêts tempérées à feuilles larges et 58 espèces de mammifères ont été recensées. Les éléments du bien comprennent des écosystèmes complets, y compris les principaux prédateurs tels que le léopard, le loup et l'ours brun, et la forêt compte un grand nombre d'espèces d'arbres rares et endémiques. Les arbres les plus anciens vus ici ont entre 300 et 400 ans, certains pouvant même avoir jusqu'à 500 ans.<o:p></o:p></span></p>"@fr;
   iut:inscription "2019"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long 55.7242777778;
@@ -18160,14 +18164,14 @@ iut:monument2454 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysaz%2Cir a iut:Pays;
+iut:paysazCir a iut:Pays;
   iut:code "az,ir";
   iut:nom "Azerbaijan,Iran (Islamic Republic of)"@en, "Azerbaïdjan,Iran (République islamique d')"@fr;
   iut:comprend iut:monument2454 .
 
-iut:regionAsia%20and%20the%20Pacific%2CEurope%20and%20North%20America a iut:Region;
+iut:regionAsia_and_the_PacificCEurope_and_North_America a iut:Region;
   iut:nom "Asia and the Pacific,Europe and North America"@en, "Asie et Pacifique,Europe et Amérique du Nord"@fr;
-  iut:comprend iut:paysaz%2Cir .
+  iut:comprend iut:paysazCir .
 
 iut:monument1364 a iut:Monument;
   iut:code "1364"^^xsd:int;
@@ -18188,7 +18192,7 @@ iut:monument1364 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysby%2Cee%2Cfi%2Clt%2Clv%2Cmd%2Cno%2Cru%2Cse%2Cua a iut:Pays;
+iut:paysbyCeeCfiCltClvCmdCnoCruCseCua a iut:Pays;
   iut:code "by,ee,fi,lt,lv,md,no,ru,se,ua";
   iut:nom "Belarus,Estonia,Finland,Latvia,Lithuania,Norway,Republic of Moldova,Russian Federation,Sweden,Ukraine"@en,
     "Bélarus,Estonie,Fédération de Russie,Finlande,Lettonie,Lituanie,Norvège,République de Moldova,Suède,Ukraine"@fr;
@@ -18207,7 +18211,7 @@ iut:monument2005 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysby%2Cpl a iut:Pays;
+iut:paysbyCpl a iut:Pays;
   iut:code "by,pl";
   iut:nom "Belarus,Poland"@en, "Bélarus,Pologne"@fr;
   iut:comprend iut:monument2005 .
@@ -18225,7 +18229,7 @@ iut:monument1100 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysbe%2Cfr a iut:Pays;
+iut:paysbeCfr a iut:Pays;
   iut:code "be,fr";
   iut:nom "Belgium,France"@en, "Belgique,France"@fr;
   iut:comprend iut:monument1100, iut:monument2559 .
@@ -18254,7 +18258,7 @@ iut:monument2565 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysbe%2Cnl a iut:Pays;
+iut:paysbeCnl a iut:Pays;
   iut:code "be,nl";
   iut:nom "Belgium,Netherlands (Kingdom of the)"@en, "Belgique,Pays-Bas (Royaume des)"@fr;
   iut:comprend iut:monument2565 .
@@ -18272,7 +18276,7 @@ iut:monument2612 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysbf%2Cbj%2Cne a iut:Pays;
+iut:paysbfCbjCne a iut:Pays;
   iut:code "bf,bj,ne";
   iut:nom "Benin,Burkina Faso,Niger"@en, "Bénin,Burkina Faso,Niger"@fr;
   iut:comprend iut:monument2612 .
@@ -18281,7 +18285,7 @@ iut:monument2448 a iut:Monument;
   iut:code "2448"^^xsd:int;
   iut:nom "Koutammakou, the Land of the Batammariba"@en, "Koutammakou, le pays des Batammariba"@fr;
   iut:description "<p>The Koutammakou landscape in north-eastern Togo and neighbouring Benin is home to the Batammariba, whose remarkable mud tower-houses are known as <em>takienta</em> (<em>sikien</em> in the plural). Nature is strongly associated with the rituals and beliefs of society here. The landscape is exceptional due to the architecture of the tower-houses which reflect the social structure; its farmland and forest; and the associations between people and landscape. The buildings are grouped in villages, which also include ceremonial spaces, springs, sacred rocks and sites reserved for initiation ceremonies.</p>"@en,
-    "<p style=\"margin-top: 0cm; background: white;\"><span lang=\"FR\" style=\"font-family: 'Arial',sans-serif;\">Le paysage du Koutammakou, dans le nord-est du Togo et le Bénin voisin, abrite les Batammariba, dont les remarquables maisons-tours en terre sont connues sous le nom de <i>takienta</i> (<i>sikien</i> au pluriel). Ici, la nature est fortement associée aux rituels et aux croyances de la société. Le paysage est exceptionnel en raison de l'architecture des maisons-tours qui reflètent la structure sociale, de ses terres agricoles et de ses forêts, et des associations entre les gens et le paysage. Les bâtiments sont regroupés en villages, qui comprennent également des espaces cérémoniels, des sources, des rochers sacrés et des sites réservés aux cérémonies d'initiation.<o:p></o:p></span></p>"@fr;
+    "<p><span>Le paysage du Koutammakou, dans le nord-est du Togo et le Bénin voisin, abrite les Batammariba, dont les remarquables maisons-tours en terre sont connues sous le nom de <i>takienta</i> (<i>sikien</i> au pluriel). Ici, la nature est fortement associée aux rituels et aux croyances de la société. Le paysage est exceptionnel en raison de l'architecture des maisons-tours qui reflètent la structure sociale, de ses terres agricoles et de ses forêts, et des associations entre les gens et le paysage. Les bâtiments sont regroupés en villages, qui comprennent également des espaces cérémoniels, des sources, des rochers sacrés et des sites réservés aux cérémonies d'initiation.<o:p></o:p></span></p>"@fr;
   iut:inscription "2004"^^xsd:date;
   iut:danger "0"^^xsd:int;
   geo:long 1.1002222222;
@@ -18290,7 +18294,7 @@ iut:monument2448 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysbj%2Ctg a iut:Pays;
+iut:paysbjCtg a iut:Pays;
   iut:code "bj,tg";
   iut:nom "Benin,Togo"@en, "Bénin,Togo"@fr;
   iut:comprend iut:monument2448 .
@@ -18308,7 +18312,7 @@ iut:monument2094 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysba%2Chr%2Cme%2Crs a iut:Pays;
+iut:paysbaChrCmeCrs a iut:Pays;
   iut:code "ba,hr,me,rs";
   iut:nom "Bosnia and Herzegovina,Croatia,Montenegro,Serbia"@en, "Bosnie-Herzégovine,Croatie,Monténégro,Serbie"@fr;
   iut:comprend iut:monument2094 .
@@ -18326,7 +18330,7 @@ iut:monument1920 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payscf%2Ccg%2Ccm a iut:Pays;
+iut:payscfCcgCcm a iut:Pays;
   iut:code "cf,cg,cm";
   iut:nom "Cameroon,Central African Republic,Congo"@en, "Cameroun,Congo,République centrafricaine"@fr;
   iut:comprend iut:monument1920 .
@@ -18344,7 +18348,7 @@ iut:monument78 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysca%2Cus a iut:Pays;
+iut:payscaCus a iut:Pays;
   iut:code "ca,us";
   iut:nom "Canada,United States of America"@en, "Canada,États-Unis d'Amérique"@fr;
   iut:comprend iut:monument78, iut:monument407 .
@@ -18375,7 +18379,7 @@ iut:monument1985 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payscn%2Ckg%2Ckz a iut:Pays;
+iut:payscnCkgCkz a iut:Pays;
   iut:code "cn,kg,kz";
   iut:nom "China,Kazakhstan,Kyrgyzstan"@en, "Chine,Kazakhstan,Kirghizistan"@fr;
   iut:comprend iut:monument1985 .
@@ -18393,7 +18397,7 @@ iut:monument226 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payscr%2Cpa a iut:Pays;
+iut:payscrCpa a iut:Pays;
   iut:code "cr,pa";
   iut:nom "Costa Rica,Panama"@en, "Costa Rica,Panama"@fr;
   iut:comprend iut:monument226 .
@@ -18411,7 +18415,7 @@ iut:monument173 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysci%2Cgn a iut:Pays;
+iut:paysciCgn a iut:Pays;
   iut:code "ci,gn";
   iut:nom "Côte d'Ivoire,Guinea"@en, "Côte d'Ivoire,Guinée"@fr;
   iut:comprend iut:monument173 .
@@ -18430,7 +18434,7 @@ iut:monument2162 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payshr%2Cit%2Cme a iut:Pays;
+iut:payshrCitCme a iut:Pays;
   iut:code "hr,it,me";
   iut:nom "Croatia,Italy,Montenegro"@en, "Croatie,Italie,Monténégro"@fr;
   iut:comprend iut:monument2162 .
@@ -18448,7 +18452,7 @@ iut:monument2267 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payscz%2Cde a iut:Pays;
+iut:paysczCde a iut:Pays;
   iut:code "cz,de";
   iut:nom "Czechia,Germany"@en, "Allemagne,Tchéquie"@fr;
   iut:comprend iut:monument2267 .
@@ -18466,7 +18470,7 @@ iut:monument1967 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysde%2Cdk%2Cnl a iut:Pays;
+iut:paysdeCdkCnl a iut:Pays;
   iut:code "de,dk,nl";
   iut:nom "Denmark,Germany,Netherlands (Kingdom of the)"@en, "Allemagne,Danemark,Pays-Bas (Royaume des)"@fr;
   iut:comprend iut:monument1967 .
@@ -18483,7 +18487,7 @@ iut:monument2554 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysde%2Cdk%2Cgb%2Cus a iut:Pays;
+iut:paysdeCdkCgbCus a iut:Pays;
   iut:code "de,dk,gb,us";
   iut:nom "Denmark,Germany,United Kingdom of Great Britain and Northern Ireland,United States of America"@en,
     "Allemagne,Danemark,États-Unis d'Amérique,Royaume-Uni de Grande-Bretagne et d'Irlande du Nord"@fr;
@@ -18502,7 +18506,7 @@ iut:monument1050 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysfi%2Cse a iut:Pays;
+iut:paysfiCse a iut:Pays;
   iut:code "fi,se";
   iut:nom "Finland,Sweden"@en, "Finlande,Suède"@fr;
   iut:comprend iut:monument1050 .
@@ -18522,7 +18526,7 @@ iut:monument915 a iut:Monument;
   iut:categorie "Mixed"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payses%2Cfr a iut:Pays;
+iut:paysesCfr a iut:Pays;
   iut:code "es,fr";
   iut:nom "France,Spain"@en, "Espagne,France"@fr;
   iut:comprend iut:monument915 .
@@ -18540,7 +18544,7 @@ iut:monument1403 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysgm%2Csn a iut:Pays;
+iut:paysgmCsn a iut:Pays;
   iut:code "gm,sn";
   iut:nom "Gambia,Senegal"@en, "Gambie,Sénégal"@fr;
   iut:comprend iut:monument1403 .
@@ -18558,7 +18562,7 @@ iut:monument2369 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysde%2Cnl a iut:Pays;
+iut:paysdeCnl a iut:Pays;
   iut:code "de,nl";
   iut:nom "Germany,Netherlands (Kingdom of the)"@en, "Allemagne,Pays-Bas (Royaume des)"@fr;
   iut:comprend iut:monument2369 .
@@ -18580,7 +18584,7 @@ iut:monument2623 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysde%2Cpl a iut:Pays;
+iut:paysdeCpl a iut:Pays;
   iut:code "de,pl";
   iut:nom "Germany,Poland"@en, "Allemagne,Pologne"@fr;
   iut:comprend iut:monument2623 .
@@ -18598,7 +18602,7 @@ iut:monument1539 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysde%2Cgb a iut:Pays;
+iut:paysdeCgb a iut:Pays;
   iut:code "de,gb";
   iut:nom "Germany,United Kingdom of Great Britain and Northern Ireland"@en, "Allemagne,Royaume-Uni de Grande-Bretagne et d'Irlande du Nord"@fr;
   iut:comprend iut:monument1539 .
@@ -18617,7 +18621,7 @@ iut:monument2568 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysit%2Cva a iut:Pays;
+iut:paysitCva a iut:Pays;
   iut:code "it,va";
   iut:nom "Holy See,Italy"@en, "Italie,Saint-Siège"@fr;
   iut:comprend iut:monument2568 .
@@ -18635,7 +18639,7 @@ iut:monument1624 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payshu%2Csk a iut:Pays;
+iut:payshuCsk a iut:Pays;
   iut:code "hu,sk";
   iut:nom "Hungary,Slovakia"@en, "Hongrie,Slovaquie"@fr;
   iut:comprend iut:monument1624 .
@@ -18653,7 +18657,7 @@ iut:monument1643 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysch%2Cit a iut:Pays;
+iut:payschCit a iut:Pays;
   iut:code "ch,it";
   iut:nom "Italy,Switzerland"@en, "Italie,Suisse"@fr;
   iut:comprend iut:monument1643, iut:monument1503 .
@@ -18684,7 +18688,7 @@ iut:monument2079 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payskg%2Ckz%2Cuz a iut:Pays;
+iut:payskgCkzCuz a iut:Pays;
   iut:code "kg,kz,uz";
   iut:nom "Kazakhstan,Kyrgyzstan,Uzbekistan"@en, "Kazakhstan,Kirghizistan,Ouzbékistan"@fr;
   iut:comprend iut:monument2079 .
@@ -18702,7 +18706,7 @@ iut:monument2481 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payskz%2Ctm%2Cuz a iut:Pays;
+iut:payskzCtmCuz a iut:Pays;
   iut:code "kz,tm,uz";
   iut:nom "Kazakhstan,Turkmenistan,Uzbekistan"@en, "Kazakhstan,Ouzbékistan,Turkménistan"@fr;
   iut:comprend iut:monument2481 .
@@ -18720,7 +18724,7 @@ iut:monument2613 a iut:Monument;
   iut:categorie "Mixed"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysls%2Cza a iut:Pays;
+iut:payslsCza a iut:Pays;
   iut:code "ls,za";
   iut:nom "Lesotho,South Africa"@en, "Afrique du Sud,Lesotho"@fr;
   iut:comprend iut:monument2613 .
@@ -18740,14 +18744,14 @@ iut:monument1158 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payslt%2Cru a iut:Pays;
+iut:paysltCru a iut:Pays;
   iut:code "lt,ru";
   iut:nom "Lithuania,Russian Federation"@en, "Fédération de Russie,Lituanie"@fr;
   iut:comprend iut:monument1158 .
 
-iut:regionEurope%20and%20North%20America a iut:Region;
+iut:regionEurope_and_North_America a iut:Region;
   iut:nom "Europe and North America"@en, "Europe et Amérique du Nord"@fr;
-  iut:comprend iut:payslt%2Cru, iut:payspl%2Cua, iut:payses%2Cpt, iut:payses%2Csi .
+  iut:comprend iut:paysltCru, iut:paysplCua, iut:paysesCpt, iut:paysesCsi .
 
 iut:monument909 a iut:Monument;
   iut:code "909"^^xsd:int;
@@ -18766,14 +18770,14 @@ iut:monument909 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paysmn%2Cru a iut:Pays;
+iut:paysmnCru a iut:Pays;
   iut:code "mn,ru";
   iut:nom "Mongolia,Russian Federation"@en, "Fédération de Russie,Mongolie"@fr;
   iut:comprend iut:monument909, iut:monument2150 .
 
-iut:regionAsia%20and%20the%20Pacific%2CEurope%20and%20North%20America a iut:Region;
+iut:regionAsia_and_the_PacificCEurope_and_North_America a iut:Region;
   iut:nom "Asia and the Pacific,Europe and North America"@en, "Asie et Pacifique,Europe et Amérique du Nord"@fr;
-  iut:comprend iut:paysmn%2Cru .
+  iut:comprend iut:paysmnCru .
 
 iut:monument2150 a iut:Monument;
   iut:code "2150"^^xsd:int;
@@ -18802,7 +18806,7 @@ iut:monument1894 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payspl%2Cua a iut:Pays;
+iut:paysplCua a iut:Pays;
   iut:code "pl,ua";
   iut:nom "Poland,Ukraine"@en, "Pologne,Ukraine"@fr;
   iut:comprend iut:monument1894 .
@@ -18821,7 +18825,7 @@ iut:monument1642 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payses%2Cpt a iut:Pays;
+iut:paysesCpt a iut:Pays;
   iut:code "es,pt";
   iut:nom "Portugal,Spain"@en, "Espagne,Portugal"@fr;
   iut:comprend iut:monument1642 .
@@ -18839,7 +18843,7 @@ iut:monument1841 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payses%2Csi a iut:Pays;
+iut:paysesCsi a iut:Pays;
   iut:code "es,si";
   iut:nom "Slovenia,Spain"@en, "Espagne,Slovénie"@fr;
   iut:comprend iut:monument1841 .
@@ -18857,14 +18861,14 @@ iut:monument2435 a iut:Monument;
   iut:categorie "Cultural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:paystj%2Ctm%2Cuz a iut:Pays;
+iut:paystjCtmCuz a iut:Pays;
   iut:code "tj,tm,uz";
   iut:nom "Tajikistan,Turkmenistan,Uzbekistan"@en, "Ouzbékistan,Tadjikistan,Turkménistan"@fr;
   iut:comprend iut:monument2435 .
 
-iut:regionAsia%20and%20the%20Pacific a iut:Region;
+iut:regionAsia_and_the_Pacific a iut:Region;
   iut:nom "Asia and the Pacific"@en, "Asie et Pacifique"@fr;
-  iut:comprend iut:paystj%2Ctm%2Cuz .
+  iut:comprend iut:paystjCtmCuz .
 
 iut:monument593 a iut:Monument;
   iut:code "593"^^xsd:int;
@@ -18879,11 +18883,21 @@ iut:monument593 a iut:Monument;
   iut:categorie "Natural"@en;
   iut:transfrontalier "1"^^xsd:int .
 
-iut:payszm%2Czw a iut:Pays;
+iut:payszmCzw a iut:Pays;
   iut:code "zm,zw";
   iut:nom "Zambia,Zimbabwe"@en, "Zambie,Zimbabwe"@fr;
   iut:comprend iut:monument593 .
 
 iut:regionAfrica a iut:Region;
   iut:nom "Africa"@en, "Afrique"@fr;
-  iut:comprend iut:payszm%2Czw .
+  iut:comprend iut:payszmCzw .
+`;
+
+  getData(): string {
+    return this.data;
+  }
+
+  setData(newData: string): void {
+    this.data = newData;
+  }
+}

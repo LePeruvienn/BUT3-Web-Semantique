@@ -11,13 +11,6 @@ import { Router } from '@angular/router';
 export class AboutComponent {
   router = inject(Router)
 
-  private data: string = 'feur';
-
-  getData(): string {
-    return this.data;
-  }
-
-
   NaviagatetoMonument(){
     this.router.navigate(['/monument-hub'])
   }

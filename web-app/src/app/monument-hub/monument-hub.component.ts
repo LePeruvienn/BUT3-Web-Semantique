@@ -5,6 +5,7 @@ import * as d3 from 'd3';
 import * as $rdf from 'rdflib';
 import { HttpClient } from '@angular/common/http';
 import { AboutComponent } from './../about/about.component'
+import { SharedService } from '../shared.service';
 
 
 @Component({
@@ -16,6 +17,13 @@ import { AboutComponent } from './../about/about.component'
 })
 
 export class MonumentHubComponent{
+
+  constructor(private sharedService: SharedService) {}
+
+  get data(): string {
+    return this.sharedService.getData();
+  }
+  
   listCountry: string[] = ['USA', 'France', 'Germany', 'Canada']; // List of countries for the choice
   selectedCountry: string = ''; // Tracks the selected country
   showGraph: boolean = false; // Controls the visibility of the section
@@ -35,56 +43,30 @@ export class MonumentHubComponent{
     // Add more data as needed
   ];
 
-  constructor(private http: HttpClient) {}
 
   async onCountryChange() {
     this.showGraph = this.selectedCountry !== ''; // Show section if a country is selected
     if(this.showGraph){
-      const n3Data2 = this.importData()
-
-
-      console.log(n3Data2)
-        const n3Data = `
-        @prefix ex: <http://example.org/> .
-        @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-        ex:Person1 rdf:type ex:Person .
-        ex:Person1 ex:hasName "arthur" .
-        ex:Person1 ex:hasAge 25 .
-        ex:Person2 ex:hasName "cour" .
-        ex:Person2 ex:hasAge 22 .
-      `;
+      const n3Data = this.data
       
-
-       
-      
-      this.queryRDF(n3Data)
+      this.queryRequestToData(n3Data)
       //this.createGraph();
     }
   }
 
-  importData() {
-    this.AboutComponent.getData() 
-  }
-
-
-  queryRDF(n3Data: string) {
+  queryRequestToData(n3Data: string) {
     const store = $rdf.graph(); // Create an RDF graph
 
     // Parse the Turtle data into the RDF graph
-    $rdf.parse(n3Data, store, 'http://example.org/', 'text/turtle');
+    $rdf.parse(n3Data, store, 'http://example.com/base', 'text/turtle');
 
-    const query = `
-    PREFIX ex: <http://example.org/>
-    SELECT ?name WHERE {
-      ?person ex:hasName ?name .
-    }
-  `;
+    // get the string query
+    const query = this.getQuery();
 
     // Convert the SPARQL query string to a Query object
     const sparqlQuery = $rdf.SPARQLToQuery(query , false, store);
 
-  
-    
+    //verif the query not empty
     if (!sparqlQuery) {
       console.error('Invalid SPARQL query.');
       return;
@@ -97,6 +79,24 @@ export class MonumentHubComponent{
     });
 
     console.log(results);
+    return results;
+  }
+
+  
+  getQuery(): string {
+    const query = `
+    @base <http://example.com/base/> .
+    PREFIX iut: <https://cours.iut-orsay.fr/qar/>
+    PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+
+    SELECT DISTINCT ?monumentName
+    WHERE {
+      ?country a iut:Pays ;
+              iut:nom ?countryName.
+      FILTER(LANG(?countryName) = "en")
+    }
+    `;
+    return query;
   }
 
   createGraph(): void { //D3 GRAPH
