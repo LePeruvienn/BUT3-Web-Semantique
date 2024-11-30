@@ -142,3 +142,11 @@ J'ai ensuite alors importez mes données dans **GraphDB** et continuer la suite 
 
 
 ## 4. Utilisez SPARQL pour lier les entités au graphe de connaissances externe
+
+Avant de pouvoir répondre au questions, nous avons d'abord effectuer quelques test en effectuant des requêtes. Si vous souhaitez les consultez elles sont dans le fichier [query.md](https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/query.md) du projet.
+
+Et c'est partie pour répondre à notre problèmatique !
+
+### Requêtes
+
+...
