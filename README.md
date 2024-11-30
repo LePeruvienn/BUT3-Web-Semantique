@@ -17,11 +17,12 @@ Voici les préfix utilisé pour cette ontologie
 
 ```turtle
 @prefix iut: <https://cours.iut-orsay.fr/npbd/> .
-@prefix dis: <https://cours.iut-orsay.fr/npbd/region/> .
-@prefix cou: <https://cours.iut-orsay.fr/npbd/departement/> .
-@prefix loc: <https://cours.iut-orsay.fr/npbd/commune/> .
-@prefix imp: <https://cours.iut-orsay.fr/npbd/commune/> .
-@prefix dat: <https://cours.iut-orsay.fr/npbd/commune/> .
+@prefix dis: <https://cours.iut-orsay.fr/npbd/disaster/> .
+@prefix cou: <https://cours.iut-orsay.fr/npbd/country/> .
+@prefix reg: <https://cours.iut-orsay.fr/npbd/region/> .
+@prefix loc: <https://cours.iut-orsay.fr/npbd/location/> .
+@prefix imp: <https://cours.iut-orsay.fr/npbd/impact/> .
+@prefix dat: <https://cours.iut-orsay.fr/npbd/date/> .
 @prefix frm: <https://cours.iut-orsay.fr/npbd/forme/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
