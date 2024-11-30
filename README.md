@@ -101,7 +101,7 @@ Pays ou s'est dérouler l'évenement
 **Propriétées**
 
 - `iut:code` (Code unique du pays)
-- `iut:name` (Nom du pays)
+- `iut:countryName` (Nom du pays)
 - `iut:isInRegion` (Nom de la région dans lequel est le pays)
 
 ### `iut:Region` (Continent)
@@ -110,4 +110,4 @@ Région ou s'est dérouler l'évenement
 
 **Propriétées**
 - `iut:code` (Code unique de la région)
-- `iut:name` (Nom de la région)
+- `iut:RegionName` (Nom de la région)
