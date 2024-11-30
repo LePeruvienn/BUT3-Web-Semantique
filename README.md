@@ -13,6 +13,10 @@ Grace à cette grande questions nous pourrons, répondre notamment à plusieurs 
 
 ## 2. Créez une ontologie pour décrire le domaine.
 
+Pour le projet nous avons utilisé le logicielle **Protégé** qui nous as permit de créer notre ontologie. Si vous souhaitez directement allez consulter les données, vous pouvez allez voir le fichier [ontologie.ttl](https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/ontologie.ttl).
+
+### Description des données
+
 Voici les préfix utilisé pour cette ontologie
 
 ```turtle
