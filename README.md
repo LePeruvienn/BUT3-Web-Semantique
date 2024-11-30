@@ -102,6 +102,7 @@ Pays ou s'est dérouler l'évenement
 
 - `iut:code` (Code unique du pays)
 - `iut:name` (Nom du pays)
+- `iut:isInRegion` (Nom de la région dans lequel est le pays)
 
 ### `iut:Region` (Désastre)
 
