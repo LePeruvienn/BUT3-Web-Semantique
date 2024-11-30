@@ -46,8 +46,8 @@ Cette classe as pour but de modéliser une catastrophe qui c'est produit dans le
 - `iut:disasterGroup` (Groupe lié à cette catastrophe)
 - `iut:disasterType` (Type de la catastrophe)
 - `iut:occuredIn` (Lieu d'une catastrophe)
-- `iut:impact` (Impacte d'un catastrophe)
-- `iut:date` (Période du désastre)
+- `iut:hasImpact` (Impacte d'un catastrophe)
+- `iut:eventDate` (Période du désastre)
 - `iut:magnitude` (Magnitude de l'évenement)
 - `iut:magnitudeScale` (Echelle de la magnitude)
 
@@ -58,7 +58,7 @@ Lieu ou c'est dérouler la catastrophe
 
 **Propriétées**
 - `iut:adress` (Adresse exacte du lieu)
-- `iut:country` (Pays dans lequel se trouve le lieu)
+- `iut:isInCountry` (Pays dans lequel se trouve le lieu)
 - `iut:latitude` (Latitude de la catastrophe)
 - `iut:longitude` (longitude de la catastrophe)
 - `geo:hasGeometry` (Forme GeoSPARQL de l'évenement)
