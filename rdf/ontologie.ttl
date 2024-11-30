@@ -1,0 +1,178 @@
+@base <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/> .
+@prefix iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+iut:eventDate rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain iut:Disaster ;
+           rdfs:range iut:Date .
+
+iut:hasImpact rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain iut:Disaster ;
+           rdfs:range iut:Impact .
+
+iut:isInCountry rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain iut:Location ;
+             rdfs:range iut:Country .
+
+iut:isInRegion rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain iut:Country ;
+            rdfs:range iut:Region .
+
+iut:occuredIn rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdfs:domain iut:Disaster ;
+           rdfs:range iut:Location .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+iut:adress rdf:type owl:DatatypeProperty ;
+        rdfs:domain iut:Location ;
+        rdfs:range xsd:string .
+
+iut:code rdf:type owl:DatatypeProperty ;
+      rdfs:domain iut:Country ,
+                  iut:Disaster ,
+                  iut:Region ;
+      rdfs:range xsd:string .
+
+iut:disasterGroup rdf:type owl:DatatypeProperty ;
+               rdfs:domain iut:Disaster ;
+               rdfs:range xsd:string .
+
+iut:disasterType rdf:type owl:DatatypeProperty ;
+              rdfs:domain iut:Disaster ;
+              rdfs:range xsd:string .
+
+iut:endDay rdf:type owl:DatatypeProperty ;
+        rdfs:domain iut:Date ;
+        rdfs:range xsd:int .
+
+iut:endMonth rdf:type owl:DatatypeProperty ;
+          rdfs:domain iut:Date ;
+          rdfs:range xsd:int .
+
+iut:endYear rdf:type owl:DatatypeProperty ;
+         rdfs:domain iut:Date ;
+         rdfs:range xsd:int .
+
+iut:eventName rdf:type owl:DatatypeProperty ;
+           rdfs:domain iut:Disaster ;
+           rdfs:range xsd:string .
+
+iut:countryName rdf:type owl:DatatypeProperty ;
+           rdfs:domain iut:Country ;
+           rdfs:range xsd:string .
+
+iut:regionName rdf:type owl:DatatypeProperty ;
+           rdfs:domain iut:Region ;
+           rdfs:range xsd:string .
+
+iut:latitude rdf:type owl:DatatypeProperty ;
+          rdfs:domain iut:Location ;
+          rdfs:range xsd:decimal .
+
+iut:longitude rdf:type owl:DatatypeProperty ;
+           rdfs:domain iut:Location ;
+           rdfs:range xsd:decimal .
+
+iut:magnitude rdf:type owl:DatatypeProperty ;
+           rdfs:domain iut:Disaster ;
+           rdfs:range xsd:decimal .
+
+iut:magnitudeScale rdf:type owl:DatatypeProperty ;
+                rdfs:domain iut:Disaster ;
+                rdfs:range xsd:string .
+
+iut:noAffected rdf:type owl:DatatypeProperty ;
+            rdfs:domain iut:HumanImpact ;
+            rdfs:range xsd:int .
+
+iut:noHomeless rdf:type owl:DatatypeProperty ;
+            rdfs:domain iut:HumanImpact ;
+            rdfs:range xsd:int .
+
+iut:noInjured rdf:type owl:DatatypeProperty ;
+           rdfs:domain iut:HumanImpact ;
+           rdfs:range xsd:int .
+
+iut:reconstructionCost rdf:type owl:DatatypeProperty ;
+                    rdfs:domain iut:EconomicImpact ;
+                    rdfs:range xsd:int .
+
+iut:startDay rdf:type owl:DatatypeProperty ;
+          rdfs:domain iut:Date ;
+          rdfs:range xsd:int .
+
+
+iut:startMonth rdf:type owl:DatatypeProperty ;
+            rdfs:domain iut:Date ;
+            rdfs:range xsd:int .
+
+
+iut:startYear rdf:type owl:DatatypeProperty ;
+           rdfs:domain iut:Date ;
+           rdfs:range xsd:int .
+
+
+iut:totalAffected rdf:type owl:DatatypeProperty ;
+               rdfs:domain iut:HumanImpact ;
+               rdfs:range xsd:int .
+
+
+iut:totalDamage rdf:type owl:DatatypeProperty ;
+             rdfs:domain iut:EconomicImpact ;
+             rdfs:range xsd:int .
+
+
+iut:totalDeath rdf:type owl:DatatypeProperty ;
+            rdfs:domain iut:HumanImpact ;
+            rdfs:range xsd:int .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+iut:Country rdf:type owl:Class .
+
+iut:Date rdf:type owl:Class .
+
+iut:Disaster rdf:type owl:Class .
+
+iut:EconomicImpact rdf:type owl:Class ;
+                    rdfs:subClassOf iut:Impact ;
+                    owl:disjointWith iut:HumanImpact .
+
+iut:HumanImpact rdf:type owl:Class ;
+                 rdfs:subClassOf iut:Impact .
+
+iut:Impact rdf:type owl:Class .
+
+iut:Location rdf:type owl:Class .
+
+iut:NaturalDisaster rdf:type owl:Class ;
+                     rdfs:subClassOf iut:Disaster ;
+                     owl:disjointWith iut:TechnologicalDisaster .
+
+iut:Region rdf:type owl:Class .
+
+iut:TechnologicalDisaster rdf:type owl:Class ;
+                           rdfs:subClassOf iut:Disaster .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

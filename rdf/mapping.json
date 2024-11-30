@@ -1,0 +1,1304 @@
+{
+  "baseIRI": "https://cours.iut-orsay.fr/app/npbd/projet/apinel2/",
+  "namespaces": {
+    "iut": "https://cours.iut-orsay.fr/app/npbd/projet/apinel2/",
+    "dis": "https://cours.iut-orsay.fr/app/npbd/projet/apinel2/disaster",
+    "cou": "https://cours.iut-orsay.fr/app/npbd/projet/apinel2/country",
+    "reg": "https://cours.iut-orsay.fr/app/npbd/projet/apinel2/region",
+    "loc": "https://cours.iut-orsay.fr/app/npbd/projet/apinel2/location",
+    "imp": "https://cours.iut-orsay.fr/app/npbd/projet/apinel2/impact",
+    "dat": "https://cours.iut-orsay.fr/app/npbd/projet/apinel2/date",
+    "frm": "https://cours.iut-orsay.fr/app/npbd/projet/apinel2/forme",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "geo": "http://www.opengis.net/ont/geosparql#"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "code"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "DisNo.",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "eventName"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Event Name",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "disasterGroup"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Disaster Subgroup",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "disasterType"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Disaster Type",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "occuredIn"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "loc",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "DisNo.",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasImpact"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "cells[\"DisNo.\"].value + \"h\"",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            },
+            {
+              "transformation": {
+                "expression": "cells[\"DisNo.\"].value + \"e\"",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "magnitude"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Magnitude",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "magnitudeScale"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Magnitude Scale",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "eventDate"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "dat",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "DisNo.",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "dis",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "DisNo.",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "if(cells[\"Disaster Group\"].value == \"Natural\", \"NaturalDisaster\", if(cells[\"Disaster Group\"].value == \"Technological\", \"TechnologicalDisaster\", \"Disaster\"))\n",
+            "language": "grel"
+          },
+          "valueSource": {
+            "source": "row_index"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "totalDeath"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Total Deaths",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "noInjured"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "No. Injured",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "noAffected"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "No. Affected",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "noHomeless"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "No. Homeless",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "totalAffected"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Total Affected",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "cells[\"DisNo.\"].value + \"h\"",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "iut",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "HumanImpact"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "totalDamage"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Total Damage ('000 US$)",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "reconstructionCost"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Reconstruction Costs ('000 US$)",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "cells[\"DisNo.\"].value + \"e\"",
+          "language": "grel"
+        },
+        "valueSource": {
+          "source": "row_index"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "iut",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "EconomicImpact"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "adress"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Location",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isInCountry"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "cou",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "ISO",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "latitude"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Latitude",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "longitude"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Longitude",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "geo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasGeometry"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "frm",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "DisNo.",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "loc",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "DisNo.",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "iut",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Location"
+          }
+        },
+        {
+          "transformation": {
+            "expression": "geo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Feature"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "geo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "asWKT"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(and(isNotNull(cells[\"Latitude\"].value), isNotNull(cells[\"Longitude\"].value)), \n   \"Point(\" + cells[\"Latitude\"].value + \" \" + cells[\"Longitude\"].value + \")\", \n   \"Invalid Point\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "geo",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "wktLiteral"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "frm",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "DisNo.",
+          "source": "column"
+        }
+      },
+      "typeMappings": []
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "startYear"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Start Year",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "startMonth"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Start Month",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "startDay"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Start Day",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "endYear"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "End Year",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "endMonth"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "End Month",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "endDay"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "End Day",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "dat",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "DisNo.",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "iut",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Date"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "code"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ISO",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "countryName"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Country",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "isInRegion"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "reg",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "Region",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "cou",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "ISO",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "iut",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Country"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "code"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Region",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "iut",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "regionName"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Region",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "string"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "reg",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "Region",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "iut",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Region"
+          }
+        }
+      ]
+    }
+  ]
+}
