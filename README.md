@@ -1,6 +1,6 @@
 # BUT3 Projet Web Sémantique
 
-## Notre Question
+## 1. Trouver une question intéressante à laquelle répondre.
 
 Après avoir receuilli des donnés depuis le site internet [ourworldindata](https://ourworldindata.org/natural-disasters) sur les différentes catastrophes naturelles nous nous somme poser une grandre question centrale :
 
@@ -11,7 +11,7 @@ Grace à cette grande questions nous pourrons, répondre notamment à plusieurs 
 - *Quelles sont les pays les plus affecter par ces désastre*
 
 
-## Ontologie
+## 2. Créez une ontologie pour décrire le domaine.
 
 Voici les préfix utilisé pour cette ontologie
 
@@ -111,3 +111,34 @@ Région ou s'est dérouler l'évenement
 **Propriétées**
 - `iut:code` (Code unique de la région)
 - `iut:RegionName` (Nom de la région)
+
+
+## 3. Convertissez l'ensemble de données tabulaires en RDF et téléchargez le fichier RDF dans GraphDB.
+
+**Configuration des données**
+
+Après avoir receuilli les données je les ai mit dans OntoRefine et commencer à le *RDF mapping*. Durant mon *RDF mapping*, j'ai du utilisé l'outil *GREL* de OntoRefine pour ajoutez des conditionnel à mes données, par exempe avec la classe `NaturalDisaster` et `TechnologicalDisaster`, mais aussi pour pouvoir convertir mes proritété `latitude` et `longitude` en point *GeoSPARQL*.
+
+- *GREL* pour mettre le type du triplet en `NaturalDisaster` ou `TechnologicalDisaster` dépandant de son type de désastre.
+
+```GREL
+if(value == "Natural", "NaturalDisaster", if(value == "Technological", "TechnologicalDisaster", "iut:Disaster"))
+```
+
+- *GREL* pour convertir les propritété de `latitude` et `longitude` en point *GeoSPARQL*
+
+```GREL
+if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "Point(" + cells["Latitude"].value + " " + cells["Longitude"].value + ")")
+```
+
+Vous pouvez consultez ma configuration du RDF mapping avec le fichier [mapping.json](https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/mapping.json).
+
+
+**Exportation des données**
+
+Ensuite j'ai converti les données en RDF. Vous pouvez consultez les données dans le fichier [triples.ttl](https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/triples.ttl).
+
+J'ai ensuite alors importez mes données dans **GraphDB** et continuer la suite du projet ...
+
+
+## 4. Utilisez SPARQL pour lier les entités au graphe de connaissances externe
