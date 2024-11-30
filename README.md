@@ -47,7 +47,7 @@ Cette classe as pour but de modéliser une catastrophe qui c'est produit dans le
 - `iut:disasterType` (Type de la catastrophe)
 - `iut:location` (Lieu d'une catastrophe)
 - `iut:impact` (Impacte d'un catastrophe)
-- `iut:Date` (Période du désastre)
+- `iut:date` (Période du désastre)
 - `iut:magnitude` (Magnitude de l'évenement)
 - `iut:magnitudeScale` (Echelle de la magnitude)
 
