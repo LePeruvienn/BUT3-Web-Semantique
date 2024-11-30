@@ -63,7 +63,7 @@ Lieu ou c'est dérouler la catastrophe
 - `iut:longitude` (longitude de la catastrophe)
 - `geo:hasGeometry` (Forme GeoSPARQL de l'évenement)
 
-### `iut:Impact` (Désastre)
+### `iut:Impact` (Impact d'un évenement)
 
 Impact que le désastre à eu sur le monde
 
@@ -81,7 +81,7 @@ Impact que le désastre à eu sur le monde
         - `iut:totalDamage` (Dommages économique totaux)
         - `iut:reconstructionCost` (Coût estimé pour la reconstruction)
 
-### `iut:Date` (Désastre)
+### `iut:Date` (Date d'un évement)
 
 Date et duration d'un évenement
 
@@ -94,7 +94,7 @@ Date et duration d'un évenement
 - `iut:endMonth` (Mois ou l'évenemnt à terminé)
 - `iut:endDay` (Jour ou l'évenement à terminé)
 
-### `iut:Country` (Désastre)
+### `iut:Country` (Pays)
 
 Pays ou s'est dérouler l'évenement
 
@@ -104,7 +104,7 @@ Pays ou s'est dérouler l'évenement
 - `iut:name` (Nom du pays)
 - `iut:isInRegion` (Nom de la région dans lequel est le pays)
 
-### `iut:Region` (Désastre)
+### `iut:Region` (Continent)
 
 Région ou s'est dérouler l'évenement
 
