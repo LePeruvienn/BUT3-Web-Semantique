@@ -17,6 +17,7 @@ import { query } from '@angular/animations';
   styleUrls: ['./monument-hub.component.css'],
 })
 
+
 export class MonumentHubComponent{
   query: string = '';
 
@@ -84,20 +85,26 @@ export class MonumentHubComponent{
     }
 
     // Execute the query and collect results
-    const results: any[] = [];
+    const results: Array<{ id: number; name: string; value: number; }> = [];
+    let count = 0;
     store.query(sparqlQuery, result => {
-      results.push(result);
-    });
+      count++;
+      const id = results.length + 1; // Auto-incrementing ID
+      const name = result['?countryName'].value; // Extracted string
+      const value = Math.random() * 100; // Example integer value, replace with actual logic
+      console.log(results[count]);
+      results.push({ id, name, value });
+      console.log(`Added result: { id: ${id}, name: '${name}', value: ${value} }`);
+    });[] 
 
     console.log(results);
     return results;
   }
 
+
   
   getQuery(): string {
-    const querynull = `
-    `;
-    const query = `
+    const query1 = `
     @base <https://cours.iut-orsay.fr/qar/> .
     PREFIX iut: <https://cours.iut-orsay.fr/qar/>
     PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
@@ -109,21 +116,28 @@ export class MonumentHubComponent{
     
     }
     `;
-    const query2 = `
-    @base <http://example.com/base/> .
+    const query = `
+    @base <https://cours.iut-orsay.fr/qar/> .
     PREFIX iut: <https://cours.iut-orsay.fr/qar/>
     PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
-    SELECT DISTINCT ?monumentName
-    WHERE {
-      ?country a iut:Monument ;
-              iut:nom ?countryName.
-      FILTER(LANG(?countryName) = "en")
+
+    select ?countryName (COUNT(?disaster) AS ?nbPays) where {
+
+    ?disaster rdf:type iut:NaturalDisaster;
+    	        iut:occuredIn ?location .
+    ?location iut:isInCountry ?country .
+    ?country iut:countryName ?countryName .
+    
     }
+    GROUP BY ?country ?countryName
+    ORDER BY DESC (?nbPays)
     `;
-    return querynull;
+    return query;
   }
 
+ 
   createGraph(): void { //D3 GRAPH
     const data = d3.sort(this.states, d => d[2019] - d[2010])
     .map(d => ({
@@ -210,4 +224,3 @@ export class MonumentHubComponent{
     }
   }
 }
-  
