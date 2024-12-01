@@ -335,7 +335,7 @@ INSERT {
 
 #### Requête de base
 
-Voici la requête de base, on fera varier les paramête pour répondre ensuite à toutes les question
+Voici la requête de base, on fera varier les paramêtres pour répondre à tout.
 
 - On fera varier le `rdf:type` de `?disaster` en fonction de si on veut une catastrophe naturelle ou technologique.
 
@@ -424,6 +424,103 @@ Sinon les 2 pays les plus affecté humainenemnt sont **Haiti** et **Vanatu**.
 
 - Pour les catastrophe naturelle et technologique
 - Par rapport à leurs PIB
+
+#### Requête de base
+
+Voici la requête de base, on fera varier les paramêtres pour répondre à tout.
+
+- On fera varier le `rdf:type` de `?disaster` en fonction de si on veut une catastrophe naturelle ou technologique.
+
+```sparql
+PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?countryName (SUM(xsd:decimal(?damages)) AS ?totalDamages) ?gdp ((xsd:decimal(?totalDamages) / xsd:decimal(?gdp)) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:Disaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+    
+    ?location iut:isInCountry ?country .
+    
+    ?impact rdf:type iut:EconomicImpact ;
+    		iut:totalDamage ?damages .
+    
+    ?country iut:countryName ?countryName ;
+             iut:gdp ?gdp .
+}
+GROUP BY ?countryName ?gdp
+ORDER BY DESC(?ratio)
+LIMIT 3
+```
+
+**En Général** : 
+
+| countryName | totalDamage  | gdp               | ratio                              |
+|-------------|--------------|-------------------|------------------------------------|
+| Dominica    | 1958810      | 562540740.740741  | 0.003482076689095767590526        |
+| Haiti       | 12484591     | 8408150517.97684  | 0.001484820112735568470685        |
+| Grenada     | 1319000      | 1118816679.40741  | 0.001178924147518625357443        |
+
+! On voit que la **Dominique** est 3 fois plus grandes que les 2 autres. C'est elle est qui est le plus touché économiquement. Avec **0.3%** de son PIB qui équivaut au dégats subit par des catastrophe naturelle.
+
+**Pour les catastrophes naturelle** : 
+
+- Meme chose que pour **En Général**.
+
+**Pour le catastrophes technologique** : 
+
+| countryName | totalDamage  | gdp               | ratio                              |
+|-------------|--------------|-------------------|------------------------------------|
+| Lebanon     | 15000000     | 51844487742.0232  | 0.000289326805091403416535        |
+| Ukraine     | 867000       | 112154185121.406  | 0.000007730429310876624881        |
+| Spain       | 10098407     | 1311320015515.99  | 0.000007700947808705861887        |
+
+! Complétement différent que pour les catastrophe naturelle. **Lebanon** est très **loin devant** mais sinon les autres pays sont négigable.
+
+#### Conclusion
+
+La **Dominique** est a plus touché par les catastrophe économiquement, mais sinon on revoit apparaitre **Haiti** en deuxième place.
+
+
+### Quelles sont les paramètres géographique, humain et économique qui influe le nombre de désastre dans un pays ?
+
+- Pour les pays et continents
+- Pour les catastrophe naturelle et technologique
+- Nombre de catastrophe par rapport à la population
+- Nombre de catastrophe par rapport à la taille du pays
+- Nombre de catastrophe par rapport l'indice de développement humain
+
+#### Requête
+
+Nous allons d'abord faire une requête qui affiche toutes ces propritétées.
+
+```sparql
+PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?countryName (COUNT (?disaster) AS ?nbDisaster) ?area ?lifeExpectancy ?idh
+WHERE {
+    ?disaster rdf:type iut:Disaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+    
+    ?location iut:isInCountry ?country .
+    
+    ?country iut:countryName ?countryName ;
+             iut:lifeExpectancy ?lifeExpectancy ;
+             iut:area ?area ;
+             iut:humanDevelopmentIndex ?idh .
+}
+GROUP BY ?countryName ?lifeExpectancy ?area ?idh
+ORDER BY DESC(?nbDisaster)
+LIMIT 3
+```
+
+On remarque que les pays qui ont le plus de catastrophe sont les pays avec de très grande surface.
+
 
 ## 6. Visualisez les résultats de cette requête dans une application
 
