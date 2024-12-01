@@ -144,6 +144,27 @@ iut:totalDeath rdf:type owl:DatatypeProperty ;
             rdfs:domain iut:HumanImpact ;
             rdfs:range xsd:int .
 
+iut:population rdf:type owl:DatatypeProperty ;
+            rdfs:domain iut:Country ;
+            rdfs:domain iut:Region ;
+            rdfs:range xsd:long .
+
+iut:lifeExpectancy rdf:type owl:DatatypeProperty ;
+            rdfs:domain iut:Country ;
+            rdfs:range xsd:decimal .
+
+iut:area rdf:type owl:DatatypeProperty ;
+            rdfs:domain iut:Country ;
+            rdfs:domain iut:Region ;
+            rdfs:range xsd:decimal .
+
+iut:humanDevelopmentIndex rdf:type owl:DatatypeProperty ;
+            rdfs:domain iut:Country ;
+            rdfs:range xsd:decimal .
+
+iut:gdp rdf:type owl:DatatypeProperty ;
+            rdfs:domain iut:Country ;
+            rdfs:range xsd:decimal .
 
 #################################################################
 #    Classes
