@@ -8,7 +8,11 @@ Après avoir receuilli des donnés depuis le site internet [ourworldindata](http
 
 Grace à cette grande questions nous pourrons, répondre notamment à plusieurs question secondaires, comme par exemple :
 
-- *Quelles sont les pays les plus affecter par ces désastre*
+- *Quelles sont les pays les plus affecter humainement par ces désastre ?*
+
+- *Qu'est ce qui fait qu'un pays et plus touché par des désastre qu'un autres?*
+
+- *Quelles sont les pays qui sont le plus touché par les désastres économoquement ?*
 
 
 ## 2. Créez une ontologie pour décrire le domaine.
@@ -107,6 +111,11 @@ Pays ou s'est dérouler l'évenement
 - `iut:code` (Code unique du pays)
 - `iut:countryName` (Nom du pays)
 - `iut:isInRegion` (Nom de la région dans lequel est le pays)
+- `iut:population` (Nombre de personne vivant dans le pays)
+- `iut:lifeExpectancy` (Espérance de vie dans le pays)
+- `iut:area` (Taille de la surface du pays en km2)
+- `iut:humanDevelopmentIndex` (Indice de développement humain du pays)
+- `iut:gdp` (PIB du pays)
 
 ### `iut:Region` (Continent)
 
@@ -115,7 +124,8 @@ Région ou s'est dérouler l'évenement
 **Propriétées**
 - `iut:code` (Code unique de la région)
 - `iut:RegionName` (Nom de la région)
-
+- `iut:population` (Nombre de personne vivant dans la région)
+- `iut:area` (Taille de la surface de la région en km2)
 
 ## 3. Convertissez l'ensemble de données tabulaires en RDF et téléchargez le fichier RDF dans GraphDB.
 
@@ -147,10 +157,172 @@ J'ai ensuite alors importez mes données dans **GraphDB** et continuer la suite 
 
 ## 4. Utilisez SPARQL pour lier les entités au graphe de connaissances externe
 
+### `CONSTRUCT`
+
+Nous allons d'abord effectuer des requêtes *CONSTRUCT* pour observer les résulstats des requêtes sur notre graph
+
+#### Lier les données des pays de wikidata à nos données locales
+
+Listes des données récupérer par **WikiData** :
+- `population` : Nombre de personne vivant dans le pays
+- `lifeExpectancy` : Espérance de vie dans le pays
+- `area` : Taille de la surface du pays en km2
+- `humanDevelopmentIndex` : Indice de développement humain du pays
+- `gdp` : PIB du pays
+
+**Requête** :
+
+```sparql
+PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+CONSTRUCT {
+    ?country iut:population ?population ;
+             iut:lifeExpectancy ?lifeExpectancy ;
+             iut:area ?area ;
+             iut:humanDevelopmentIndex ?idh ;
+             iut:gdp ?gdp .
+} WHERE {
+    # Partie GraphDB
+    {
+        SELECT ?country ?alpha3Code WHERE {
+            ?country rdf:type iut:Country ;
+                     iut:code ?alpha3Code .
+        }
+    }
+
+    # Partie Wikidata
+    SERVICE <https://query.wikidata.org/sparql> {
+        ?wikidataCountry wdt:P298 ?alpha3Code ;
+             wdt:P1082 ?population ;
+             wdt:P2250 ?lifeExpectancy ;
+             wdt:P2046 ?area ;
+             wdt:P1081 ?idh ;
+             wdt:P8744/wdt:P2131 ?gdp .
+    }
+}
+```
+
+#### Lier les données des régions de wikidata à nos données locales
+
+Listes des données récupérer par **WikiData** :
+- `population` : Nombre de personne vivant dans le continent
+- `area` : Taille de la surface du continent en km2
+
+**Requête** :
+
+```sparql
+PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT {
+    ?region iut:population ?population ;
+    		iut:area ?area .
+} WHERE {
+    # Partie GraphDB
+    {
+        SELECT ?region ?regionName WHERE {
+            ?region rdf:type iut:Region ;
+                    iut:regionName ?regionName .
+        }
+    }
+
+    # Partie Wikidata
+    SERVICE <https://query.wikidata.org/sparql> {
+        ?continent wdt:P31 wd:Q5107 ;
+                   rdfs:label ?continentLabel ;
+                   wdt:P1082 ?population ;
+        		   wdt:P2046 ?area .
+        
+    	FILTER(str(?regionName) = str(?continentLabel))
+    }
+}
+```
+
+### `INSERT`
+
+Maintenant nous appliquont les changement à notre graph locale.
+
+#### Insertion des données WikiData des pays
+
+```sparql
+PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+INSERT {
+    ?country iut:population ?population ;
+             iut:lifeExpectancy ?lifeExpectancy ;
+             iut:area ?area ;
+             iut:humanDevelopmentIndex ?idh ;
+             iut:gdp ?gdp .
+} WHERE {
+    # Partie GraphDB
+    {
+        SELECT ?country ?alpha3Code WHERE {
+            ?country rdf:type iut:Country ;
+                     iut:code ?alpha3Code .
+        }
+    }
+
+    # Partie Wikidata
+    SERVICE <https://query.wikidata.org/sparql> {
+        ?wikidataCountry wdt:P298 ?alpha3Code ;
+             wdt:P1082 ?population ;
+             wdt:P2250 ?lifeExpectancy ;
+             wdt:P2046 ?area ;
+             wdt:P1081 ?idh ;
+             wdt:P8744/wdt:P2131 ?gdp .
+    }
+}
+```
+
+#### Insertion des données WikiData des Continents
+
+```sparql
+PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT {
+    ?region iut:population ?population ;
+    		iut:area ?area .
+} WHERE {
+    # Partie GraphDB
+    {
+        SELECT ?region ?regionName WHERE {
+            ?region rdf:type iut:Region ;
+                    iut:regionName ?regionName .
+        }
+    }
+
+    # Partie Wikidata
+    SERVICE <https://query.wikidata.org/sparql> {
+        ?continent wdt:P31 wd:Q5107 ;
+                   rdfs:label ?continentLabel ;
+                   wdt:P1082 ?population ;
+        		   wdt:P2046 ?area .
+        
+    	FILTER(str(?regionName) = str(?continentLabel))
+    }
+}
+```
+
+## 5. Répondez à la question décrite à l'étape 1.
+
 Avant de pouvoir répondre au questions, nous avons d'abord effectuer quelques test en effectuant des requêtes. Si vous souhaitez les consultez elles sont dans le fichier [query.md](https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/query.md) du projet.
 
-Et c'est partie pour répondre à notre problèmatique !
 
-### Requêtes
+## 6. Visualisez les résultats de cette requête dans une application
 
-...
+
+
+## 7. Documentez le processus qui a mené à la mise en œuvre.
