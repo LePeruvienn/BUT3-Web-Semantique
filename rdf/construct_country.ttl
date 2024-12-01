@@ -1,0 +1,1137 @@
+@prefix iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+iut:countryEGY iut:population 114535772.0;
+  iut:lifeExpectancy 71.484;
+  iut:area 1010407.87;
+  iut:humanDevelopmentIndex 0.731;
+  iut:gdp 235369129337.711 .
+
+iut:countryCHN iut:population 1442965000.0;
+  iut:lifeExpectancy 76.252;
+  iut:area 9596961.0;
+  iut:humanDevelopmentIndex 0.768;
+  iut:gdp 12237700479375.0 .
+
+iut:countryBRA iut:population 203062512.0;
+  iut:lifeExpectancy 75.723;
+  iut:area 8515767.0;
+  iut:humanDevelopmentIndex 0.754;
+  iut:gdp 2055505502224.73 .
+
+iut:countryIDN iut:population 275439000.0;
+  iut:lifeExpectancy 69.191;
+  iut:area 1904570.0;
+  iut:humanDevelopmentIndex 0.705;
+  iut:gdp 1015539017536.5 .
+
+iut:countryPER iut:population 33726000.0;
+  iut:lifeExpectancy 74.983;
+  iut:area 1285216.0;
+  iut:humanDevelopmentIndex 0.762;
+  iut:gdp 211389272242.157 .
+
+iut:countryGTM iut:population 17263239.0;
+  iut:lifeExpectancy 73.409;
+  iut:area 108889.0;
+  iut:humanDevelopmentIndex 0.627;
+  iut:gdp 75620095537.5005 .
+
+iut:countryIRN iut:population 86758304.0;
+  iut:lifeExpectancy 75.953;
+  iut:area 1648195.0;
+  iut:humanDevelopmentIndex 0.774;
+  iut:gdp 439513511620.591 .
+
+iut:countryBGD iut:population 171466990.0;
+  iut:lifeExpectancy 74.43;
+  iut:area 147570.0;
+  iut:humanDevelopmentIndex 0.661;
+  iut:gdp 249723887765.42 .
+
+iut:countryAGO iut:population 36749906.0;
+  iut:lifeExpectancy 61.547;
+  iut:area 1246700.0;
+  iut:humanDevelopmentIndex 0.586;
+  iut:gdp 124209385825.22 .
+
+iut:countryDJI iut:population 1152944.0;
+  iut:lifeExpectancy 62.465;
+  iut:area 23200.0;
+  iut:humanDevelopmentIndex 0.509;
+  iut:gdp 1844674434.50371 .
+
+iut:countryMWI iut:population 18622104.0;
+  iut:lifeExpectancy 63.223;
+  iut:area 118484.0;
+  iut:humanDevelopmentIndex 0.512;
+  iut:gdp 6303277590.80083 .
+
+iut:countryMOZ iut:population 29668834.0;
+  iut:lifeExpectancy 58.311;
+  iut:area 801590.0;
+  iut:humanDevelopmentIndex 0.446;
+  iut:gdp 12333859926.277 .
+
+iut:countryNGA iut:population 211400708.0;
+  iut:lifeExpectancy 53.428;
+  iut:area 923768.0;
+  iut:humanDevelopmentIndex 0.535;
+  iut:gdp 375770713742.763 .
+
+iut:countrySDN iut:population 40533330.0;
+  iut:lifeExpectancy 64.486;
+  iut:area 1886068.0;
+  iut:humanDevelopmentIndex 0.508;
+  iut:gdp 117487857142.857 .
+
+iut:countryNOR iut:population 5550203.0;
+  iut:lifeExpectancy 82.50976;
+  iut:area 385207.0;
+  iut:humanDevelopmentIndex 0.966;
+  iut:gdp 398831956477.937 .
+
+iut:countryESP iut:population 47415750.0;
+  iut:lifeExpectancy 78.71707, 78.96585, 79.36829, 79.56829, 79.61951, 79.87073, 80.17073,
+    80.82195, 80.87317, 81.17561, 81.47561, 81.62683, 82.0, 82.339179, 82.42683, 82.47561,
+    82.83171, 83.0, 83.07805, 83.189347, 83.22927, 83.33, 83.578674, 84.0;
+  iut:area 505990.0;
+  iut:humanDevelopmentIndex 0.905;
+  iut:gdp 1311320015515.99 .
+
+iut:countryUSA iut:population 332278200.0;
+  iut:lifeExpectancy 78.69024;
+  iut:area 9826675.0;
+  iut:humanDevelopmentIndex 0.921;
+  iut:gdp 19390604000000.0 .
+
+iut:countryCHE iut:population 8902308.0;
+  iut:lifeExpectancy 82.89756;
+  iut:area 41285.0;
+  iut:humanDevelopmentIndex 0.962;
+  iut:gdp 678887336848.252 .
+
+iut:countryETH iut:population 128691692.0;
+  iut:lifeExpectancy 65.475;
+  iut:area 1104300.0;
+  iut:humanDevelopmentIndex 0.498;
+  iut:gdp 80561496133.9172 .
+
+iut:countryDEU iut:population 84358845.0;
+  iut:lifeExpectancy 81.9;
+  iut:area 357587.77;
+  iut:humanDevelopmentIndex 0.942;
+  iut:gdp 3677439129776.6 .
+
+iut:countryROU iut:population 19053815.0;
+  iut:lifeExpectancy 75.0;
+  iut:area 238397.0;
+  iut:humanDevelopmentIndex 0.821;
+  iut:gdp 211803281924.738 .
+
+iut:countryBGR iut:population 6795803.0;
+  iut:lifeExpectancy 74.9;
+  iut:area 110993.6;
+  iut:humanDevelopmentIndex 0.795;
+  iut:gdp 56831518294.4397 .
+
+iut:countryZAF iut:population 62027503.0;
+  iut:lifeExpectancy 62.774;
+  iut:area 1221037.0;
+  iut:humanDevelopmentIndex 0.713;
+  iut:gdp 349419343614.089 .
+
+iut:countryIND iut:population 1326093247.0;
+  iut:lifeExpectancy 70.03;
+  iut:area 3287263.0;
+  iut:humanDevelopmentIndex 0.633;
+  iut:gdp 2597491162897.67 .
+
+iut:countryPAK iut:population 223773700.0;
+  iut:lifeExpectancy 69.37;
+  iut:area 881913.0;
+  iut:humanDevelopmentIndex 0.544;
+  iut:gdp 304951818494.066 .
+
+iut:countryPHL iut:population 109035343.0;
+  iut:lifeExpectancy 71.095;
+  iut:area 343448.0;
+  iut:humanDevelopmentIndex 0.699;
+  iut:gdp 313595208737.269 .
+
+iut:countryCIV iut:population 31165654.0;
+  iut:lifeExpectancy 53.582;
+  iut:area 322463.0;
+  iut:humanDevelopmentIndex 0.55;
+  iut:gdp 40388624117.1109 .
+
+iut:countryLBY iut:population 6678567.0;
+  iut:lifeExpectancy 71.934;
+  iut:area 1759541.0;
+  iut:humanDevelopmentIndex 0.718;
+  iut:gdp 50984362478.4973 .
+
+iut:countryITA iut:population 58850717.0;
+  iut:lifeExpectancy 82.5439;
+  iut:area 302068.0;
+  iut:humanDevelopmentIndex 0.895;
+  iut:gdp 1934797937411.33 .
+
+iut:countryKEN iut:population 48468138.0;
+  iut:lifeExpectancy 67.032;
+  iut:area 581309.0;
+  iut:humanDevelopmentIndex 0.575;
+  iut:gdp 74938190654.8558 .
+
+iut:countryRUS iut:population 145975300.0;
+  iut:lifeExpectancy 71.59293;
+  iut:area 17075400.0;
+  iut:humanDevelopmentIndex 0.822;
+  iut:gdp 1577524145963.17 .
+
+iut:countryISL iut:population 364260.0;
+  iut:lifeExpectancy 82.46829;
+  iut:area 103004.0;
+  iut:humanDevelopmentIndex 0.959;
+  iut:gdp 23909289978.5861 .
+
+iut:countryBIH iut:population 3816459.0;
+  iut:lifeExpectancy 76.911;
+  iut:area 51197.0;
+  iut:humanDevelopmentIndex 0.78;
+  iut:gdp 18168579578.1952 .
+
+iut:countryMNG iut:population 3409939.0;
+  iut:lifeExpectancy 69.287;
+  iut:area 1564116.0;
+  iut:humanDevelopmentIndex 0.739;
+  iut:gdp 11488046881.0431 .
+
+iut:countryTHA iut:population 66188503.0;
+  iut:lifeExpectancy 77.41;
+  iut:area 513119.5;
+  iut:humanDevelopmentIndex 0.8;
+  iut:gdp 455220920571.129 .
+
+iut:countryVNM iut:population 96208984.0;
+  iut:lifeExpectancy 76.253;
+  iut:area 331690.0;
+  iut:humanDevelopmentIndex 0.703;
+  iut:gdp 234189000000.0 .
+
+iut:countryAFG iut:population 41454761.0;
+  iut:lifeExpectancy 63.673;
+  iut:area 652230.0;
+  iut:humanDevelopmentIndex 0.478;
+  iut:gdp 20815300220.0428 .
+
+iut:countryTZA iut:population 57310019.0;
+  iut:lifeExpectancy 65.675;
+  iut:area 947303.0;
+  iut:humanDevelopmentIndex 0.549;
+  iut:gdp 52090320325.4736 .
+
+iut:countryBWA iut:population 2480244.0;
+  iut:lifeExpectancy 66.797;
+  iut:area 581737.0;
+  iut:humanDevelopmentIndex 0.693;
+  iut:gdp 17406530780.7155 .
+
+iut:countryCOG iut:population 6142180.0;
+  iut:lifeExpectancy 64.625;
+  iut:area 342000.0;
+  iut:humanDevelopmentIndex 0.571;
+  iut:gdp 8722553000.83526 .
+
+iut:countryLSO iut:population 2007201.0;
+  iut:lifeExpectancy 54.174;
+  iut:area 30355.0;
+  iut:humanDevelopmentIndex 0.514;
+  iut:gdp 2639386291.42767 .
+
+iut:countryMAR iut:population 36828330.0, 37076584.0;
+  iut:lifeExpectancy 75.821;
+  iut:area 446550.0;
+  iut:humanDevelopmentIndex 0.683;
+  iut:gdp 109139484007.429 .
+
+iut:countryUGA iut:population 47123531.0;
+  iut:lifeExpectancy 59.889;
+  iut:area 241038.0;
+  iut:humanDevelopmentIndex 0.525;
+  iut:gdp 25891058946.1936 .
+
+iut:countryHUN iut:population 9599744.0;
+  iut:lifeExpectancy 70.67707, 71.24634, 72.24878, 72.3, 72.34878, 72.64878, 73.09756,
+    73.15122, 73.70244, 73.90488, 74.0, 74.20732, 74.85854, 75.06341, 75.56585, 75.56829,
+    75.76341, 76.0;
+  iut:area 93011.4;
+  iut:humanDevelopmentIndex 0.846;
+  iut:gdp 139135029758.29 .
+
+iut:countryMEX iut:population 124777324.0;
+  iut:lifeExpectancy 77.118;
+  iut:area 1972550.0;
+  iut:humanDevelopmentIndex 0.758;
+  iut:gdp 1149918794765.73 .
+
+iut:countryAUS iut:population 26473055.0;
+  iut:lifeExpectancy 82.5;
+  iut:area 7692024.0;
+  iut:humanDevelopmentIndex 0.951;
+  iut:gdp 1323421072479.07 .
+
+iut:countryARG iut:population 47327407.0;
+  iut:lifeExpectancy 76.577;
+  iut:area 2780400.0;
+  iut:humanDevelopmentIndex 0.842;
+  iut:gdp 631133384439.944 .
+
+iut:countryTUV iut:population 11792.0;
+  iut:lifeExpectancy 64.0, 65.0;
+  iut:area 26.0;
+  iut:humanDevelopmentIndex 0.641;
+  iut:gdp 39731317.3044487 .
+
+iut:countryPRY iut:population 6811297.0;
+  iut:lifeExpectancy 73.12;
+  iut:area 406756.0;
+  iut:humanDevelopmentIndex 0.717;
+  iut:gdp 29734895248.9053 .
+
+iut:countryCOL iut:population 52321152.0;
+  iut:lifeExpectancy 74.381;
+  iut:area 1141748.0;
+  iut:humanDevelopmentIndex 0.752;
+  iut:gdp 309191382833.365 .
+
+iut:countryISR iut:population 9840000.0;
+  iut:lifeExpectancy 82.6;
+  iut:area 20770.0;
+  iut:humanDevelopmentIndex 0.919;
+  iut:gdp 350850537827.281 .
+
+iut:countryJOR iut:population 10428241.0;
+  iut:lifeExpectancy 74.329;
+  iut:area 89341.0;
+  iut:humanDevelopmentIndex 0.72;
+  iut:gdp 40068308516.2755 .
+
+iut:countryZMB iut:population 19610769.0;
+  iut:lifeExpectancy 61.874;
+  iut:area 752618.0;
+  iut:humanDevelopmentIndex 0.565;
+  iut:gdp 25808666421.5558 .
+
+iut:countryZWE iut:population 15178979.0;
+  iut:lifeExpectancy 61.163;
+  iut:area 390757.0;
+  iut:humanDevelopmentIndex 0.593;
+  iut:gdp 17845821400.0 .
+
+iut:countryCOD iut:population 105789731.0;
+  iut:lifeExpectancy 59.621;
+  iut:area 2344858.0;
+  iut:humanDevelopmentIndex 0.479;
+  iut:gdp 37241300948.659 .
+
+iut:countryMDG iut:population 25570895.0;
+  iut:lifeExpectancy 65.932;
+  iut:area 587295.0;
+  iut:humanDevelopmentIndex 0.501;
+  iut:gdp 11499803806.5729 .
+
+iut:countryNAM iut:population 2533794.0;
+  iut:lifeExpectancy 64.388;
+  iut:area 825615.0;
+  iut:humanDevelopmentIndex 0.615;
+  iut:gdp 13244597345.4319 .
+
+iut:countrySWZ iut:population 1230506.0;
+  iut:lifeExpectancy 57.754;
+  iut:area 17364.0;
+  iut:humanDevelopmentIndex 0.597;
+  iut:gdp 4408564260.0 .
+
+iut:countryJPN iut:population 125440000.0;
+  iut:lifeExpectancy 83.98488;
+  iut:area 377972.28;
+  iut:humanDevelopmentIndex 0.925;
+  iut:gdp 4872136945507.59 .
+
+iut:countryAUT iut:population 8979894.0;
+  iut:lifeExpectancy 81.0;
+  iut:area 83878.99;
+  iut:humanDevelopmentIndex 0.916;
+  iut:gdp 447033100107.0 .
+
+iut:countryTUR iut:population 85372377.0;
+  iut:lifeExpectancy 75.755;
+  iut:area 783562.0;
+  iut:humanDevelopmentIndex 0.838;
+  iut:gdp 905987824100.0 .
+
+iut:countryUKR iut:population 41167335.0;
+  iut:lifeExpectancy 69.0;
+  iut:area 603550.0;
+  iut:humanDevelopmentIndex 0.773;
+  iut:gdp 112154185121.406 .
+
+iut:countryCZE iut:population 10900555.0;
+  iut:lifeExpectancy 79.0;
+  iut:area 78866.0;
+  iut:humanDevelopmentIndex 0.889;
+  iut:gdp 215725534372.371 .
+
+iut:countryTCD iut:population 19319064.0;
+  iut:lifeExpectancy 52.903;
+  iut:area 1284000.0;
+  iut:humanDevelopmentIndex 0.394;
+  iut:gdp 9981303726.23281 .
+
+iut:countryBOL iut:population 12244159.0;
+  iut:lifeExpectancy 69.125;
+  iut:area 1098581.0;
+  iut:humanDevelopmentIndex 0.692;
+  iut:gdp 37508642112.8799 .
+
+iut:countryPAN iut:population 4098587.0;
+  iut:lifeExpectancy 78.001;
+  iut:area 74177.3;
+  iut:humanDevelopmentIndex 0.805;
+  iut:gdp 61838175800.0 .
+
+iut:countryMYS iut:population 32447385.0;
+  iut:lifeExpectancy 75.3;
+  iut:area 330803.0;
+  iut:humanDevelopmentIndex 0.803;
+  iut:gdp 314500279043.81 .
+
+iut:countryLKA iut:population 21444000.0;
+  iut:lifeExpectancy 77.75;
+  iut:area 65610.0;
+  iut:humanDevelopmentIndex 0.782;
+  iut:gdp 87174682200.4324 .
+
+iut:countryCAF iut:population 5152421.0;
+  iut:lifeExpectancy 52.171;
+  iut:area 622984.0;
+  iut:humanDevelopmentIndex 0.404;
+  iut:gdp 1949411659.20453 .
+
+iut:countryBEN iut:population 14111034.0;
+  iut:lifeExpectancy 60.907;
+  iut:area 114763.0;
+  iut:humanDevelopmentIndex 0.525;
+  iut:gdp 9273558271.64744 .
+
+iut:countryCMR iut:population 28372687.0;
+  iut:lifeExpectancy 58.073;
+  iut:area 475442.0;
+  iut:humanDevelopmentIndex 0.576;
+  iut:gdp 34798596482.4274 .
+
+iut:countryNER iut:population 21477348.0;
+  iut:lifeExpectancy 60.058;
+  iut:area 1267000.0;
+  iut:humanDevelopmentIndex 0.4;
+  iut:gdp 8119732792.52478 .
+
+iut:countrySLE iut:population 7557212.0;
+  iut:lifeExpectancy 51.835;
+  iut:area 71740.0;
+  iut:humanDevelopmentIndex 0.477;
+  iut:gdp 3774270392.41231 .
+
+iut:countryURY iut:population 3444263.0;
+  iut:lifeExpectancy 77.493;
+  iut:area 176215.0;
+  iut:humanDevelopmentIndex 0.809;
+  iut:gdp 56156972157.6958 .
+
+iut:countryGBR iut:population 67326569.0;
+  iut:lifeExpectancy 80.9561;
+  iut:area 242495.0;
+  iut:humanDevelopmentIndex 0.929;
+  iut:gdp 2622433959604.16 .
+
+iut:countryBLR iut:population 9155978.0;
+  iut:lifeExpectancy 73.82683;
+  iut:area 207595.0;
+  iut:humanDevelopmentIndex 0.808;
+  iut:gdp 54442374372.5094 .
+
+iut:countryKAZ iut:population 19002586.0;
+  iut:lifeExpectancy 72.3;
+  iut:area 2724900.0;
+  iut:humanDevelopmentIndex 0.811;
+  iut:gdp 220623001970.0 .
+
+iut:countryFSM iut:population 105544.0;
+  iut:lifeExpectancy 69.195;
+  iut:area 702.0;
+  iut:humanDevelopmentIndex 0.628;
+  iut:gdp 336427532.88 .
+
+iut:countryECU iut:population 16938986.0;
+  iut:lifeExpectancy 76.327;
+  iut:area 255586.91;
+  iut:humanDevelopmentIndex 0.74;
+  iut:gdp 103056619000.0 .
+
+iut:countryHND iut:population 10062994.0;
+  iut:lifeExpectancy 73.575;
+  iut:area 112492.0;
+  iut:humanDevelopmentIndex 0.621;
+  iut:gdp 22978532896.7816 .
+
+iut:countrySAU iut:population 33000000.0;
+  iut:lifeExpectancy 74.561;
+  iut:area 2250000.0;
+  iut:humanDevelopmentIndex 0.875;
+  iut:gdp 683827144288.536 .
+
+iut:countryKOR iut:population 51466201.0;
+  iut:lifeExpectancy 82.02439;
+  iut:area 100295.0;
+  iut:humanDevelopmentIndex 0.925;
+  iut:gdp 1530750923148.7 .
+
+iut:countryBDI iut:population 13689450.0;
+  iut:lifeExpectancy 57.481;
+  iut:area 27834.0;
+  iut:humanDevelopmentIndex 0.426;
+  iut:gdp 3477502178.27657 .
+
+iut:countrySEN iut:population 16876720.0;
+  iut:lifeExpectancy 67.146;
+  iut:area 196722.0;
+  iut:humanDevelopmentIndex 0.511;
+  iut:gdp 16374743753.4731 .
+
+iut:countryCAN iut:population 36991981.0;
+  iut:lifeExpectancy 83.62;
+  iut:area 9984670.0;
+  iut:humanDevelopmentIndex 0.936;
+  iut:gdp 1653042795255.04 .
+
+iut:countryGRC iut:population 10482487.0;
+  iut:lifeExpectancy 81.1;
+  iut:area 131957.0;
+  iut:humanDevelopmentIndex 0.887;
+  iut:gdp 200288277129.038 .
+
+iut:countryGHA iut:population 32833031.0;
+  iut:lifeExpectancy 62.742;
+  iut:area 238535.0;
+  iut:humanDevelopmentIndex 0.632;
+  iut:gdp 47330016342.5734 .
+
+iut:countryFRA iut:population 68373433.0;
+  iut:lifeExpectancy 82.27317;
+  iut:area 643801.0;
+  iut:humanDevelopmentIndex 0.903;
+  iut:gdp 2582501307216.42 .
+
+iut:countryHRV iut:population 3871833.0;
+  iut:lifeExpectancy 78.02195;
+  iut:area 56594.0;
+  iut:humanDevelopmentIndex 0.858;
+  iut:gdp 54849180228.8716 .
+
+iut:countryCYP iut:population 1344976.0;
+  iut:lifeExpectancy 80.508;
+  iut:area 9242.45;
+  iut:humanDevelopmentIndex 0.896;
+  iut:gdp 21651791751.1832 .
+
+iut:countryCHL iut:population 19458000.0;
+  iut:lifeExpectancy 79.522;
+  iut:area 756102.0;
+  iut:humanDevelopmentIndex 0.855;
+  iut:gdp 277075944401.941 .
+
+iut:countryCRI iut:population 5044197.0;
+  iut:lifeExpectancy 79.831;
+  iut:area 51179.92;
+  iut:humanDevelopmentIndex 0.809;
+  iut:gdp 57057372468.0383 .
+
+iut:countryNIC iut:population 5142098.0;
+  iut:lifeExpectancy 75.404;
+  iut:area 130375.0;
+  iut:humanDevelopmentIndex 0.667;
+  iut:gdp 13814261535.5434 .
+
+iut:countryLAO iut:population 6858160.0;
+  iut:lifeExpectancy 66.0;
+  iut:area 236800.0;
+  iut:humanDevelopmentIndex 0.607;
+  iut:gdp 16853079615.3519 .
+
+iut:countryMLI iut:population 20250833.0;
+  iut:lifeExpectancy 57.966;
+  iut:area 1240192.0;
+  iut:humanDevelopmentIndex 0.428;
+  iut:gdp 15288163367.2602 .
+
+iut:countryTUN iut:population 11565204.0;
+  iut:lifeExpectancy 75.731;
+  iut:area 163610.0;
+  iut:humanDevelopmentIndex 0.731;
+  iut:gdp 40256675208.7294 .
+
+iut:countryGIN iut:population 12717176.0;
+  iut:lifeExpectancy 60.015;
+  iut:area 245857.0;
+  iut:humanDevelopmentIndex 0.465;
+  iut:gdp 10496056732.546 .
+
+iut:countryLBR iut:population 5214030.0;
+  iut:lifeExpectancy 62.505;
+  iut:area 111369.0;
+  iut:humanDevelopmentIndex 0.481;
+  iut:gdp 4332000000.0 .
+
+iut:countryIRL iut:population 5149139.0;
+  iut:lifeExpectancy 81.60732;
+  iut:area 69797.0;
+  iut:humanDevelopmentIndex 0.945;
+  iut:gdp 333730764773.18 .
+
+iut:countryLVA iut:population 1871882.0;
+  iut:lifeExpectancy 74.52927;
+  iut:area 62226.92, 64593.76;
+  iut:humanDevelopmentIndex 0.863;
+  iut:gdp 30264454641.8004 .
+
+iut:countrySVK iut:population 5449270.0;
+  iut:lifeExpectancy 76.56341;
+  iut:area 49035.0;
+  iut:humanDevelopmentIndex 0.848;
+  iut:gdp 95769031980.1362 .
+
+iut:countryDZA iut:population 46164219.0;
+  iut:lifeExpectancy 76.078;
+  iut:area 2381741.0;
+  iut:humanDevelopmentIndex 0.745;
+  iut:gdp 170370810917.971 .
+
+iut:countryBHR iut:population 1569666.0;
+  iut:lifeExpectancy 76.9;
+  iut:area 786.5;
+  iut:humanDevelopmentIndex 0.875;
+  iut:gdp 35307127659.5745 .
+
+iut:countryKHM iut:population 17423880.0;
+  iut:lifeExpectancy 68.981;
+  iut:area 181035.0;
+  iut:humanDevelopmentIndex 0.593;
+  iut:gdp 22158209502.6391 .
+
+iut:countryNZL iut:population 5118700.0;
+  iut:lifeExpectancy 81.61244;
+  iut:area 268021.0;
+  iut:humanDevelopmentIndex 0.937;
+  iut:gdp 205852838254.712 .
+
+iut:countryIRQ iut:population 38274618.0;
+  iut:lifeExpectancy 69.862;
+  iut:area 437072.0;
+  iut:humanDevelopmentIndex 0.686;
+  iut:gdp 197715736040.609 .
+
+iut:countryYEM iut:population 28250420.0;
+  iut:lifeExpectancy 64.953;
+  iut:area 555000.0;
+  iut:humanDevelopmentIndex 0.455;
+  iut:gdp 18213328571.4286 .
+
+iut:countryNPL iut:population 29164578.0;
+  iut:lifeExpectancy 72.12;
+  iut:area 147181.254346;
+  iut:humanDevelopmentIndex 0.602;
+  iut:gdp 24472013233.8472 .
+
+iut:countryTWN iut:population 23412899.0;
+  iut:lifeExpectancy 79.12;
+  iut:area 36193.0;
+  iut:humanDevelopmentIndex 0.911;
+  iut:gdp 566757000000.0 .
+
+iut:countryBTN iut:population 787424.0;
+  iut:lifeExpectancy 71.5;
+  iut:area 38394.0;
+  iut:humanDevelopmentIndex 0.666;
+  iut:gdp 2511852941.17647 .
+
+iut:countryMRT iut:population 4614974.0;
+  iut:lifeExpectancy 63.238;
+  iut:area 1030700.0;
+  iut:humanDevelopmentIndex 0.556;
+  iut:gdp 5024705934.33687 .
+
+iut:countryRWA iut:population 13246394.0;
+  iut:lifeExpectancy 67.129;
+  iut:area 26338.0;
+  iut:humanDevelopmentIndex 0.534;
+  iut:gdp 9136689514.09479 .
+
+iut:countryMDA iut:population 2603813.0;
+  iut:lifeExpectancy 71.61;
+  iut:area 33843.5;
+  iut:humanDevelopmentIndex 0.767;
+  iut:gdp 8128493432.07741 .
+
+iut:countryMKD iut:population 1836713.0;
+  iut:lifeExpectancy 75.703;
+  iut:area 25713.0;
+  iut:humanDevelopmentIndex 0.77;
+  iut:gdp 11337827331.6809 .
+
+iut:countryAZE iut:population 10145212.0;
+  iut:lifeExpectancy 72.026;
+  iut:area 86600.0;
+  iut:humanDevelopmentIndex 0.745;
+  iut:gdp 78721058820.0 .
+
+iut:countryGEO iut:population 3717100.0;
+  iut:lifeExpectancy 73.261;
+  iut:area 69700.0;
+  iut:humanDevelopmentIndex 0.802;
+  iut:gdp 15159281211.3967 .
+
+iut:countryBLZ iut:population 411106.0;
+  iut:lifeExpectancy 70.384;
+  iut:area 22966.0;
+  iut:humanDevelopmentIndex 0.683;
+  iut:gdp 1838000000.0 .
+
+iut:countrySGP iut:population 5866139.0;
+  iut:lifeExpectancy 82.79512;
+  iut:area 719.1;
+  iut:humanDevelopmentIndex 0.939;
+  iut:gdp 323907234412.34 .
+
+iut:countryPNG iut:population 8935000.0;
+  iut:lifeExpectancy 65.544;
+  iut:area 462840.0;
+  iut:humanDevelopmentIndex 0.558;
+  iut:gdp 21088758484.7485 .
+
+iut:countryVEN iut:population 28515829.0;
+  iut:lifeExpectancy 74.545;
+  iut:area 912050.0;
+  iut:humanDevelopmentIndex 0.691;
+  iut:gdp 482359318767.703 .
+
+iut:countryHTI iut:population 10981229.0;
+  iut:lifeExpectancy 63.33;
+  iut:area 27750.0;
+  iut:humanDevelopmentIndex 0.535;
+  iut:gdp 8408150517.97684 .
+
+iut:countrySLV iut:population 6029976.0;
+  iut:lifeExpectancy 73.512;
+  iut:area 20742.0;
+  iut:humanDevelopmentIndex 0.675;
+  iut:gdp 24805439600.0 .
+
+iut:countryKGZ iut:population 6694200.0;
+  iut:lifeExpectancy 70.95122;
+  iut:area 199951.0;
+  iut:humanDevelopmentIndex 0.692;
+  iut:gdp 10930644920.0 .
+
+iut:countryLBN iut:population 6100075.0;
+  iut:lifeExpectancy 79.584;
+  iut:area 10452.0;
+  iut:humanDevelopmentIndex 0.706;
+  iut:gdp 51844487742.0232 .
+
+iut:countrySYR iut:population 22933531.0;
+  iut:lifeExpectancy 70.31;
+  iut:area 185180.0;
+  iut:humanDevelopmentIndex 0.577;
+  iut:gdp 60200000000.0 .
+
+iut:countryTJK iut:population 9504000.0;
+  iut:lifeExpectancy 71.051;
+  iut:area 143100.0;
+  iut:humanDevelopmentIndex 0.685;
+  iut:gdp 7145701018.7492 .
+
+iut:countryTKM iut:population 6117933.0;
+  iut:lifeExpectancy 67.835;
+  iut:area 491210.0;
+  iut:humanDevelopmentIndex 0.745;
+  iut:gdp 45610571430.0 .
+
+iut:countryPOL iut:population 38382576.0;
+  iut:lifeExpectancy 77.45122;
+  iut:area 312683.0;
+  iut:humanDevelopmentIndex 0.876;
+  iut:gdp 524509565263.409 .
+
+iut:countryPRT iut:population 10347892.0;
+  iut:lifeExpectancy 81.12683;
+  iut:area 92225.0;
+  iut:humanDevelopmentIndex 0.866;
+  iut:gdp 217571083045.99 .
+
+iut:countryCUB iut:population 10985974.0;
+  iut:lifeExpectancy 74.0, 76.437, 76.658, 76.88, 77.119, 77.381, 77.663, 77.95, 78.0,
+    78.225, 78.469, 78.672, 78.833, 78.959, 79.064, 79.167, 79.282, 79.415, 79.57, 79.742;
+  iut:area 109884.0;
+  iut:humanDevelopmentIndex 0.764;
+  iut:gdp 87132800000.0 .
+
+iut:countryUZB iut:population 34915100.0;
+  iut:lifeExpectancy 71.314;
+  iut:area 448978.0;
+  iut:humanDevelopmentIndex 0.727;
+  iut:gdp 80391853880.0 .
+
+iut:countryARM iut:population 2930450.0;
+  iut:lifeExpectancy 74.618;
+  iut:area 29743.423459;
+  iut:humanDevelopmentIndex 0.759;
+  iut:gdp 11536590635.8268 .
+
+iut:countryVUT iut:population 300019.0;
+  iut:lifeExpectancy 72.133;
+  iut:area 12190.0;
+  iut:humanDevelopmentIndex 0.607;
+  iut:gdp 862879789.390161 .
+
+iut:countryMHL iut:population 53127.0;
+  iut:lifeExpectancy 65.23902;
+  iut:area 181.43;
+  iut:humanDevelopmentIndex 0.639;
+  iut:gdp 199399247.08 .
+
+iut:countrySUR iut:population 563402.0;
+  iut:lifeExpectancy 71.405;
+  iut:area 163270.0;
+  iut:humanDevelopmentIndex 0.73;
+  iut:gdp 3324385325.26677 .
+
+iut:countryJAM iut:population 2697983.0;
+  iut:lifeExpectancy 75.97;
+  iut:area 10991.90954;
+  iut:humanDevelopmentIndex 0.709;
+  iut:gdp 14768134912.4171 .
+
+iut:countryMMR iut:population 53370609.0;
+  iut:lifeExpectancy 69.62;
+  iut:area 676577.2;
+  iut:humanDevelopmentIndex 0.585;
+  iut:gdp 69322122755.8536 .
+
+iut:countryBFA iut:population 23025776.0;
+  iut:lifeExpectancy 60.361;
+  iut:area 274200.0;
+  iut:humanDevelopmentIndex 0.449;
+  iut:gdp 12873114800.0165 .
+
+iut:countryGNQ iut:population 1847549.0;
+  iut:lifeExpectancy 57.681;
+  iut:area 28051.0;
+  iut:humanDevelopmentIndex 0.596;
+  iut:gdp 12486753871.278 .
+
+iut:countryGMB iut:population 2639916.0;
+  iut:lifeExpectancy 61.193;
+  iut:area 11300.0;
+  iut:humanDevelopmentIndex 0.5;
+  iut:gdp 1014621519.85866 .
+
+iut:countryDNK iut:population 5827463.0;
+  iut:lifeExpectancy 80.70488;
+  iut:area 42925.46;
+  iut:humanDevelopmentIndex 0.929;
+  iut:gdp 324871968807.469 .
+
+iut:countryEST iut:population 1374687.0;
+  iut:lifeExpectancy 77.73659;
+  iut:area 45335.0;
+  iut:humanDevelopmentIndex 0.89;
+  iut:gdp 30312000000.0 .
+
+iut:countryTLS iut:population 1243235.0;
+  iut:lifeExpectancy 68.881;
+  iut:area 14918.72;
+  iut:humanDevelopmentIndex 0.607;
+  iut:gdp 2954620999.58441 .
+
+iut:countryWSM iut:population 200010.0;
+  iut:lifeExpectancy 75.013;
+  iut:area 2842.0;
+  iut:humanDevelopmentIndex 0.707;
+  iut:gdp 856626506.024096 .
+
+iut:countryFJI iut:population 905502.0;
+  iut:lifeExpectancy 70.269;
+  iut:area 18274.0;
+  iut:humanDevelopmentIndex 0.73;
+  iut:gdp 5061202767.42948 .
+
+iut:countryBHS iut:population 399440.0;
+  iut:lifeExpectancy 75.675;
+  iut:area 13878.0;
+  iut:humanDevelopmentIndex 0.812;
+  iut:gdp 12162100000.0 .
+
+iut:countryDOM iut:population 10760028.0;
+  iut:lifeExpectancy 73.861;
+  iut:area 48670.82;
+  iut:humanDevelopmentIndex 0.767;
+  iut:gdp 75931656814.657 .
+
+iut:countryARE iut:population 9890400.0;
+  iut:lifeExpectancy 77.256;
+  iut:area 83600.0;
+  iut:humanDevelopmentIndex 0.911;
+  iut:gdp 382575085091.899 .
+
+iut:countryTGO iut:population 7797694.0;
+  iut:lifeExpectancy 60.232;
+  iut:area 56785.0;
+  iut:humanDevelopmentIndex 0.539;
+  iut:gdp 4812554346.14923 .
+
+iut:countryGAB iut:population 2025137.0;
+  iut:lifeExpectancy 66.105;
+  iut:area 267667.0;
+  iut:humanDevelopmentIndex 0.706;
+  iut:gdp 14622880885.6842 .
+
+iut:countryBEL iut:population 11584008.0;
+  iut:lifeExpectancy 81.69;
+  iut:area 30688.0;
+  iut:humanDevelopmentIndex 0.937;
+  iut:gdp 492681283049.248 .
+
+iut:countryLUX iut:population 672050.0;
+  iut:lifeExpectancy 82.29268;
+  iut:area 2586.36;
+  iut:humanDevelopmentIndex 0.93;
+  iut:gdp 62404461274.6636 .
+
+iut:countrySWE iut:population 10576145.0;
+  iut:lifeExpectancy 82.20488;
+  iut:area 447425.16;
+  iut:humanDevelopmentIndex 0.947;
+  iut:gdp 538040458216.997 .
+
+iut:countryLTU iut:population 2860002.0;
+  iut:lifeExpectancy 74.32195;
+  iut:area 65300.0;
+  iut:humanDevelopmentIndex 0.875;
+  iut:gdp 47168303744.1329 .
+
+iut:countryALB iut:population 2811655.0;
+  iut:lifeExpectancy 78.345;
+  iut:area 28748.0;
+  iut:humanDevelopmentIndex 0.796;
+  iut:gdp 13039352743.9616 .
+
+iut:countryBRB iut:population 303431.0;
+  iut:lifeExpectancy 75.906;
+  iut:area 439.0;
+  iut:humanDevelopmentIndex 0.79;
+  iut:gdp 4796845980.8226 .
+
+iut:countryTON iut:population 108020.0;
+  iut:lifeExpectancy 73.029;
+  iut:area 748.506563;
+  iut:humanDevelopmentIndex 0.745;
+  iut:gdp 426057453.064917 .
+
+iut:countrySLB iut:population 611343.0;
+  iut:lifeExpectancy 70.726;
+  iut:area 28400.0;
+  iut:humanDevelopmentIndex 0.564;
+  iut:gdp 1303453616.11974 .
+
+iut:countryVCT iut:population 109897.0;
+  iut:lifeExpectancy 73.179;
+  iut:area 389.0;
+  iut:humanDevelopmentIndex 0.751;
+  iut:gdp 789629629.62963 .
+
+iut:countryGRD iut:population 114299.0;
+  iut:lifeExpectancy 73.659;
+  iut:area 348.5;
+  iut:humanDevelopmentIndex 0.795;
+  iut:gdp 1118816679.40741 .
+
+iut:countryOMN iut:population 4829480.0;
+  iut:lifeExpectancy 77.029;
+  iut:area 309500.0;
+  iut:humanDevelopmentIndex 0.816;
+  iut:gdp 72642652795.8387 .
+
+iut:countryCOM iut:population 902348.0;
+  iut:lifeExpectancy 63.701;
+  iut:area 2034.0;
+  iut:humanDevelopmentIndex 0.558;
+  iut:gdp 648920942.738052 .
+
+iut:countryMUS iut:population 1264613.0;
+  iut:lifeExpectancy 74.39488;
+  iut:area 2040.0;
+  iut:humanDevelopmentIndex 0.802;
+  iut:gdp 13338147523.0124 .
+
+iut:countrySYC iut:population 95843.0;
+  iut:lifeExpectancy 74.30976;
+  iut:area 459.0;
+  iut:humanDevelopmentIndex 0.785;
+  iut:gdp 1485994387.49716 .
+
+iut:countryFIN iut:population 5608218.0;
+  iut:lifeExpectancy 81.2;
+  iut:area 338478.34;
+  iut:humanDevelopmentIndex 0.94;
+  iut:gdp 251884887972.766 .
+
+iut:countrySVN iut:population 2066880.0;
+  iut:lifeExpectancy 80.77561;
+  iut:area 20271.0;
+  iut:humanDevelopmentIndex 0.918;
+  iut:gdp 48769655479.2388 .
+
+iut:countryMLT iut:population 553214.0;
+  iut:lifeExpectancy 81.79756;
+  iut:area 316.0;
+  iut:humanDevelopmentIndex 0.918;
+  iut:gdp 12537750732.4769 .
+
+iut:countryTTO iut:population 1369125.0;
+  iut:lifeExpectancy 70.673;
+  iut:area 5128.0;
+  iut:humanDevelopmentIndex 0.81;
+  iut:gdp 22104775828.46 .
+
+iut:countryLCA iut:population 167591.0;
+  iut:lifeExpectancy 75.496;
+  iut:area 617.012867;
+  iut:humanDevelopmentIndex 0.715;
+  iut:gdp 1712306555.55556 .
+
+iut:countryMDV iut:population 436330.0;
+  iut:lifeExpectancy 77.339;
+  iut:area 298.0;
+  iut:humanDevelopmentIndex 0.747;
+  iut:gdp 4597083303.50693 .
+
+iut:countryERI iut:population 3497000.0;
+  iut:lifeExpectancy 65.092;
+  iut:area 117600.0;
+  iut:humanDevelopmentIndex 0.492;
+  iut:gdp 2607739837.39837 .
+
+iut:countryGNB iut:population 1861283.0;
+  iut:lifeExpectancy 59.86;
+  iut:area 36125.0;
+  iut:humanDevelopmentIndex 0.483;
+  iut:gdp 1346933490.23577 .
+
+iut:countryCPV iut:population 555988.0;
+  iut:lifeExpectancy 72.798;
+  iut:area 4033.0;
+  iut:humanDevelopmentIndex 0.662;
+  iut:gdp 1753736711.67273 .
+
+iut:countryMNE iut:population 617213.0;
+  iut:lifeExpectancy 77.116;
+  iut:area 13812.0;
+  iut:humanDevelopmentIndex 0.832;
+  iut:gdp 4774086094.2078 .
+
+iut:countrySRB iut:population 6647003.0;
+  iut:lifeExpectancy 75.0;
+  iut:area 88499.0;
+  iut:humanDevelopmentIndex 0.802;
+  iut:gdp 41431648801.1663 .
+
+iut:countryKIR iut:population 119438.0;
+  iut:lifeExpectancy 68.46;
+  iut:area 811.0;
+  iut:humanDevelopmentIndex 0.624;
+  iut:gdp 196150061.312078 .
+
+iut:countryGUY iut:population 777859.0;
+  iut:lifeExpectancy 66.65;
+  iut:area 214970.0;
+  iut:humanDevelopmentIndex 0.714;
+  iut:gdp 3675631961.25908 .
+
+iut:countryATG iut:population 101489.0;
+  iut:lifeExpectancy 76.364;
+  iut:area 440.29;
+  iut:humanDevelopmentIndex 0.788;
+  iut:gdp 1532397555.55556 .
+
+iut:countryDMA iut:population 74656.0;
+  iut:lifeExpectancy 73.0, 74.0, 76.59756;
+  iut:area 751.096551;
+  iut:humanDevelopmentIndex 0.74;
+  iut:gdp 562540740.740741 .
+
+iut:countrySSD iut:population 12575714.0;
+  iut:lifeExpectancy 56.811;
+  iut:area 644329.0;
+  iut:humanDevelopmentIndex 0.385;
+  iut:gdp 2904114903.22912 .
+
+iut:countrySTP iut:population 204327.0;
+  iut:lifeExpectancy 66.624;
+  iut:area 1001.0;
+  iut:humanDevelopmentIndex 0.618;
+  iut:gdp 390871568.630082 .
+
+iut:countryPSE iut:population 5227193.0;
+  iut:lifeExpectancy 73.473;
+  iut:area 6020.0;
+  iut:humanDevelopmentIndex 0.715;
+  iut:gdp 14498100000.0 .
+
+iut:countryLIE iut:population 37922.0;
+  iut:lifeExpectancy 82.6561;
+  iut:area 160.0;
+  iut:humanDevelopmentIndex 0.935;
+  iut:gdp 6289165409.55908 .
+
+iut:countryPLW iut:population 21729.0;
+  iut:lifeExpectancy 69.12927;
+  iut:area 465.550362;
+  iut:humanDevelopmentIndex 0.767;
+  iut:gdp 291544300.0 .
+
+iut:countryKNA iut:population 55345.0;
+  iut:lifeExpectancy 71.33659, 72.0;
+  iut:area 269.358763;
+  iut:humanDevelopmentIndex 0.777;
+  iut:gdp 945854481.481481 .
+
+iut:countryKWT iut:population 4464000.0;
+  iut:lifeExpectancy 74.694;
+  iut:area 17818.0;
+  iut:humanDevelopmentIndex 0.831;
+  iut:gdp 120126277612.925 .
+
+iut:countryQAT iut:population 2639211.0;
+  iut:lifeExpectancy 78.184;
+  iut:area 11437.0;
+  iut:humanDevelopmentIndex 0.855;
+  iut:gdp 167605219780.22 .

@@ -1,0 +1,22 @@
+@prefix iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf4j: <http://rdf4j.org/schema/rdf4j#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+
+iut:regionAfrica iut:population 1200000000.0;
+  iut:area 30271000.0 .
+
+iut:regionEurope iut:population 744831142.0;
+  iut:area 10186000.0 .
+
+iut:regionAsia iut:population 4164252000.0;
+  iut:area 44614500.0 .
+
+iut:regionAmericas iut:population 1035298985.0;
+  iut:area 42549000.0 .
