@@ -100,9 +100,7 @@ iut:countryNOR iut:population 5550203.0;
   iut:gdp 398831956477.937 .
 
 iut:countryESP iut:population 47415750.0;
-  iut:lifeExpectancy 78.71707, 78.96585, 79.36829, 79.56829, 79.61951, 79.87073, 80.17073,
-    80.82195, 80.87317, 81.17561, 81.47561, 81.62683, 82.0, 82.339179, 82.42683, 82.47561,
-    82.83171, 83.0, 83.07805, 83.189347, 83.22927, 83.33, 83.578674, 84.0;
+  iut:lifeExpectancy 84.0;
   iut:area 505990.0;
   iut:humanDevelopmentIndex 0.905;
   iut:gdp 1311320015515.99 .
@@ -270,9 +268,7 @@ iut:countryUGA iut:population 47123531.0;
   iut:gdp 25891058946.1936 .
 
 iut:countryHUN iut:population 9599744.0;
-  iut:lifeExpectancy 70.67707, 71.24634, 72.24878, 72.3, 72.34878, 72.64878, 73.09756,
-    73.15122, 73.70244, 73.90488, 74.0, 74.20732, 74.85854, 75.06341, 75.56585, 75.56829,
-    75.76341, 76.0;
+  iut:lifeExpectancy 76.0;
   iut:area 93011.4;
   iut:humanDevelopmentIndex 0.846;
   iut:gdp 139135029758.29 .
@@ -788,8 +784,7 @@ iut:countryPRT iut:population 10347892.0;
   iut:gdp 217571083045.99 .
 
 iut:countryCUB iut:population 10985974.0;
-  iut:lifeExpectancy 74.0, 76.437, 76.658, 76.88, 77.119, 77.381, 77.663, 77.95, 78.0,
-    78.225, 78.469, 78.672, 78.833, 78.959, 79.064, 79.167, 79.282, 79.415, 79.57, 79.742;
+  iut:lifeExpectancy 79.742;
   iut:area 109884.0;
   iut:humanDevelopmentIndex 0.764;
   iut:gdp 87132800000.0 .
