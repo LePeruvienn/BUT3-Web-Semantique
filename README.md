@@ -519,7 +519,57 @@ ORDER BY DESC(?nbDisaster)
 LIMIT 3
 ```
 
-On remarque que les pays qui ont le plus de catastrophe sont les pays avec de très grande surface.
+| countryName               | nbDisaster | population   | area     | lifeExpectancy | idh   |
+|---------------------------|------------|--------------|----------|----------------|-------|
+| China                     | 2698       | 1442965000   | 9596961  | 76.252         | 0.768 |
+| India                     | 1620       | 1326093247   | 3287263  | 70.03          | 0.633 |
+| United States of America  | 1422       | 332278200    | 9826675  | 78.69024       | 0.921 |
+
+- **Population**
+
+On remarque que ce sont les pays avec une grande population qui sont le plus haut.
+
+Si on change le paramètre  `ORDER BY DESC(?nbDisaster)` en `ORDER BY DESC(?population)` on obtiendra les pays avec le plus grand nombre de population, voyons ce que ça donne :
+
+| countryName               | nbDisaster | population   | area     | lifeExpectancy | idh   |
+|---------------------------|------------|--------------|----------|----------------|-------|
+| China                     | 2698       | 1442965000   | 9596961  | 76.252         | 0.768 |
+| India                     | 1620       | 1326093247   | 3287263  | 70.03          | 0.633 |
+| United States of America  | 1422       | 332278200    | 9826675  | 78.69024       | 0.921 |
+
+!! On obtient la **meme chose** ! La population à alors un impact directe sur le nombre de désastre !
+
+- **IDH**
+
+On peut rajouter à la requêtes pour récupèrer les pays les plus infeceter et les trier par rapport à leurs IDH
+
+```sparql
+PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?countryName (SUM(?affected) AS ?totalAffected) ?population ?idh ((?totalAffected / ?population) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:Disaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+    
+    ?location iut:isInCountry ?country .
+    
+    ?impact rdf:type iut:HumanImpact ;
+    		iut:totalAffected ?affected .
+    
+    ?country iut:countryName ?countryName ;
+             iut:population ?population ;
+             iut:lifeExpectancy ?lifeExpectancy ;
+             iut:area ?area ;
+             iut:humanDevelopmentIndex ?idh .
+
+
+}
+GROUP BY ?countryName ?population ?idh ?area ?lifeExpectancy
+ORDER BY DESC(?ratio)
+LIMIT 10
+```
 
 
 ## 6. Visualisez les résultats de cette requête dans une application
