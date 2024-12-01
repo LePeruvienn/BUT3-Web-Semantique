@@ -3,6 +3,8 @@
 
         <section class="dropdown-section">
             <h2>Choose a Country</h2>
+            <textarea id="myTextarea" rows="5" cols="30" placeholder="Type here..."></textarea>
+
             <select [(ngModel)]="selectedCountry" (change)="onCountryChange()">
                 <option value="" disabled selected>Select a Country</option>
                 <option *ngFor="let country of listCountry" [value]="country">{{ country }}</option>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Output ,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import * as d3 from 'd3';
@@ -6,6 +6,7 @@ import * as $rdf from 'rdflib';
 import { HttpClient } from '@angular/common/http';
 import { AboutComponent } from './../about/about.component'
 import { SharedService } from '../shared.service';
+import { query } from '@angular/animations';
 
 
 @Component({
@@ -17,8 +18,16 @@ import { SharedService } from '../shared.service';
 })
 
 export class MonumentHubComponent{
+  query: string = '';
 
   constructor(private sharedService: SharedService) {}
+  
+  getText(): void {
+    const textarea = document.getElementById('myTextarea') as HTMLTextAreaElement;
+    if (textarea) {
+      this.query = textarea.value;
+    }
+  }
 
   get data(): string {
     return this.sharedService.getData();
@@ -48,20 +57,22 @@ export class MonumentHubComponent{
     this.showGraph = this.selectedCountry !== ''; // Show section if a country is selected
     if(this.showGraph){
       const n3Data = this.data
-      
-      this.queryRequestToData(n3Data)
+      this.getText();
+      this.queryRequestToData(n3Data,this.query)
       //this.createGraph();
     }
   }
 
-  queryRequestToData(n3Data: string) {
+  queryRequestToData(n3Data: string,query: string) {
     const store = $rdf.graph(); // Create an RDF graph
 
     // Parse the Turtle data into the RDF graph
     $rdf.parse(n3Data, store, 'http://example.com/base', 'text/turtle');
 
-    // get the string query
-    const query = this.getQuery();
+    if(query == ""){
+      // get the string query
+      query = this.getQuery();
+    }
 
     // Convert the SPARQL query string to a Query object
     const sparqlQuery = $rdf.SPARQLToQuery(query , false, store);
@@ -84,19 +95,33 @@ export class MonumentHubComponent{
 
   
   getQuery(): string {
+    const querynull = `
+    `;
     const query = `
+    @base <https://cours.iut-orsay.fr/qar/> .
+    PREFIX iut: <https://cours.iut-orsay.fr/qar/>
+    PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+    select ?disaster where {
+
+    ?disaster rdf:type iut:NaturalDisaster.
+    
+    }
+    `;
+    const query2 = `
     @base <http://example.com/base/> .
     PREFIX iut: <https://cours.iut-orsay.fr/qar/>
     PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
 
     SELECT DISTINCT ?monumentName
     WHERE {
-      ?country a iut:Pays ;
+      ?country a iut:Monument ;
               iut:nom ?countryName.
       FILTER(LANG(?countryName) = "en")
     }
     `;
-    return query;
+    return querynull;
   }
 
   createGraph(): void { //D3 GRAPH
