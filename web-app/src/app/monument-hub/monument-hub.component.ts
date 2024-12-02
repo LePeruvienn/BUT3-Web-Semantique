@@ -84,21 +84,13 @@ export class MonumentHubComponent{
       return;
     }
 
-    // Execute the query and collect results
-    const results: Array<{ id: number; name: string; value: number; }> = [];
-    let count = 0;
-    store.query(sparqlQuery, result => {
-      count++;
-      const id = results.length + 1; // Auto-incrementing ID
-      const name = result['?countryName'].value; // Extracted string
-      const value = Math.random() * 100; // Example integer value, replace with actual logic
-      console.log(results[count]);
-      results.push({ id, name, value });
-      console.log(`Added result: { id: ${id}, name: '${name}', value: ${value} }`);
-    });[] 
+    store.query(sparqlQuery, function(result) {
+      console.log('query ran');
+      console.log(result);
+  });
 
-    console.log(results);
-    return results;
+
+    return [];
   }
 
 
