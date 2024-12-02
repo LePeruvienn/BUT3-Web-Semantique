@@ -58,7 +58,14 @@ export class MonumentHubComponent{
     if(this.showGraph){
       const n3Data = this.data
       this.getText();
-      this.queryRequestToData(n3Data,this.query)
+      const results = this.queryRequestToData(n3Data,this.query)
+
+      if (results){
+        console.log("results")
+        console.log(results["1"])
+        console.log(results[1]["?disaster"])
+        console.log("results")
+      }
       //this.createGraph();
     }
   }
@@ -121,7 +128,7 @@ export class MonumentHubComponent{
       FILTER(LANG(?countryName) = "en")
     }
     `;
-    return querynull;
+    return query;
   }
 
   createGraph(): void { //D3 GRAPH
