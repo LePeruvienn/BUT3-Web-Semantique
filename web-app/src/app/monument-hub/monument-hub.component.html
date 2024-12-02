@@ -1,19 +1,11 @@
 <main>
     <div class="hub-container">
 
-        <section class="dropdown-section">
-            <h2>Choose a Country</h2>
-            <textarea id="myTextarea" rows="5" cols="30" placeholder="Type here..."></textarea>
-
-            <select [(ngModel)]="selectedCountry" (change)="onCountryChange()">
-                <option value="" disabled selected>Select a Country</option>
-                <option *ngFor="let country of listCountry" [value]="country">{{ country }}</option>
-              </select>
-          </section>
-
+          <button id="click" (click)="LoadData()"> Load Data </button>
+          <button id="click" (click)="showResults()"> show Graph </button>
           
           <section class="graph-section" *ngIf="showGraph">
-            <h2>Graph for {{ selectedCountry }}</h2>
+            <h2>Graph for the top contry with the most disaster</h2>
             
           </section>
           <div id="chart" class="chart">
