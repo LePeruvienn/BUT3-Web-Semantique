@@ -9,6 +9,51 @@ hub-container {
     font-family: 'Arial', sans-serif;
   }
   
+/* Style for the dropdown section container */
+.dropdown-section {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #f9f9f9; /* Light gray background */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center;
+}
+
+/* Style for the section title */
+.dropdown-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333; /* Darker text for better contrast */
+}
+
+/* Style for the dropdown */
+.dropdown {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc; /* Neutral border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #fff; /* White background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  appearance: none; /* Removes default browser styling */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Dropdown hover and focus effects */
+.dropdown:hover,
+.dropdown:focus {
+  border-color: #007bff; /* Blue border on hover/focus */
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Slightly stronger shadow */
+}
+
+/* Style for dropdown options */
+.dropdown option {
+  padding: 5px;
+  font-size: 1rem;
+}
+
   /* Style for the buttons container */
   .button-container {
     display: flex;

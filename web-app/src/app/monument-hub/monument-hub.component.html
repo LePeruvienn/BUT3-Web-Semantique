@@ -1,7 +1,15 @@
 <main>
     <div class="hub-container">
+      
+      <section class="dropdown-section">
+        <h2>Choose a request</h2>
 
-          <button id="click" (click)="LoadData()"> Load Data </button>
+        <select [(ngModel)]="selectedRequest" (change)="LoadData()">
+            <option value="" disabled selected>Select a Country</option>
+            <option *ngFor="let country of listRequest" [value]="country">{{ country }}</option>
+          </select>
+      </section>
+
           <button id="click" (click)="showResults()"> show Graph </button>
           
           <section class="graph-section" *ngIf="showGraph">

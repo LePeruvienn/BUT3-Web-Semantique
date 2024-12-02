@@ -1,136 +1,133 @@
 import { Component,Output ,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { HttpClientModule, provideHttpClient, withFetch , HttpClient } from '@angular/common/http'; // Import HttpClientModule
 import * as d3 from 'd3';
 import * as $rdf from 'rdflib';
-import { HttpClient } from '@angular/common/http';
 import { AboutComponent } from './../about/about.component'
-import { SharedService } from '../shared.service';
-import { query } from '@angular/animations';
-
+import { ChartData, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-monument-hub',
   standalone: true,
-  imports: [CommonModule, FormsModule], 
+  imports: [CommonModule, FormsModule, HttpClientModule], 
   templateUrl: './monument-hub.component.html',
   styleUrls: ['./monument-hub.component.css'],
 })
 
 
 export class MonumentHubComponent{
-  query: string = '';
-  _results: any[] = [];
-  _parseData: { Country: string; Value: string }[] = []; 
+    listRequest: string[] = ['Pays avec le plus de désastre', '.', '.', '.', '.'];
+    selectedRequest: string = '';
+    listQuery: string[] = [ `
+      PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX wd: <http://www.wikidata.org/entity/>
+      PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+      PREFIX wikibase: <http://wikiba.se/ontology#>
+      
+      select ?countryName (COUNT(?disaster) AS ?nbPays) where {
+      
+        ?disaster rdf:type iut:Disaster;
+          iut:occuredIn ?location .
+        
+        ?location iut:isInCountry ?country .
+        ?country iut:countryName ?countryName
+          
+      } 
+      GROUP BY ?country ?countryName
+      ORDER BY DESC (?nbPays)
+      LIMIT 5
+      `, '.', '.', '.', '.'];
+    selectedQuery: string = '';
+    
   listCountryData = [
     {Country: "", Value: 0},
   ];
   showGraph: boolean = false; // Controls the visibility of the section
+  public chartData: ChartData<'bar'> = {
+    labels: [], // dynamic labels from SPARQL query
+    datasets: [
+      {
+        label: 'Number of Courses',
+        data: [], // dynamic data from SPARQL query
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+      }
+    ]
+  };
 
+  public chartOptions: ChartOptions = {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  };
   private metric: string = "absolute"; // "absolute" or "percentage"
   private width: number = 800; // Chart width
 
-
-  constructor(private sharedService: SharedService) {}
-
-  get data(): string {
-    return this.sharedService.getData();
-  }
-  
-  getText(): void {
-    const textarea = document.getElementById('myTextarea') as HTMLTextAreaElement;
-    if (textarea) {
-      this.query = textarea.value;
-    }
-  }
+  constructor(private http: HttpClient) {}
 
   LoadData() {
-    const n3Data = this.data
-    this.getText();
-    this.queryRequestToData(n3Data,this.query)
+    console.log ("SHOW RESULTS")
+    this.getResponseMessage()
+    this.queryRequestToGraphDB()
   }
 
   showResults(): void {
-    console.log ("SHOW RESULTS")
-    this.parseDataForGraph()
     this.createGraph();
   }
 
-  parseDataForGraph(){
-    this._results.forEach(result => {
-      const countryName = result["?countryName"]?.value;
-      
-      // Vérifie si le pays existe déjà dans listCountryData
-      const country = this.listCountryData.find(item => item.Country === countryName);
-      
-      if (country) {
-        // Si le pays existe, on incrémente sa valeur
-        country.Value += 1;
-      } else if (countryName) {
-        // Si le pays n'existe pas, on l'ajoute avec une valeur par défaut (par exemple, 1)
-        this.listCountryData.push({ Country: countryName, Value: 1 });
-      }
-    });
-    // Tri de la liste par valeur décroissante et garde seulement les 20 premiers pays
-    this.listCountryData = this.listCountryData
-    .sort((a, b) => b.Value - a.Value)
-    .slice(0, 10);  // Garde les 20 premiers éléments
-    console.log(this.listCountryData)
-
+  getResponseMessage(): string {
+    switch (this.selectedRequest) {
+      case 'Pays avec le plus de désastre':
+        return this.selectedQuery = this.listQuery[0];
+      case 'Request 2':
+        return 'This is the second request. Great choice!';
+      case 'Request 3':
+        return 'Ah, the third request, an excellent pick!';
+      default:
+        return 'Please select a valid request.';
+    }
   }
 
-  queryRequestToData(n3Data: string,query: string) {
-    const store = $rdf.graph(); // Create an RDF graph
+  queryRequestToGraphDB(): void {
+    const endpointUrl = 'http://localhost:7200/repositories/ProjectS5';
+    const sparqlQuery = this.selectedQuery;
+    console.log(sparqlQuery)
 
-    // Parse the Turtle data into the RDF graph
-    $rdf.parse(n3Data, store, 'http://example.com/base', 'text/turtle');
+    this.http.get(`${endpointUrl}?query=${encodeURIComponent(sparqlQuery)}`, {
+      headers: {
+        'Accept': 'application/sparql-results+json',
+        'Content-Type': 'application/sparql-results+json'
+      }
+    }).subscribe(
+      (data: any) => {
+        this.chartData.labels = []; // Reset labels
+        this.chartData.datasets[0].data = []; // Reset data
 
-    if(query == ""){
-      // get the string query
-      query = this.getQuery();
-    }
-
-    // Convert the SPARQL query string to a Query object
-    const sparqlQuery = $rdf.SPARQLToQuery(query , false, store);
-
-    //verif the query not empty
-    if (!sparqlQuery) {
-      console.error('Invalid SPARQL query.');
-      return;
-    }
-    
-    const results: any[] = [];
-    store.query(sparqlQuery, function(result) {
-      console.log('query ran');
-      results.push(result);
-     });
-
-    this._results = results;
+        // Populate chart with fetched results
+        data.results.bindings.forEach((val: any) => {
+          if(this.chartData.labels)
+            this.chartData.labels.push(val.teacher); 
+          this.chartData.datasets[0].data.push(parseInt(val.nbr_courses, 10)); // Add course counts to data
+        });
+         this.listCountryData = data.results.bindings.map((binding: { countryName: { value: any; }; nbPays: { value: string; }; }) => ({
+          Country: binding.countryName.value,
+          Value: parseInt(binding.nbPays.value, 10),
+        }));
+        console.log(data);
+        console.log(this.listCountryData);
+      },
+      error => {
+        console.error('Error fetching data from GraphDB:', error);
+      }
+    );
   }
   
-  getQuery(): string {
-    const query = `
-    @base <https://cours.iut-orsay.fr/qar/> .
-    PREFIX iut: <https://cours.iut-orsay.fr/qar/>
-    PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
-    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-
-    select ?countryName (COUNT(?disaster) AS ?nbPays) where {
-
-    ?disaster rdf:type iut:NaturalDisaster;
-    	        iut:occuredIn ?location .
-    ?location iut:isInCountry ?country .
-    ?country iut:countryName ?countryName .
-    
-    }
-    GROUP BY ?country ?countryName
-    ORDER BY DESC (?nbPays)
-    LIMIT 10
-    `;
-    return query;
-  }
-
   createGraph(): void { //D3 GRAPH
 
     const data = this.listCountryData.map(d => ({
@@ -164,7 +161,8 @@ export class MonumentHubComponent{
     .attr("viewBox", [0, 0, width, height])
     .attr("width", width)
     .attr("height", height)
-    .attr("style", "max-width: 100%; height: auto;");
+    .attr("style", "max-width: 100%; height: auto;")
+    .attr("class", "child"); 
 
   // Append the bars.
   svg.append("g")
@@ -192,10 +190,14 @@ export class MonumentHubComponent{
 
 
     // Select the container (with id="chart") and ensure it's available
-    const container = d3.select("#chart").node() as HTMLElement | null;
+    const container = d3.select("#chart").node() as HTMLElement;
     
     if (container) {
       // Append the SVG node to the container
+      const child = d3.select("#child").node() as HTMLElement;
+      if (child){
+        container.removeChild(child);
+      }
       container.appendChild(svg.node()!);
     } else {
       console.error("Element with id 'chart' not found.");
