@@ -10,8 +10,8 @@ import { ChartData, ChartOptions } from 'chart.js';
 
 @Component({
   selector: 'app-about',
-  standalone: true,  
-  imports: [CommonModule, FormsModule, HttpClientModule], 
+  standalone: true,
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
@@ -23,10 +23,71 @@ export class AboutComponent {
     this.router.navigate(['/monument-hub'])
   }
 
+  listStrings: string[] = [
+    `PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+CONSTRUCT {
+    ?country iut:population ?population ;
+             iut:lifeExpectancy ?lifeExpectancy ;
+             iut:area ?area ;
+             iut:humanDevelopmentIndex ?idh ;
+             iut:gdp ?gdp .
+} WHERE {
+    # Partie GraphDB
+    {
+        SELECT ?country ?alpha3Code WHERE {
+            ?country rdf:type iut:Country ;
+                     iut:code ?alpha3Code .
+        }
+    }
+
+    # Partie Wikidata
+    SERVICE <https://query.wikidata.org/sparql> {
+        ?wikidataCountry wdt:P298 ?alpha3Code ;
+             wdt:P1082 ?population ;
+             wdt:P2250 ?lifeExpectancy ;
+             wdt:P2046 ?area ;
+             wdt:P1081 ?idh ;
+             wdt:P8744/wdt:P2131 ?gdp .
+    }
+}`,
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT {
+  ?region iut:population ?population ;
+      iut:area ?area .
+} WHERE {
+  # Partie GraphDB
+  {
+      SELECT ?region ?regionName WHERE {
+          ?region rdf:type iut:Region ;
+                  iut:regionName ?regionName .
+      }
+  }
+
+  # Partie Wikidata
+  SERVICE <https://query.wikidata.org/sparql> {
+      ?continent wdt:P31 wd:Q5107 ;
+                 rdfs:label ?continentLabel ;
+                 wdt:P1082 ?population ;
+             wdt:P2046 ?area .
+
+    FILTER(str(?regionName) = str(?continentLabel))
+  }
+}`
+  ]
+
   selectedRequest: number = 0;
 
-  listQuery: string[] = [ 
-    `PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/> 
+  listQuery: string[] = [
+    `PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
@@ -39,8 +100,8 @@ select ?name (COUNT(?disaster) AS ?nb) where {
 
 ?location iut:isInCountry ?country .
 ?country iut:countryName ?name
-  
-} 
+
+}
 GROUP BY ?country ?name
 ORDER BY DESC (?nb)
 LIMIT 5
@@ -56,12 +117,12 @@ select ?name (COUNT(?disaster) AS ?nb) where {
 
   ?disaster rdf:type iut:Disaster;
     iut:occuredIn ?location .
-  
+
   ?location iut:isInCountry ?country .
   ?country iut:isInRegion ?region .
   ?region iut:regionName ?name .
-  
-} 
+
+}
 GROUP BY ?region ?name
 ORDER BY DESC (?nb)`,//1 case `Continents avec le plus de désastre`:
 
@@ -72,19 +133,19 @@ PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 PREFIX wikibase: <http://wikiba.se/ontology#>
 
 select ?name ?nb where {
-  
+
 # On récupère le code des pays et leurs noms
   ?s rdf:type iut:Country ;
     iut:code ?alpha ;
     iut:countryName ?name .
-  
+
   # partie de la requête executé sur Wikidata
   SERVICE <https://query.wikidata.org/bigdata/namespace/wdq/sparql> {
       ?pays wdt:P31 wd:Q3624078 ;
         wdt:P298 ?alpha ;
           wdt:P2250 ?nb .
   }
-  
+
 } limit 10`, //2 case `Espérance de vie`:
 
 `PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
@@ -95,12 +156,12 @@ WHERE {
   ?disaster rdf:type iut:Disaster ;
             iut:occuredIn ?location ;
             iut:hasImpact ?impact .
-  
+
   ?location iut:isInCountry ?country .
-  
+
   ?impact rdf:type iut:HumanImpact ;
           iut:totalAffected ?affected .
-  
+
   ?country iut:countryName ?name ;
            iut:population ?population .
 
@@ -115,7 +176,7 @@ LIMIT 6`,//3 case `Pays les plus affecter par les desastres`:
 ``,
 ];//3
   selectedQuery: string = '';
-  
+
 listCountryData = [
   {Country: "", Value: 0},
 ];
@@ -175,10 +236,10 @@ queryRequestToGraphDB(): void {
       this.chartData.datasets[0].data = []; // Reset data
 
       // Populate chart with fetched results
-      
+
       data.results.bindings.forEach((val: any) => {
         if(this.chartData.labels)
-          this.chartData.labels.push(val.teacher); 
+          this.chartData.labels.push(val.teacher);
         this.chartData.datasets[0].data.push(parseInt(val.nbr_courses, 10)); // Add course counts to data
       });
        this.listCountryData = data.results.bindings.map((binding: { name: { value: any; }; nb: { value: string; }; }) => ({
@@ -228,7 +289,7 @@ const svg = d3.create("svg")
   .attr("width", width)
   .attr("height", height)
   .attr("style", "max-width: 100%; height: auto;")
-  .attr("class", "child"); 
+  .attr("class", "child");
 
 // Append the bars.
 svg.append("g")

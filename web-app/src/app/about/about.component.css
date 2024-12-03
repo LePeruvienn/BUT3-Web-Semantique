@@ -1,51 +1,140 @@
-/* General styles */
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-/* Header styles */
-header {
-    background: #0073e6;
-    color: #fff;
-    padding: 20px 10px;
-    text-align: center;
-}
-
-/* Main content styles */
 main {
-    padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 
-section {
-    margin-bottom: 20px;
+/* General Reset */
+main {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 20px;
+  color: #333;
+  background-color: #f8f9fa;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 2rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
 }
 
 h2 {
-    color: #0073e6;
-    border-bottom: 2px solid #0073e6;
-    padding-bottom: 5px;
+  font-size: 1.75rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
 }
 
-.question-answer {
-    margin: 10px 0;
+h3 {
+  font-size: 1.5rem;
 }
 
-.question-answer h3 {
-    color: #0056b3;
+h4 {
+  font-size: 1.25rem;
 }
 
-/* Footer styles */
-footer {
-    text-align: center;
-    background: #333;
-    color: #fff;
-    padding: 10px 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
+h5, h6 {
+  font-size: 1rem;
+}
+
+/* Paragraphs and Text */
+p {
+  margin: 10px 0;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+/* Links */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+  margin: 10px 0 10px 20px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+/* Blockquotes */
+blockquote {
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+  border-left: 5px solid #007bff;
+  font-style: italic;
+  color: #555;
+}
+
+/* Code and Preformatted Text */
+code {
+
+  background-color: white;
+  border: solid 1px #e0e0e0;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.95rem;
+}
+
+pre {
+  background-color: white;
+  border: solid 1px #e0e0e0;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.95rem;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Horizontal Rule */
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
 }
