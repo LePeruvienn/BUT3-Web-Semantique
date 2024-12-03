@@ -1,31 +1,535 @@
 <main>
-    <section id="project-overview">
-        <h2>About the Project</h2>
-        <p>
-            Our project is designed to [brief description of the purpose or goals]. 
-            It is built using [technologies/tools used] and aims to [main objective or problem solved].
-        </p>
-        <button (click)="NaviagatetoMonument()" >Naviagate to graph for the Monument </button>
-      
-    </section>
-    
-    <section id="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div class="question-answer">
-            <h3>1. What is the main goal of the project?</h3>
-            <p>The main goal is to [answer here].</p>
-        </div>
-        <div class="question-answer">
-            <h3>2. Who is the target audience?</h3>
-            <p>Our target audience includes [answer here].</p>
-        </div>
-        <div class="question-answer">
-            <h3>3. What technologies are used?</h3>
-            <p>We used [list technologies here].</p>
-        </div>
-        <div class="question-answer">
-            <h3>4. How can I contribute or participate?</h3>
-            <p>You can contribute by [explain contribution process].</p>
-        </div>
-    </section>
-  </main>
+  <h1 id="but3-projet-web-s-mantique">BUT3 Projet Web Sémantique</h1>
+  <h2 id="1-trouver-une-question-int-ressante-laquelle-r-pondre-">1. Trouver une question intéressante à laquelle répondre.</h2>
+  <p>Après avoir receuilli des donnés depuis le site internet <a href="https://ourworldindata.org/natural-disasters">ourworldindata</a> sur les différentes catastrophes naturelles nous nous somme poser une grandre question centrale :</p>
+  <ul>
+     <li>
+        <h3 id="quelles-sont-les-pays-les-plus-impact-par-les-catastrophes-naturelle-et-technologique-">Quelles sont les pays les plus impacté par les catastrophes naturelle et technologique ?</h3>
+     </li>
+  </ul>
+  <p>Grace à cette grande questions nous pourrons, répondre notamment à plusieurs question secondaires, comme par exemple :</p>
+  <ul>
+     <li>
+        <p><strong>Quelles sont les pays les plus affecter humainement par ces désastre ?</strong></p>
+        <ul>
+           <li>Pour les catastrophe naturelle et technologique</li>
+           <li>Par rapport au nombre de personne personne affecté</li>
+           <li>Par rapport au nombre de décès</li>
+        </ul>
+     </li>
+     <li>
+        <p><strong>Quelles sont les pays qui sont le plus touché par les désastres économiquement?</strong></p>
+        <ul>
+           <li>Pour les catastrophe naturelle et technologique</li>
+           <li>Par rapport à leurs PIB</li>
+        </ul>
+     </li>
+     <li>
+        <p><strong>Quelles sont les paramètres géographique, humain et économique qui influe le nombre de désastre dans un pays ?</strong></p>
+        <ul>
+           <li>Pour les catastrophe naturelle et technologique</li>
+           <li>Nombre de catastrophe par rapport à la population</li>
+           <li>Nombre de catastrophe par rapport à la taille du pays</li>
+           <li>Nombre de catastrophe par rapport l&#39;indice de développement humain</li>
+        </ul>
+     </li>
+  </ul>
+  <h2 id="2-cr-ez-une-ontologie-pour-d-crire-le-domaine-">2. Créez une ontologie pour décrire le domaine.</h2>
+  <p>Pour le projet nous avons utilisé le logicielle <strong>Protégé</strong> qui nous as permit de créer notre ontologie. Si vous souhaitez directement allez consulter les données, vous pouvez allez voir le fichier <a href="https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/ontologie.ttl">ontologie.ttl</a>.</p>
+  <h3 id="description-des-donn-es">Description des données</h3>
+  <p>Voici les préfix utilisé pour cette ontologie</p>
+  <pre><code class="lang-turtle"><span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">iut</span>: &lt;<span class="hljs-attribute">https</span>:<span class="hljs-comment">//cours.iut-orsay.fr/npbd/&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">dis</span>: &lt;<span class="hljs-attribute">https</span>:<span class="hljs-comment">//cours.iut-orsay.fr/npbd/disaster/&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">cou</span>: &lt;<span class="hljs-attribute">https</span>:<span class="hljs-comment">//cours.iut-orsay.fr/npbd/country/&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">reg</span>: &lt;<span class="hljs-attribute">https</span>:<span class="hljs-comment">//cours.iut-orsay.fr/npbd/region/&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">loc</span>: &lt;<span class="hljs-attribute">https</span>:<span class="hljs-comment">//cours.iut-orsay.fr/npbd/location/&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">imp</span>: &lt;<span class="hljs-attribute">https</span>:<span class="hljs-comment">//cours.iut-orsay.fr/npbd/impact/&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">dat</span>: &lt;<span class="hljs-attribute">https</span>:<span class="hljs-comment">//cours.iut-orsay.fr/npbd/date/&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">frm</span>: &lt;<span class="hljs-attribute">https</span>:<span class="hljs-comment">//cours.iut-orsay.fr/npbd/forme/&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">rdf</span>: &lt;<span class="hljs-attribute">http</span>:<span class="hljs-comment">//www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">rdfs</span>: &lt;<span class="hljs-attribute">http</span>:<span class="hljs-comment">//www.w3.org/2000/01/rdf-schema#&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">xsd</span>: &lt;<span class="hljs-attribute">http</span>:<span class="hljs-comment">//www.w3.org/2001/XMLSchema#&gt; .</span>
+  <span class="hljs-variable">&commat;prefix</span> <span class="hljs-attribute">geo</span>: &lt;<span class="hljs-attribute">http</span>:<span class="hljs-comment">//www.opengis.net/ont/geosparql#&gt;.</span>
+  </code></pre>
+  <p>Définition des différentes classes et leurs propriétées</p>
+  <h3 id="-iut-disaster-d-sastre-"><code>iut:Disaster</code> (Désastre)</h3>
+  <p>Cette classe as pour but de modéliser une catastrophe qui c&#39;est produit dans le monde</p>
+  <p><strong>Sous-classes</strong></p>
+  <ul>
+     <li><code>iut:NaturalDisaster</code> (Désastre Nautrelle)</li>
+     <li><code>iut:TechnologicalDisaster</code> (Désastre Technologique)</li>
+  </ul>
+  <p><strong>Propriétées</strong></p>
+  <ul>
+     <li><code>iut:code</code> (Code unique du désastre)</li>
+     <li><code>iut:eventName</code> (Nom données à cette évenement)</li>
+     <li><code>iut:disasterGroup</code> (Groupe lié à cette catastrophe)</li>
+     <li><code>iut:disasterType</code> (Type de la catastrophe)</li>
+     <li><code>iut:occuredIn</code> (Lieu d&#39;une catastrophe)</li>
+     <li><code>iut:hasImpact</code> (Impacte d&#39;un catastrophe)</li>
+     <li><code>iut:eventDate</code> (Période du désastre)</li>
+     <li><code>iut:magnitude</code> (Magnitude de l&#39;évenement)</li>
+     <li><code>iut:magnitudeScale</code> (Echelle de la magnitude)</li>
+  </ul>
+  <h3 id="-iut-location-lieu-du-d-sastre-"><code>iut:Location</code> (Lieu du désastre)</h3>
+  <p>Lieu ou c&#39;est dérouler la catastrophe</p>
+  <p><strong>Propriétées</strong></p>
+  <ul>
+     <li><code>iut:adress</code> (Adresse exacte du lieu)</li>
+     <li><code>iut:isInCountry</code> (Pays dans lequel se trouve le lieu)</li>
+     <li><code>iut:latitude</code> (Latitude de la catastrophe)</li>
+     <li><code>iut:longitude</code> (longitude de la catastrophe)</li>
+     <li><code>geo:hasGeometry</code> (Forme GeoSPARQL de l&#39;évenement)</li>
+  </ul>
+  <h3 id="-iut-impact-impact-d-un-venement-"><code>iut:Impact</code> (Impact d&#39;un évenement)</h3>
+  <p>Impact que le désastre à eu sur le monde</p>
+  <p><strong>Sous-classes</strong></p>
+  <ul>
+     <li>
+        <p><code>iut:HumanImpact</code> (Impact humain du désastre)</p>
+        <ul>
+           <li>
+              <em>Propriétées</em>
+              <ul>
+                 <li><code>iut:totalDeath</code> (Nombre total de personne morte)</li>
+                 <li><code>iut:noInjured</code> (Nombre de personne bléssés)</li>
+                 <li><code>iut:noAffected</code> (Nombre de personne affectées directement de ou indirectement)</li>
+                 <li><code>iut:noHomeless</code> (Nombre de personne à la rue du à la castrophe)</li>
+                 <li><code>iut:totalAffected</code> (Nombre total de personne affectées)</li>
+              </ul>
+           </li>
+        </ul>
+     </li>
+     <li>
+        <p><code>iut:EconomicImpact</code> (Impact économique du désastre)</p>
+        <ul>
+           <li>
+              <em>Propriétées</em>
+              <ul>
+                 <li><code>iut:totalDamage</code> (Dommages économique totaux)</li>
+                 <li><code>iut:reconstructionCost</code> (Coût estimé pour la reconstruction)</li>
+              </ul>
+           </li>
+        </ul>
+     </li>
+  </ul>
+  <h3 id="-iut-date-date-d-un-vement-"><code>iut:Date</code> (Date d&#39;un évement)</h3>
+  <p>Date et duration d&#39;un évenement</p>
+  <p><strong>Propriétées</strong></p>
+  <ul>
+     <li><code>iut:startYear</code> (Année ou l&#39;éveneent à débuté)</li>
+     <li><code>iut:startMonth</code> (Mois ou l&#39;évenemnt à débuté)</li>
+     <li><code>iut:startDay</code> (Jour ou l&#39;évenement à débuté)</li>
+     <li><code>iut:endYear</code> (Année ou l&#39;éveneent à terminé)</li>
+     <li><code>iut:endMonth</code> (Mois ou l&#39;évenemnt à terminé)</li>
+     <li><code>iut:endDay</code> (Jour ou l&#39;évenement à terminé)</li>
+  </ul>
+  <h3 id="-iut-country-pays-"><code>iut:Country</code> (Pays)</h3>
+  <p>Pays ou s&#39;est dérouler l&#39;évenement</p>
+  <p><strong>Propriétées</strong></p>
+  <ul>
+     <li><code>iut:code</code> (Code unique du pays)</li>
+     <li><code>iut:countryName</code> (Nom du pays)</li>
+     <li><code>iut:isInRegion</code> (Nom de la région dans lequel est le pays)</li>
+     <li><code>iut:population</code> (Nombre de personne vivant dans le pays)</li>
+     <li><code>iut:lifeExpectancy</code> (Espérance de vie dans le pays)</li>
+     <li><code>iut:area</code> (Taille de la surface du pays en km2)</li>
+     <li><code>iut:humanDevelopmentIndex</code> (Indice de développement humain du pays)</li>
+     <li><code>iut:gdp</code> (PIB du pays)</li>
+  </ul>
+  <h3 id="-iut-region-continent-"><code>iut:Region</code> (Continent)</h3>
+  <p>Région ou s&#39;est dérouler l&#39;évenement</p>
+  <p><strong>Propriétées</strong></p>
+  <ul>
+     <li><code>iut:code</code> (Code unique de la région)</li>
+     <li><code>iut:RegionName</code> (Nom de la région)</li>
+     <li><code>iut:population</code> (Nombre de personne vivant dans la région)</li>
+     <li><code>iut:area</code> (Taille de la surface de la région en km2)</li>
+  </ul>
+  <h2 id="3-convertissez-l-ensemble-de-donn-es-tabulaires-en-rdf-et-t-l-chargez-le-fichier-rdf-dans-graphdb-">3. Convertissez l&#39;ensemble de données tabulaires en RDF et téléchargez le fichier RDF dans GraphDB.</h2>
+  <p><strong>Configuration des données</strong></p>
+  <p>Après avoir receuilli les données je les ai mit dans OntoRefine et commencer à le <em>RDF mapping</em>. Durant mon <em>RDF mapping</em>, j&#39;ai du utilisé l&#39;outil <em>GREL</em> de OntoRefine pour ajoutez des conditionnel à mes données, par exempe avec la classe <code>NaturalDisaster</code> et <code>TechnologicalDisaster</code>, mais aussi pour pouvoir convertir mes proritété <code>latitude</code> et <code>longitude</code> en point <em>GeoSPARQL</em>.</p>
+  <ul>
+     <li><em>GREL</em> pour mettre le type du triplet en <code>NaturalDisaster</code> ou <code>TechnologicalDisaster</code> dépandant de son type de désastre.</li>
+  </ul>
+  <pre><code class="lang-GREL"><span class="hljs-keyword">if</span>(<span class="hljs-keyword">value</span> == <span class="hljs-string">"Natural"</span>, <span class="hljs-string">"NaturalDisaster"</span>, <span class="hljs-keyword">if</span>(<span class="hljs-keyword">value</span> == <span class="hljs-string">"Technological"</span>, <span class="hljs-string">"TechnologicalDisaster"</span>, <span class="hljs-string">"iut:Disaster"</span>))
+  </code></pre>
+  <ul>
+     <li><em>GREL</em> pour convertir les propritété de <code>latitude</code> et <code>longitude</code> en point <em>GeoSPARQL</em></li>
+  </ul>
+  <pre><code class="lang-GREL">if(<span class="hljs-name">isNotNull</span>(<span class="hljs-name">cells</span>[<span class="hljs-string">"Latitude"</span>].value) <span class="hljs-symbol">&amp;&amp;</span> isNotNull(<span class="hljs-name">cells</span>[<span class="hljs-string">"Longitude"</span>].value), <span class="hljs-string">"Point("</span> + cells[<span class="hljs-string">"Latitude"</span>].value + <span class="hljs-string">" "</span> + cells[<span class="hljs-string">"Longitude"</span>].value + <span class="hljs-string">")"</span>)
+  </code></pre>
+  <p>Vous pouvez consultez ma configuration du RDF mapping avec le fichier <a href="https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/mapping.json">mapping.json</a>.</p>
+  <p><strong>Exportation des données</strong></p>
+  <p>Ensuite j&#39;ai converti les données en RDF. Vous pouvez consultez les données dans le fichier <a href="https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/triples.ttl">triples.ttl</a>.</p>
+  <p>J&#39;ai ensuite alors importez mes données dans <strong>GraphDB</strong> et continuer la suite du projet ...</p>
+  <h2 id="4-utilisez-sparql-pour-lier-les-entit-s-au-graphe-de-connaissances-externe">4. Utilisez SPARQL pour lier les entités au graphe de connaissances externe</h2>
+  <h3 id="-construct-"><code>CONSTRUCT</code></h3>
+  <p>Nous allons d&#39;abord effectuer des requêtes <em>CONSTRUCT</em> pour observer les résulstats des requêtes sur notre graph</p>
+  <h4 id="lier-les-donn-es-des-pays-de-wikidata-nos-donn-es-locales">Lier les données des pays de wikidata à nos données locales</h4>
+  <p>Listes des données récupérer par <strong>WikiData</strong> :</p>
+  <ul>
+     <li><code>population</code> : Nombre de personne vivant dans le pays</li>
+     <li><code>lifeExpectancy</code> : Espérance de vie dans le pays</li>
+     <li><code>area</code> : Taille de la surface du pays en km2</li>
+     <li><code>humanDevelopmentIndex</code> : Indice de développement humain du pays</li>
+     <li><code>gdp</code> : PIB du pays</li>
+  </ul>
+  <p><strong>Requête</strong> :</p>
+  <pre><code class="lang-sparql">  COOOODE  </code></pre>
+  <h4 id="lier-les-donn-es-des-r-gions-de-wikidata-nos-donn-es-locales">Lier les données des régions de wikidata à nos données locales</h4>
+  <p>Listes des données récupérer par <strong>WikiData</strong> :</p>
+  <ul>
+     <li><code>population</code> : Nombre de personne vivant dans le continent</li>
+     <li><code>area</code> : Taille de la surface du continent en km2</li>
+  </ul>
+  <p><strong>Requête</strong> :</p>
+  <pre><code class="lang-sparql"> CODE </code></pre>
+  <pre><code> COODE
+  </code></pre> <pre><code> CODE </code></pre>
+  <h2 id="5-r-pondez-la-question-d-crite-l-tape-1-">5. Répondez à la question décrite à l&#39;étape 1.</h2>
+  <h3 id="quelles-sont-les-pays-les-plus-affecter-humainement-par-ces-d-sastre-">Quelles sont les pays les plus affecter humainement par ces désastre ?</h3>
+  <ul>
+     <li>Pour les catastrophe naturelle et technologique</li>
+     <li>Par rapport au nombre de personne personne affecté</li>
+     <li>Par rapport au nombre de décès</li>
+  </ul>
+  <h4 id="requ-te-de-base">Requête de base</h4>
+  <p>Voici la requête de base, on fera varier les paramêtres pour répondre à tout.</p>
+  <ul>
+     <li>
+        <p>On fera varier le <code>rdf:type</code> de <code>?disaster</code> en fonction de si on veut une catastrophe naturelle ou technologique.</p>
+     </li>
+     <li>
+        <p>On fera varier la propritété <code>iut:totalAffected</code> de <code>?impact</code> en <code>iut:totalDeath</code>, en fonction de si on veut le nombre de mort ou le nombre total de personne affecté</p>
+     </li>
+  </ul>
+  <p><em>Exemple pour le nombre de personne affecté pour tout désastre confondu</em></p>
+  <pre><code class="lang-sparql"> COOOO DE </code></pre>
+  <p><strong>En Général</strong> : </p>
+  <ul>
+     <li>Pour le nombre de personne affectées</li>
+  </ul>
+  <table>
+     <thead>
+        <tr>
+           <th>countryName</th>
+           <th>totalAffected</th>
+           <th>population</th>
+           <th>ratio</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+           <td>Vanuatu</td>
+           <td>1073374</td>
+           <td>300019</td>
+           <td>3.577686746506054616540952</td>
+        </tr>
+        <tr>
+           <td>Micronesia (Federated States of)</td>
+           <td>270062</td>
+           <td>105544</td>
+           <td>2.558762222390661714545592</td>
+        </tr>
+        <tr>
+           <td>Cuba</td>
+           <td>24231034</td>
+           <td>10985974</td>
+           <td>2.205633656151015831641327</td>
+        </tr>
+     </tbody>
+  </table>
+  <p>! <strong>Vanatu</strong> est loin devant avec plus de 3 fois sa population actuelles, qui as été affecté par des catastrophes.</p>
+  <ul>
+     <li>Pour le nombre de personne décèdées</li>
+  </ul>
+  <table>
+     <thead>
+        <tr>
+           <th>countryName</th>
+           <th>totalDeaths</th>
+           <th>population</th>
+           <th>ratio</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+           <td>Haiti</td>
+           <td>241267</td>
+           <td>10981229</td>
+           <td>0.021970855903287327857383</td>
+        </tr>
+        <tr>
+           <td>Libya</td>
+           <td>18305</td>
+           <td>6678567</td>
+           <td>0.002740857432440222580682</td>
+        </tr>
+        <tr>
+           <td>Myanmar</td>
+           <td>141746</td>
+           <td>53370609</td>
+           <td>0.002655881254793251469175</td>
+        </tr>
+     </tbody>
+  </table>
+  <p>! <strong>Haiti</strong> est loin devant avec plus de <strong>2%</strong> de sa population actuelle qui est morte lors de catastrophes.</p>
+  <p><strong>Pour les catastrophe naturelle</strong> :</p>
+  <ul>
+     <li>Le résultats <strong>ne change pas</strong> par rapport à en <strong>général</strong></li>
+  </ul>
+  <p><strong>Pour les catastrophe technologique</strong> :</p>
+  <ul>
+     <li>Pour le nombre de personne affectées</li>
+  </ul>
+  <table>
+     <thead>
+        <tr>
+           <th>countryName</th>
+           <th>totalAffected</th>
+           <th>population</th>
+           <th>ratio</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+           <td>Maldives</td>
+           <td>215886</td>
+           <td>436330</td>
+           <td>0.494776889051864414548621</td>
+        </tr>
+        <tr>
+           <td>Lebanon</td>
+           <td>306174</td>
+           <td>6100075</td>
+           <td>0.050191841903583152666156</td>
+        </tr>
+        <tr>
+           <td>Panama</td>
+           <td>81949</td>
+           <td>4098587</td>
+           <td>0.019994451746418948774297</td>
+        </tr>
+     </tbody>
+  </table>
+  <p>! Les <strong>Maldives</strong> sont loin devant avec <strong>la moitié</strong> de sa population qui as été affecté par des catastrophe technologique.</p>
+  <ul>
+     <li>Pour le nombre de personne décèdées</li>
+  </ul>
+  <table>
+     <thead>
+        <tr>
+           <th>countryName</th>
+           <th>totalDeath</th>
+           <th>population</th>
+           <th>ratio</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+           <td>Tuvalu</td>
+           <td>18</td>
+           <td>11792</td>
+           <td>0.001526458616010854816825</td>
+        </tr>
+        <tr>
+           <td>Libya</td>
+           <td>5085</td>
+           <td>6678567</td>
+           <td>0.000761390879211064289690</td>
+        </tr>
+        <tr>
+           <td>Gambia</td>
+           <td>1914</td>
+           <td>2639916</td>
+           <td>0.000725023068915829140018</td>
+        </tr>
+     </tbody>
+  </table>
+  <p>! <strong>Tuvalu</strong> loin devant avec <strong>0.15%</strong> de sa population acutelle morte dans des catastrophe technologique.</p>
+  <h4 id="conclusion">Conclusion</h4>
+  <p>Les pays les plus affecté humainement sont ceux par des catastrophes <strong>naturelle</strong>. Les catastrophea <strong>technologique</strong> ont moins d&#39;impact, sauf pour les <strong>Maldives</strong> dans lequels il représente <strong>la moitée</strong> de la population.</p>
+  <p>Sinon les 2 pays les plus affecté humainenemnt sont <strong>Haiti</strong> et <strong>Vanatu</strong>.</p>
+  <h3 id="quelles-sont-les-pays-qui-sont-le-plus-touch-par-les-d-sastres-conomiquement-">Quelles sont les pays qui sont le plus touché par les désastres économiquement?</h3>
+  <ul>
+     <li>Pour les catastrophe naturelle et technologique</li>
+     <li>Par rapport à leurs PIB</li>
+  </ul>
+  <h4 id="requ-te-de-base">Requête de base</h4>
+  <p>Voici la requête de base, on fera varier les paramêtres pour répondre à tout.</p>
+  <ul>
+     <li>On fera varier le <code>rdf:type</code> de <code>?disaster</code> en fonction de si on veut une catastrophe naturelle ou technologique.</li>
+  </ul>
+  <pre><code class="lang-sparql"> COOODE  </code></pre>
+  <p><strong>En Général</strong> : </p>
+  <table>
+     <thead>
+        <tr>
+           <th>countryName</th>
+           <th>totalDamage</th>
+           <th>gdp</th>
+           <th>ratio</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+           <td>Dominica</td>
+           <td>1958810</td>
+           <td>562540740.740741</td>
+           <td>0.003482076689095767590526</td>
+        </tr>
+        <tr>
+           <td>Haiti</td>
+           <td>12484591</td>
+           <td>8408150517.97684</td>
+           <td>0.001484820112735568470685</td>
+        </tr>
+        <tr>
+           <td>Grenada</td>
+           <td>1319000</td>
+           <td>1118816679.40741</td>
+           <td>0.001178924147518625357443</td>
+        </tr>
+     </tbody>
+  </table>
+  <p>! On voit que la <strong>Dominique</strong> est 3 fois plus grandes que les 2 autres. C&#39;est elle est qui est le plus touché économiquement. Avec <strong>0.3%</strong> de son PIB qui équivaut au dégats subit par des catastrophe naturelle.</p>
+  <p><strong>Pour les catastrophes naturelle</strong> : </p>
+  <ul>
+     <li>Meme chose que pour <strong>En Général</strong>.</li>
+  </ul>
+  <p><strong>Pour le catastrophes technologique</strong> : </p>
+  <table>
+     <thead>
+        <tr>
+           <th>countryName</th>
+           <th>totalDamage</th>
+           <th>gdp</th>
+           <th>ratio</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+           <td>Lebanon</td>
+           <td>15000000</td>
+           <td>51844487742.0232</td>
+           <td>0.000289326805091403416535</td>
+        </tr>
+        <tr>
+           <td>Ukraine</td>
+           <td>867000</td>
+           <td>112154185121.406</td>
+           <td>0.000007730429310876624881</td>
+        </tr>
+        <tr>
+           <td>Spain</td>
+           <td>10098407</td>
+           <td>1311320015515.99</td>
+           <td>0.000007700947808705861887</td>
+        </tr>
+     </tbody>
+  </table>
+  <p>! Complétement différent que pour les catastrophe naturelle. <strong>Lebanon</strong> est très <strong>loin devant</strong> mais sinon les autres pays sont négigable.</p>
+  <h4 id="conclusion">Conclusion</h4>
+  <p>La <strong>Dominique</strong> est a plus touché par les catastrophe économiquement, mais sinon on revoit apparaitre <strong>Haiti</strong> en deuxième place.</p>
+  <h3 id="quelles-sont-les-param-tres-g-ographique-humain-et-conomique-qui-influe-le-nombre-de-d-sastre-dans-un-pays-">Quelles sont les paramètres géographique, humain et économique qui influe le nombre de désastre dans un pays ?</h3>
+  <ul>
+     <li>Pour les pays et continents</li>
+     <li>Pour les catastrophe naturelle et technologique</li>
+     <li>Nombre de catastrophe par rapport à la population</li>
+     <li>Nombre de catastrophe par rapport à la taille du pays</li>
+     <li>Nombre de catastrophe par rapport l&#39;indice de développement humain</li>
+  </ul>
+  <h4 id="requ-te">Requête</h4>
+  <p>Nous allons d&#39;abord faire une requête qui affiche toutes ces propritétées.</p>
+  <pre><code class="lang-sparql"> COOODE </code></pre>
+  <table>
+     <thead>
+        <tr>
+           <th>countryName</th>
+           <th>nbDisaster</th>
+           <th>population</th>
+           <th>area</th>
+           <th>lifeExpectancy</th>
+           <th>idh</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+           <td>China</td>
+           <td>2698</td>
+           <td>1442965000</td>
+           <td>9596961</td>
+           <td>76.252</td>
+           <td>0.768</td>
+        </tr>
+        <tr>
+           <td>India</td>
+           <td>1620</td>
+           <td>1326093247</td>
+           <td>3287263</td>
+           <td>70.03</td>
+           <td>0.633</td>
+        </tr>
+        <tr>
+           <td>United States of America</td>
+           <td>1422</td>
+           <td>332278200</td>
+           <td>9826675</td>
+           <td>78.69024</td>
+           <td>0.921</td>
+        </tr>
+     </tbody>
+  </table>
+  <ul>
+     <li><strong>Population</strong></li>
+  </ul>
+  <p>On remarque que ce sont les pays avec une grande population qui sont le plus haut.</p>
+  <p>Si on change le paramètre  <code>ORDER BY DESC(?nbDisaster)</code> en <code>ORDER BY DESC(?population)</code> on obtiendra les pays avec le plus grand nombre de population, voyons ce que ça donne :</p>
+  <table>
+     <thead>
+        <tr>
+           <th>countryName</th>
+           <th>nbDisaster</th>
+           <th>population</th>
+           <th>area</th>
+           <th>lifeExpectancy</th>
+           <th>idh</th>
+        </tr>
+     </thead>
+     <tbody>
+        <tr>
+           <td>China</td>
+           <td>2698</td>
+           <td>1442965000</td>
+           <td>9596961</td>
+           <td>76.252</td>
+           <td>0.768</td>
+        </tr>
+        <tr>
+           <td>India</td>
+           <td>1620</td>
+           <td>1326093247</td>
+           <td>3287263</td>
+           <td>70.03</td>
+           <td>0.633</td>
+        </tr>
+        <tr>
+           <td>United States of America</td>
+           <td>1422</td>
+           <td>332278200</td>
+           <td>9826675</td>
+           <td>78.69024</td>
+           <td>0.921</td>
+        </tr>
+     </tbody>
+  </table>
+  <p>!! On obtient la <strong>meme chose</strong> ! La population à alors un impact directe sur le nombre de désastre !</p>
+  <ul>
+     <li><strong>IDH</strong></li>
+  </ul>
+  <p>On peut rajouter à la requêtes pour récupèrer les pays les plus infeceter et les trier par rapport à leurs IDH</p>
+  <pre><code class="lang-sparql"> COOODE </code></pre>
+  <h2 id="6-visualisez-les-r-sultats-de-cette-requ-te-dans-une-application">6. Visualisez les résultats de cette requête dans une application</h2>
+  <h2 id="7-documentez-le-processus-qui-a-men-la-mise-en-uvre-">7. Documentez le processus qui a mené à la mise en œuvre.</h2>
+</main>
