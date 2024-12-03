@@ -8,7 +8,14 @@ hub-container {
     margin: 0 auto;
     font-family: 'Arial', sans-serif;
   }
+
+
+  #chart {
+    width: 100%; /* Ensure the div takes the full width of its parent */
+    height: 100%; /* Ensure the div takes the full height of its parent */
+  }
   
+
 /* Style for the dropdown section container */
 .dropdown-section {
   max-width: 400px;
@@ -122,3 +129,44 @@ hub-container {
       height: 300px;
     }
   }
+
+
+  .professional-table {
+  width: 100%; /* Full width of the container */
+  border-collapse: separate; /* Separate rows and columns for spacing */
+  border-spacing: 10px 5px; /* Horizontal and vertical spacing between cells */
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: left;
+  background-color: #f9f9f9; /* Light background for the table */
+}
+
+.professional-table th {
+  background-color: #4CAF50; /* Green header background */
+  color: white; /* White text for header */
+  font-weight: bold;
+  padding: 12px; /* Padding inside header cells */
+  border: 1px solid #ddd; /* Border for header cells */
+}
+
+.professional-table td {
+  padding: 10px; /* Padding inside data cells */
+  border: 1px solid #ddd; /* Border for data cells */
+  font-size: 14px;
+}
+
+.professional-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Alternating row color */
+}
+
+.professional-table tbody tr:hover {
+  background-color: #e8e8e8; /* Highlight row on hover */
+}
+
+.professional-table caption {
+  caption-side: top; /* Position caption at the top */
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px; /* Space below the caption */
+  text-align: center; /* Center the caption */
+}

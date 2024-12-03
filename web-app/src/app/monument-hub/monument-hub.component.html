@@ -3,21 +3,18 @@
       
       <section class="dropdown-section">
         <h2>Choose a request</h2>
+         
+        <textarea [(ngModel)]="customQuery" id="message" name="message" rows="20" cols="50" placeholder="Write something here..."></textarea><br><br>
+        
+        <button id="click" (click)="LoadData()"> LoadQuery </button>
 
-        <select [(ngModel)]="selectedRequest" (change)="LoadData()">
-            <option value="" disabled selected>Select a request</option>
-            <option *ngFor="let country of listRequest" [value]="country">{{ country }}</option>
-          </select>
       </section>
-
-          <button id="click" (click)="showResults()"> show Graph </button>
           
           <section class="graph-section" *ngIf="showGraph">
             <h2>Graph for the top contry with the most disaster</h2>
             
           </section>
-          <div id="chart" class="chart">
-            
+          <div id="chart" class="chart">  
           </div>
     </div>
 </main>

@@ -11,6 +11,7 @@
   <ul>
      <li>
         <p><strong>Quelles sont les pays les plus affecter humainement par ces désastre ?</strong></p>
+        
         <ul>
            <li>Pour les catastrophe naturelle et technologique</li>
            <li>Par rapport au nombre de personne personne affecté</li>
@@ -209,7 +210,10 @@
   <p><strong>En Général</strong> : </p>
   <ul>
      <li>Pour le nombre de personne affectées</li>
-  </ul>
+  </ul>  
+  <button id="click" (click)="LoadData(0)"> LoadQuery </button>
+  <div id="chart0" class="chart0">  
+   </div>
   <table>
      <thead>
         <tr>
@@ -244,6 +248,9 @@
   <ul>
      <li>Pour le nombre de personne décèdées</li>
   </ul>
+  <button id="click" (click)="LoadData(1)"> LoadQuery </button>
+  <div id="chart1" class="chart1">  
+   </div>
   <table>
      <thead>
         <tr>
@@ -276,10 +283,16 @@
   </table>
   <p>! <strong>Haiti</strong> est loin devant avec plus de <strong>2%</strong> de sa population actuelle qui est morte lors de catastrophes.</p>
   <p><strong>Pour les catastrophe naturelle</strong> :</p>
+  <button id="click" (click)="LoadData(2)"> LoadQuery </button>
+  <div id="chart2" class="chart2">  
+   </div>
   <ul>
      <li>Le résultats <strong>ne change pas</strong> par rapport à en <strong>général</strong></li>
   </ul>
   <p><strong>Pour les catastrophe technologique</strong> :</p>
+  <button id="click" (click)="LoadData(3)"> LoadQuery </button>
+  <div id="chart3" class="chart3">  
+   </div>
   <ul>
      <li>Pour le nombre de personne affectées</li>
   </ul>
@@ -317,6 +330,10 @@
   <ul>
      <li>Pour le nombre de personne décèdées</li>
   </ul>
+    
+  <button id="click" (click)="LoadData(4)"> LoadQuery </button>
+  <div id="chart4" class="chart4">  
+   </div>
   <table>
      <thead>
         <tr>
@@ -363,6 +380,10 @@
   </ul>
   <pre><code class="lang-sparql"> COOODE  </code></pre>
   <p><strong>En Général</strong> : </p>
+    
+  <button id="click" (click)="LoadData(5)"> LoadQuery </button>
+  <div id="chart5" class="chart5">  
+   </div>
   <table>
      <thead>
         <tr>
@@ -399,6 +420,10 @@
      <li>Meme chose que pour <strong>En Général</strong>.</li>
   </ul>
   <p><strong>Pour le catastrophes technologique</strong> : </p>
+    
+  <button id="click" (click)="LoadData(6)"> LoadQuery </button>
+  <div id="chart6" class="chart6">  
+   </div>
   <table>
      <thead>
         <tr>
@@ -443,6 +468,10 @@
   <h4 id="requ-te">Requête</h4>
   <p>Nous allons d&#39;abord faire une requête qui affiche toutes ces propritétées.</p>
   <pre><code class="lang-sparql"> COOODE </code></pre>
+    
+  <button id="click" (click)="LoadData(6)"> LoadQuery </button>
+  <div id="chart6" class="chart6">  
+   </div>
   <table>
      <thead>
         <tr>
@@ -486,6 +515,10 @@
   </ul>
   <p>On remarque que ce sont les pays avec une grande population qui sont le plus haut.</p>
   <p>Si on change le paramètre  <code>ORDER BY DESC(?nbDisaster)</code> en <code>ORDER BY DESC(?population)</code> on obtiendra les pays avec le plus grand nombre de population, voyons ce que ça donne :</p>
+    
+  <button id="click" (click)="LoadData(7)"> LoadQuery </button>
+  <div id="chart7" class="chart7">  
+   </div>
   <table>
      <thead>
         <tr>
