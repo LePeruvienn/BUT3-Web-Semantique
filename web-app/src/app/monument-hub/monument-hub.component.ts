@@ -1,10 +1,8 @@
-import { Component,Output ,EventEmitter } from '@angular/core';
+import { Component, } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 import { FormsModule } from '@angular/forms'; // Import FormsModule
-import { HttpClientModule, provideHttpClient, withFetch , HttpClient } from '@angular/common/http'; // Import HttpClientModule
+import { HttpClientModule, HttpClient } from '@angular/common/http'; // Import HttpClientModule
 import * as d3 from 'd3';
-import * as $rdf from 'rdflib';
-import { AboutComponent } from './../about/about.component'
 import { ChartData, ChartOptions } from 'chart.js';
 
 @Component({
@@ -17,28 +15,124 @@ import { ChartData, ChartOptions } from 'chart.js';
 
 
 export class MonumentHubComponent{
-    listRequest: string[] = ['Pays avec le plus de désastre', '.', '.', '.', '.'];
+    listRequest: string[] = [`Pays avec le plus de désastre`, 
+      `Continents avec le plus de désastre`, 
+      `Espérance de vie`, 
+      `Pays les plus affecter par les desastres`,
+      `Ration de mort par desastres`, 
+      `Ration de mort par desastres naturel`, 
+      `Ration de mort par desastres technologique`, 
+    ];
     selectedRequest: string = '';
-    listQuery: string[] = [ `
-      PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
-      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-      PREFIX wd: <http://www.wikidata.org/entity/>
-      PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-      PREFIX wikibase: <http://wikiba.se/ontology#>
       
-      select ?countryName (COUNT(?disaster) AS ?nbPays) where {
-      
-        ?disaster rdf:type iut:Disaster;
-          iut:occuredIn ?location .
-        
-        ?location iut:isInCountry ?country .
-        ?country iut:countryName ?countryName
-          
-      } 
-      GROUP BY ?country ?countryName
-      ORDER BY DESC (?nbPays)
-      LIMIT 5
-      `, '.', '.', '.', '.'];
+    getResponseMessage(): string {
+      switch (this.selectedRequest) {
+        case `Pays avec le plus de désastre`:
+          return this.selectedQuery = this.listQuery[0];
+        case `Continents avec le plus de désastre`:
+          return this.selectedQuery = this.listQuery[1];
+        case `Espérance de vie`:
+          return this.selectedQuery = this.listQuery[2];
+        case `Pays les plus affecter par les desastres`:
+          return this.selectedQuery = this.listQuery[3];
+        case `Ration de mort par desastres`:
+          return this.selectedQuery = this.listQuery[4];
+        case `Ration de mort par desastres naturel`:
+          return this.selectedQuery = this.listQuery[5];
+        case `Ration de mort par desastres technologique`:
+        default:
+          return this.selectedQuery = this.listQuery[0];
+      }
+    }
+    listQuery: string[] = [ 
+      `PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/> 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+
+select ?name (COUNT(?disaster) AS ?nb) where {
+
+  ?disaster rdf:type iut:Disaster;
+    iut:occuredIn ?location .
+  
+  ?location iut:isInCountry ?country .
+  ?country iut:countryName ?name
+    
+} 
+GROUP BY ?country ?name
+ORDER BY DESC (?nb)
+LIMIT 5
+`, //0 case `Pays avec le plus de désastre`:
+
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+
+select ?name (COUNT(?disaster) AS ?nb) where {
+
+    ?disaster rdf:type iut:Disaster;
+      iut:occuredIn ?location .
+    
+    ?location iut:isInCountry ?country .
+    ?country iut:isInRegion ?region .
+    ?region iut:regionName ?name .
+    
+} 
+GROUP BY ?region ?name
+ORDER BY DESC (?nb)`,//1 case `Continents avec le plus de désastre`:
+
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+
+select ?name ?nb where {
+    
+	# On récupère le code des pays et leurs noms
+    ?s rdf:type iut:Country ;
+    	iut:code ?alpha ;
+    	iut:countryName ?name .
+    
+    # partie de la requête executé sur Wikidata
+    SERVICE <https://query.wikidata.org/bigdata/namespace/wdq/sparql> {
+        ?pays wdt:P31 wd:Q3624078 ;
+        	wdt:P298 ?alpha ;
+            wdt:P2250 ?nb .
+    }
+    
+} limit 10`, //2 case `Espérance de vie`:
+ 
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?name (SUM(?affected) AS ?totalAffected) ?population ((?totalAffected / ?population) AS ?nb)
+WHERE {
+    ?disaster rdf:type iut:Disaster ;
+              iut:occuredIn ?location ;
+              iut:hasImpact ?impact .
+    
+    ?location iut:isInCountry ?country .
+    
+    ?impact rdf:type iut:HumanImpact ;
+            iut:totalAffected ?affected .
+    
+    ?country iut:countryName ?name ;
+             iut:population ?population .
+
+}
+GROUP BY ?name ?population ?idh
+ORDER BY DESC(?nb)
+LIMIT 6`,//3 case `Pays les plus affecter par les desastres`:
+``,//4 case `Ration de mort par desastres`:
+``,//5 case `Ration de mort par desastres naturel`:
+``,//6 case `Ration de mort par desastres technologique`:
+``,
+``,
+];//3
     selectedQuery: string = '';
     
   listCountryData = [
@@ -81,18 +175,6 @@ export class MonumentHubComponent{
     this.createGraph();
   }
 
-  getResponseMessage(): string {
-    switch (this.selectedRequest) {
-      case 'Pays avec le plus de désastre':
-        return this.selectedQuery = this.listQuery[0];
-      case 'Request 2':
-        return 'This is the second request. Great choice!';
-      case 'Request 3':
-        return 'Ah, the third request, an excellent pick!';
-      default:
-        return 'Please select a valid request.';
-    }
-  }
 
   queryRequestToGraphDB(): void {
     const endpointUrl = 'http://localhost:7200/repositories/ProjectS5';
@@ -110,14 +192,15 @@ export class MonumentHubComponent{
         this.chartData.datasets[0].data = []; // Reset data
 
         // Populate chart with fetched results
+        
         data.results.bindings.forEach((val: any) => {
           if(this.chartData.labels)
             this.chartData.labels.push(val.teacher); 
           this.chartData.datasets[0].data.push(parseInt(val.nbr_courses, 10)); // Add course counts to data
         });
-         this.listCountryData = data.results.bindings.map((binding: { countryName: { value: any; }; nbPays: { value: string; }; }) => ({
-          Country: binding.countryName.value,
-          Value: parseInt(binding.nbPays.value, 10),
+         this.listCountryData = data.results.bindings.map((binding: { name: { value: any; }; nb: { value: string; }; }) => ({
+          Country: binding.name.value,
+          Value: parseInt(binding.nb.value, 10),
         }));
         console.log(data);
         console.log(this.listCountryData);
@@ -193,11 +276,11 @@ export class MonumentHubComponent{
     const container = d3.select("#chart").node() as HTMLElement;
     
     if (container) {
+
       // Append the SVG node to the container
-      const child = d3.select("#child").node() as HTMLElement;
-      if (child){
-        container.removeChild(child);
-      }
+      const child = d3.select("#child").node() as HTMLElement | null;
+      d3.select("#chart svg").remove()
+
       container.appendChild(svg.node()!);
     } else {
       console.error("Element with id 'chart' not found.");

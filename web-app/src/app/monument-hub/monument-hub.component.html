@@ -5,7 +5,7 @@
         <h2>Choose a request</h2>
 
         <select [(ngModel)]="selectedRequest" (change)="LoadData()">
-            <option value="" disabled selected>Select a Country</option>
+            <option value="" disabled selected>Select a request</option>
             <option *ngFor="let country of listRequest" [value]="country">{{ country }}</option>
           </select>
       </section>
