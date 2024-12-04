@@ -166,6 +166,111 @@ WHERE {
 GROUP BY ?countryName ?population
 ORDER BY DESC(?ratio)
 LIMIT 3`,
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?countryName (SUM(?affected) AS ?totalAffected) ?population ((?totalAffected / ?population) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:TechnologicalDisaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+
+    ?location iut:isInCountry ?country .
+
+    ?impact rdf:type iut:HumanImpact ;
+    		iut:totalAffected ?affected .
+
+    ?country iut:countryName ?countryName ;
+             iut:population ?population .
+
+}
+GROUP BY ?countryName ?population
+ORDER BY DESC(?ratio)
+LIMIT 3`,
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?countryName (SUM(?deaths) AS ?totalDeaths) ?population ((?totalDeaths / ?population) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:TechnologicalDisaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+
+    ?location iut:isInCountry ?country .
+
+    ?impact rdf:type iut:HumanImpact ;
+    		iut:totalDeath ?deaths .
+
+    ?country iut:countryName ?countryName ;
+             iut:population ?population .
+
+}
+GROUP BY ?countryName ?population
+ORDER BY DESC(?ratio)
+LIMIT 3`,
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?countryName (SUM(xsd:decimal(?damages)) AS ?totalDamages) ?gdp ((xsd:decimal(?totalDamages) / xsd:decimal(?gdp)) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:Disaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+
+    ?location iut:isInCountry ?country .
+
+    ?impact rdf:type iut:EconomicImpact ;
+    		iut:totalDamage ?damages .
+
+    ?country iut:countryName ?countryName ;
+             iut:gdp ?gdp .
+}
+GROUP BY ?countryName ?gdp
+ORDER BY DESC(?ratio)
+LIMIT 3`,
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?countryName (SUM(xsd:decimal(?damages)) AS ?totalDamages) ?gdp ((xsd:decimal(?totalDamages) / xsd:decimal(?gdp)) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:NaturalDisaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+
+    ?location iut:isInCountry ?country .
+
+    ?impact rdf:type iut:EconomicImpact ;
+    		iut:totalDamage ?damages .
+
+    ?country iut:countryName ?countryName ;
+             iut:gdp ?gdp .
+}
+GROUP BY ?countryName ?gdp
+ORDER BY DESC(?ratio)
+LIMIT 3`,
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?countryName (SUM(xsd:decimal(?damages)) AS ?totalDamages) ?gdp ((xsd:decimal(?totalDamages) / xsd:decimal(?gdp)) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:TechnologicalDisaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+
+    ?location iut:isInCountry ?country .
+
+    ?impact rdf:type iut:EconomicImpact ;
+    		iut:totalDamage ?damages .
+
+    ?country iut:countryName ?countryName ;
+             iut:gdp ?gdp .
+}
+GROUP BY ?countryName ?gdp
+ORDER BY DESC(?ratio)
+LIMIT 3`,
   ]
 
   selectedRequest: number = 0;

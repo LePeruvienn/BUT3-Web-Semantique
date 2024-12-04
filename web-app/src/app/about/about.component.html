@@ -31,15 +31,6 @@
            <li>Par rapport à leurs PIB</li>
         </ul>
      </li>
-     <li>
-        <p><strong>Quelles sont les paramètres géographique, humain et économique qui influe le nombre de désastre dans un pays ?</strong></p>
-        <ul>
-           <li>Pour les catastrophe naturelle et technologique</li>
-           <li>Nombre de catastrophe par rapport à la population</li>
-           <li>Nombre de catastrophe par rapport à la taille du pays</li>
-           <li>Nombre de catastrophe par rapport l&#39;indice de développement humain</li>
-        </ul>
-     </li>
   </ul>
   <h2>2. Créez une ontologie pour décrire le domaine.</h2>
   <p>Pour le projet nous avons utilisé le logicielle <strong>Protégé</strong> qui nous as permit de créer notre ontologie. Si vous souhaitez directement allez consulter les données, vous pouvez allez voir le fichier <a href="https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/ontologie.ttl">ontologie.ttl</a>.</p>
@@ -247,22 +238,22 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
   </details>
   <button id="button-5"(click)="queryRequestToGraphDB(5)"> Lancer la requête personnes décédées</button>
   <p> => <i>Analyse des résultats </i> : Le résultats <strong>ne change pas</strong> par rapport à en <strong>général</strong></p>
-  <p><strong>Pour les catastrophe technologique</strong> :</p>
-  <button> LoadQuery </button>
-  <div>
-   </div>
-  <ul>
-     <li>Pour le nombre de personne affectées</li>
-  </ul>
-  <p>! Les <strong>Maldives</strong> sont loin devant avec <strong>la moitié</strong> de sa population qui as été affecté par des catastrophe technologique.</p>
-  <ul>
-     <li>Pour le nombre de personne décèdées</li>
-  </ul>
 
-  <button> LoadQuery </button>
-  <div>
-   </div>
-  <p>! <strong>Tuvalu</strong> loin devant avec <strong>0.15%</strong> de sa population acutelle morte dans des catastrophe technologique.</p>
+  <p><strong>Pour les catastrophe technologique</strong> :</p>
+  <details>
+    <summary style="cursor: pointer;"><u>Afficher la requête personnes affectées</u></summary>
+    <pre>{{listStrings[6]}}</pre>
+  </details>
+  <button id="button-6"(click)="queryRequestToGraphDB(6)"> Lancer la requête personnes affectées</button>
+  <p> => <i>Analyse des résultats </i> : Les <strong>Maldives</strong> sont loin devant avec <strong>la moitié</strong> de sa population qui as été affecté par des catastrophe technologique.</p>
+
+
+  <details>
+    <summary style="cursor: pointer;"><u>Afficher la requête personnes décédées</u></summary>
+    <pre>{{listStrings[7]}}</pre>
+  </details>
+  <button id="button-7"(click)="queryRequestToGraphDB(7)"> Lancer la requête personnes décédées</button>
+  <p> => <i>Analyse des résultats </i> <strong>Tuvalu</strong> loin devant avec <strong>0.15%</strong> de sa population acutelle morte dans des catastrophe technologique.</p>
   <h4>Conclusion</h4>
   <p>Les pays les plus affecté humainement sont ceux par des catastrophes <strong>naturelle</strong>. Les catastrophea <strong>technologique</strong> ont moins d&#39;impact, sauf pour les <strong>Maldives</strong> dans lequels il représente <strong>la moitée</strong> de la population.</p>
   <p>Sinon les 2 pays les plus affecté humainenemnt sont <strong>Haiti</strong> et <strong>Vanatu</strong>.</p>
@@ -276,53 +267,29 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
   <ul>
      <li>On fera varier le <code>rdf:type</code> de <code>?disaster</code> en fonction de si on veut une catastrophe naturelle ou technologique.</li>
   </ul>
-  <pre><code class="lang-sparql"> COOODE  </code></pre>
+  <pre>{{listStrings[8]}}</pre>
   <p><strong>En Général</strong> : </p>
-
-  <button> LoadQuery </button>
-  <div>
-   </div>
-  <p>! On voit que la <strong>Dominique</strong> est 3 fois plus grandes que les 2 autres. C&#39;est elle est qui est le plus touché économiquement. Avec <strong>0.3%</strong> de son PIB qui équivaut au dégats subit par des catastrophe naturelle.</p>
+  <button id="button-8"(click)="queryRequestToGraphDB(8)"> Lancer la requête dégats économique en générale</button>
+  <p> => <i>Analyse des résultats </i> : On voit que la <strong>Dominique</strong> est 3 fois plus grandes que les 2 autres. C&#39;est elle est qui est le plus touché économiquement. Avec <strong>0.3%</strong> de son PIB qui équivaut au dégats subit par des catastrophe naturelle.</p>
   <p><strong>Pour les catastrophes naturelle</strong> : </p>
-  <ul>
-     <li>Meme chose que pour <strong>En Général</strong>.</li>
-  </ul>
+
+  <details>
+    <summary style="cursor: pointer;"><u>Afficher la requête dégats économique catastrophe naturelles</u></summary>
+    <pre>{{listStrings[9]}}</pre>
+  </details>
+  <button id="button-9"(click)="queryRequestToGraphDB(9)"> Lancer la requête dégats économique en générale</button>
+  <p> => <i>Analyse des résultats </i> : Meme chose que pour en <strong>général</strong></p>
+
   <p><strong>Pour le catastrophes technologique</strong> : </p>
 
-  <button> LoadQuery </button>
-  <p>! Complétement différent que pour les catastrophe naturelle. <strong>Lebanon</strong> est très <strong>loin devant</strong> mais sinon les autres pays sont négigable.</p>
+  <details>
+    <summary style="cursor: pointer;"><u>Afficher la requête dégats économique catastrophe technologique</u></summary>
+    <pre>{{listStrings[10]}}</pre>
+  </details>
+  <button id="button-10"(click)="queryRequestToGraphDB(10)"> Lancer la requête dégats économique en générale</button>
+  <p> => <i>Analyse des résultats </i> : Complétement différent que pour les catastrophe naturelle. <strong>Lebanon</strong> est très <strong>loin devant</strong> mais sinon les autres pays sont négigable.</p>
   <h4>Conclusion</h4>
   <p>La <strong>Dominique</strong> est a plus touché par les catastrophe économiquement, mais sinon on revoit apparaitre <strong>Haiti</strong> en deuxième place.</p>
-  <h3>Quelles sont les paramètres géographique, humain et économique qui influe le nombre de désastre dans un pays ?</h3>
-  <ul>
-     <li>Pour les pays et continents</li>
-     <li>Pour les catastrophe naturelle et technologique</li>
-     <li>Nombre de catastrophe par rapport à la population</li>
-     <li>Nombre de catastrophe par rapport à la taille du pays</li>
-     <li>Nombre de catastrophe par rapport l&#39;indice de développement humain</li>
-  </ul>
-  <h4>Requête</h4>
-  <p>Nous allons d&#39;abord faire une requête qui affiche toutes ces propritétées.</p>
-  <pre><code class="lang-sparql"> COOODE </code></pre>
-
-  <button> LoadQuery </button>
-  <div>
-   </div>
-  <ul>
-     <li><strong>Population</strong></li>
-  </ul>
-  <p>On remarque que ce sont les pays avec une grande population qui sont le plus haut.</p>
-  <p>Si on change le paramètre  <code>ORDER BY DESC(?nbDisaster)</code> en <code>ORDER BY DESC(?population)</code> on obtiendra les pays avec le plus grand nombre de population, voyons ce que ça donne :</p>
-
-  <button> LoadQuery </button>
-  <div>
-   </div>
-  <p>!! On obtient la <strong>meme chose</strong> ! La population à alors un impact directe sur le nombre de désastre !</p>
-  <ul>
-     <li><strong>IDH</strong></li>
-  </ul>
-  <p>On peut rajouter à la requêtes pour récupèrer les pays les plus infeceter et les trier par rapport à leurs IDH</p>
-  <pre><code class="lang-sparql"> COOODE </code></pre>
   <h2>6. Visualisez les résultats de cette requête dans une application</h2>
   <h2>7. Documentez le processus qui a mené à la mise en œuvre.</h2>
 </main>

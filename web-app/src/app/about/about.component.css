@@ -102,7 +102,7 @@ code {
   font-size: 0.95rem;
 }
 
-pre {
+pre, textarea {
   background-color: white;
   border: solid 1px #e0e0e0;
   padding: 10px;
@@ -112,6 +112,11 @@ pre {
   padding: 2px 4px;
   border-radius: 3px;
   font-size: 0.95rem;
+}
+
+textarea {
+  width: 100%;
+  height: 400px;
 }
 
 /* Tables */
