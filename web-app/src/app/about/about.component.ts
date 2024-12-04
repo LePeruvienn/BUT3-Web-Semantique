@@ -23,6 +23,8 @@ export class AboutComponent {
     this.router.navigate(['/monument-hub'])
   }
 
+  sparqlEndpoint:string = "http://localhost:7200/repositories/ProjectS5";
+
   listStrings: string[] = [
     `PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -303,14 +305,95 @@ public chartOptions: ChartOptions = {
 
 constructor(private http: HttpClient) {}
 
-showResults(): void {
-  this.createGraph();
+queryRequestToGraphDB(index:number): void {
+
+  const input_endpoint = document.getElementById(`sparqlEndpoint`) as HTMLInputElement;
+
+  if (!input_endpoint) return console.error ("Error sparqlEndpoint input has not the wright id");
+
+  if (input_endpoint.value !== "")
+    this.sparqlEndpoint = input_endpoint.value;
+
+  const endpointUrl = this.sparqlEndpoint;
+  const sparqlQuery = this.listStrings[index];
+
+  console.log ("SPARQL Endpoint = ", endpointUrl);
+
+    const button = document.getElementById(`button-${index}`);
+    const res = document.getElementById(`result-${index}`);
+
+    if (!button) return console.error ("Error button id dont exist")
+
+    if (res) res.remove();
+
+    // Creating result div
+    const new_res = document.createElement("div");
+    new_res.id = `result-${index}`;
+
+  this.http.get(`${endpointUrl}?query=${encodeURIComponent(sparqlQuery)}`, {
+    headers: {
+      'Accept': 'application/sparql-results+json',
+      'Content-Type': 'application/sparql-results+json'
+    }
+  }).subscribe(
+    (data: any) => {
+
+      // Creating delete button
+      const delete_button = document.createElement('button');
+      delete_button.textContent = 'delete Table';
+      delete_button.onclick = () => this.deleteResult(index);
+
+      //Creating table
+      const table = this.createTable(data);
+      //Creaing graph
+      const svg = document.createElement("svg");
+      svg.id = `svg-${index}`;
+
+      // Adding elements to div
+      new_res.appendChild(table);
+      new_res.appendChild(delete_button);
+      new_res.appendChild(svg);
+
+      // Drawing Graph
+      this.createGraph(data, index);
+      console.log(data);
+    },
+    error => {
+      const error_elt = document.createElement("p");
+      error_elt.innerText = error.error;
+      error_elt.style.color = 'white';
+      error_elt.style.backgroundColor = '#f44336';  // Red background
+      error_elt.style.border = '1px solid #d32f2f';  // Dark red border
+      error_elt.style.padding = '10px';
+      error_elt.style.borderRadius = '5px';
+      error_elt.style.fontWeight = 'bold';
+      error_elt.style.marginTop = '10px';
+      error_elt.style.fontFamily = 'Arial, sans-serif';
+      new_res.appendChild(error_elt);
+    }
+  );
+
+  button.insertAdjacentElement("afterend", new_res);
 }
 
+customQuery(): void {
 
-queryRequestToGraphDB(index:number): void {
+  const button = document.getElementById(`button-custom`);
+  if (!button) return console.error ("Error button id dont exist")
+
+  const res = document.getElementById(`result-custom`);
+
+  if (res) res.remove();
+
+  // Creating result div
+  const new_res = document.createElement("div");
+  new_res.id = `result-custom`;
+
   const endpointUrl = 'http://localhost:7200/repositories/ProjectS5';
-  const sparqlQuery = this.listStrings[index];
+  const textarea = document.getElementById("customQuery") as HTMLTextAreaElement;
+  if (!textarea) return console.error ("Error text area id not worked");
+  const sparqlQuery = textarea.value;
+
   console.log(sparqlQuery)
 
   this.http.get(`${endpointUrl}?query=${encodeURIComponent(sparqlQuery)}`, {
@@ -320,30 +403,28 @@ queryRequestToGraphDB(index:number): void {
     }
   }).subscribe(
     (data: any) => {
-      const button = document.getElementById(`button-${index}`);
-      const res = document.getElementById(`result-${index}`);
 
-      if (!button) return console.error ("Error button id dont exist")
+      //Creating table
+      const table = this.createTable(data);
 
-      if (res) res.remove();
-
-      const new_res = document.createElement("div");
-      new_res.id = `result-${index}`;
-
-      const delete_button = document.createElement('button');
-      delete_button.textContent = 'delete Table';
-      delete_button.onclick = () => this.deleteResult(index);
-
-      new_res.appendChild(this.createTable(data));
-      new_res.appendChild(delete_button);
-
-      button.insertAdjacentElement("afterend", new_res);
-      console.log(data);
+      // Adding elements to div
+      new_res.appendChild(table);
     },
     error => {
-      console.error('Error fetching data from GraphDB:', error);
+      const error_elt = document.createElement("p");
+      error_elt.innerText = error.error;
+      error_elt.style.color = 'white';
+      error_elt.style.backgroundColor = '#f44336';  // Red background
+      error_elt.style.border = '1px solid #d32f2f';  // Dark red border
+      error_elt.style.padding = '10px';
+      error_elt.style.borderRadius = '5px';
+      error_elt.style.fontWeight = 'bold';
+      error_elt.style.marginTop = '10px';
+      error_elt.style.fontFamily = 'Arial, sans-serif';
+      new_res.appendChild(error_elt);
     }
   );
+  button.insertAdjacentElement("afterend", new_res);
 }
 
 deleteResult (index:number):void {
@@ -409,83 +490,10 @@ createTable(data: any): HTMLElement {
   return table;
 }
 
-createGraph(): void { //D3 GRAPH
+  createGraph(_data:any, index:number): void { //D3 GRAPH
+    // Extract country names and ratios from the SPARQL result
+    const countries = _data.results.bindings.map((binding: any) => binding.countryName.value);
+    const ratios = _data.results.bindings.map((binding: any) => parseFloat(binding.ratio.value));
 
-  const data = this.listCountryData.map(d => ({
-    Country: d.Country,
-    Value: d.Value,
-  }));
-
-// Specify the chart’s dimensions.
-const width = 928;
-const height = 500;
-const marginTop = 20;
-const marginRight = 0;
-const marginBottom = 30;
-const marginLeft = 40;
-
-// Create the horizontal scale and its axis generator.
-const x = d3.scaleBand()
-  .domain(data.map(d => d.Country)) // Use Country for the x axis
-  .range([marginLeft, width - marginRight])
-  .padding(0.1);
-
-const xAxis = d3.axisBottom(x).tickSizeOuter(0);
-
-// Create the vertical scale.
-const y = d3.scaleLinear()
-  .domain([0, d3.max(data, d => d.Value) ?? 0])
-  .range([height - marginBottom, marginTop]);
-
-// Create the SVG container.
-const svg = d3.create("svg")
-  .attr("viewBox", [0, 0, width, height])
-  .attr("width", width)
-  .attr("height", height)
-  .attr("style", "max-width: 100%; height: auto;")
-  .attr("class", "child");
-
-// Append the bars.
-svg.append("g")
-  .attr("class", "bars")
-  .attr("fill", "steelblue")
-.selectAll("rect")
-.data(data)
-.join("rect")
-  .attr("x", d => x(d.Country) ?? 0) // Use Country for x-axis positioning
-  .attr("y", d => y(d.Value) ?? 0) // Use Value for the y-axis
-  .attr("height", d => Math.max(0, y(0) - y(d.Value))) // Ensure height is never undefined or negative
-  .attr("width", x.bandwidth());
-
-// Append the axes.
-svg.append("g")
-  .attr("class", "x-axis")
-  .attr("transform", `translate(0,${height - marginBottom})`)
-  .call(xAxis);
-
-svg.append("g")
-  .attr("class", "y-axis")
-  .attr("transform", `translate(${marginLeft},0)`)
-  .call(d3.axisLeft(y))
-  .call(g => g.select(".domain").remove());
-
-
-
-  const chartId = `chart${this.selectedRequest}`;
-
-  // Select the container (with id="chart") and ensure it's available
-  const container = d3.select(`#${chartId}`).node() as HTMLElement;
-  if (container) {
-
-    // Append the SVG node to the container
-    const child = d3.select("#child").node() as HTMLElement | null;
-    d3.select(`#${chartId} svg`).remove()
-
-    container.appendChild(svg.node()!);
-  } else {
-    console.error("Element with id 'chart' not found.");
   }
-}
-
-
 }
