@@ -12,7 +12,7 @@ main {
   margin: 20px;
   color: #333;
   background-color: #f8f9fa;
-  max-width: 800px;
+  max-width: 950px;
   margin: 20px auto;
   padding: 20px;
   border-radius: 8px;
@@ -137,4 +137,53 @@ hr {
   border: none;
   border-top: 1px solid #ddd;
   margin: 20px 0;
+}
+
+/* Bouton de base */
+button {
+  background-color: #007bff; /* Couleur bleue */
+  color: white; /* Couleur du texte */
+  border: none; /* Pas de bordure */
+  margin-top: 10px;
+  padding: 10px 20px; /* Espacement interne */
+  border-radius: 5px; /* Coins arrondis */
+  cursor: pointer; /* Curseur en forme de main */
+  font-size: 1rem; /* Taille du texte */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animations */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre */
+}
+
+/* Bouton au survol */
+button:hover {
+  background-color: #0056b3; /* Couleur bleue plus sombre */
+  transform: translateY(-2px); /* Léger déplacement vers le haut */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre plus marquée */
+}
+
+/* Bouton lors d'un clic */
+button:active {
+  background-color: #004494; /* Couleur encore plus sombre */
+  transform: translateY(0); /* Pas de déplacement */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Retour à l'ombre de base */
+}
+
+/* Bouton désactivé */
+button:disabled {
+  background-color: #ccc; /* Couleur grise */
+  color: #666; /* Couleur du texte */
+  cursor: not-allowed; /* Curseur interdit */
+  box-shadow: none; /* Pas d'ombre */
+}
+
+/* Variante Bouton Secondaire */
+button.secondary {
+  background-color: #6c757d; /* Gris */
+}
+
+button.secondary:hover {
+  background-color: #5a6268; /* Gris plus sombre */
+}
+
+button.secondary:active {
+  background-color: #495057; /* Gris encore plus sombre */
 }

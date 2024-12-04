@@ -81,101 +81,94 @@ CONSTRUCT {
 
     FILTER(str(?regionName) = str(?continentLabel))
   }
-}`
+}`,
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?countryName (SUM(?affected) AS ?totalAffected) ?population ((?totalAffected / ?population) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:Disaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+
+    ?location iut:isInCountry ?country .
+
+    ?impact rdf:type iut:HumanImpact ;
+    		iut:totalAffected ?affected .
+
+    ?country iut:countryName ?countryName ;
+             iut:population ?population .
+
+}
+GROUP BY ?countryName ?population
+ORDER BY DESC(?ratio)
+LIMIT 3`,
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?countryName (SUM(?deaths) AS ?totalDeaths) ?population ((?totalDeaths / ?population) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:Disaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+
+    ?location iut:isInCountry ?country .
+
+    ?impact rdf:type iut:HumanImpact ;
+    		iut:totalDeath ?deaths .
+
+    ?country iut:countryName ?countryName ;
+             iut:population ?population .
+
+}
+GROUP BY ?countryName ?population
+ORDER BY DESC(?ratio)
+LIMIT 3`,
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?countryName (SUM(?affected) AS ?totalAffected) ?population ((?totalAffected / ?population) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:NaturalDisaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+
+    ?location iut:isInCountry ?country .
+
+    ?impact rdf:type iut:HumanImpact ;
+    		iut:totalAffected ?affected .
+
+    ?country iut:countryName ?countryName ;
+             iut:population ?population .
+
+}
+GROUP BY ?countryName ?population
+ORDER BY DESC(?ratio)
+LIMIT 3`,
+`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?countryName (SUM(?deaths) AS ?totalDeaths) ?population ((?totalDeaths / ?population) AS ?ratio)
+WHERE {
+    ?disaster rdf:type iut:NaturalDisaster ;
+              iut:occuredIn ?location ;
+    		  iut:hasImpact ?impact .
+
+    ?location iut:isInCountry ?country .
+
+    ?impact rdf:type iut:HumanImpact ;
+    		iut:totalDeath ?deaths .
+
+    ?country iut:countryName ?countryName ;
+             iut:population ?population .
+
+}
+GROUP BY ?countryName ?population
+ORDER BY DESC(?ratio)
+LIMIT 3`,
   ]
 
   selectedRequest: number = 0;
-
-  listQuery: string[] = [
-    `PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-PREFIX wikibase: <http://wikiba.se/ontology#>
-
-select ?name (COUNT(?disaster) AS ?nb) where {
-
-?disaster rdf:type iut:Disaster;
-  iut:occuredIn ?location .
-
-?location iut:isInCountry ?country .
-?country iut:countryName ?name
-
-}
-GROUP BY ?country ?name
-ORDER BY DESC (?nb)
-LIMIT 5
-`, //0 case `Pays avec le plus de désastre`:
-
-`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-PREFIX wikibase: <http://wikiba.se/ontology#>
-
-select ?name (COUNT(?disaster) AS ?nb) where {
-
-  ?disaster rdf:type iut:Disaster;
-    iut:occuredIn ?location .
-
-  ?location iut:isInCountry ?country .
-  ?country iut:isInRegion ?region .
-  ?region iut:regionName ?name .
-
-}
-GROUP BY ?region ?name
-ORDER BY DESC (?nb)`,//1 case `Continents avec le plus de désastre`:
-
-`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-PREFIX wikibase: <http://wikiba.se/ontology#>
-
-select ?name ?nb where {
-
-# On récupère le code des pays et leurs noms
-  ?s rdf:type iut:Country ;
-    iut:code ?alpha ;
-    iut:countryName ?name .
-
-  # partie de la requête executé sur Wikidata
-  SERVICE <https://query.wikidata.org/bigdata/namespace/wdq/sparql> {
-      ?pays wdt:P31 wd:Q3624078 ;
-        wdt:P298 ?alpha ;
-          wdt:P2250 ?nb .
-  }
-
-} limit 10`, //2 case `Espérance de vie`:
-
-`PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?name (SUM(?affected) AS ?totalAffected) ?population ((?totalAffected / ?population) AS ?nb)
-WHERE {
-  ?disaster rdf:type iut:Disaster ;
-            iut:occuredIn ?location ;
-            iut:hasImpact ?impact .
-
-  ?location iut:isInCountry ?country .
-
-  ?impact rdf:type iut:HumanImpact ;
-          iut:totalAffected ?affected .
-
-  ?country iut:countryName ?name ;
-           iut:population ?population .
-
-}
-GROUP BY ?name ?population ?idh
-ORDER BY DESC(?nb)
-LIMIT 6`,//3 case `Pays les plus affecter par les desastres`:
-``,//4 case `Ration de mort par desastres`:
-``,//5 case `Ration de mort par desastres naturel`:
-``,//6 case `Ration de mort par desastres technologique`:
-``,
-``,
-];//3
-  selectedQuery: string = '';
 
 listCountryData = [
   {Country: "", Value: 0},
@@ -205,24 +198,14 @@ public chartOptions: ChartOptions = {
 
 constructor(private http: HttpClient) {}
 
-LoadData(number: number) {
-  console.log ("SHOW RESULTS");
-  this.selectedRequest = number;
-  this.selectedQuery = this.listQuery[this.selectedRequest]
-  this.queryRequestToGraphDB();
-  setTimeout(() => {
-    this.createGraph();
-  }, 500);
-}
-
 showResults(): void {
   this.createGraph();
 }
 
 
-queryRequestToGraphDB(): void {
+queryRequestToGraphDB(index:number): void {
   const endpointUrl = 'http://localhost:7200/repositories/ProjectS5';
-  const sparqlQuery = this.selectedQuery;
+  const sparqlQuery = this.listStrings[index];
   console.log(sparqlQuery)
 
   this.http.get(`${endpointUrl}?query=${encodeURIComponent(sparqlQuery)}`, {
@@ -232,27 +215,93 @@ queryRequestToGraphDB(): void {
     }
   }).subscribe(
     (data: any) => {
-      this.chartData.labels = []; // Reset labels
-      this.chartData.datasets[0].data = []; // Reset data
+      const button = document.getElementById(`button-${index}`);
+      const res = document.getElementById(`result-${index}`);
 
-      // Populate chart with fetched results
+      if (!button) return console.error ("Error button id dont exist")
 
-      data.results.bindings.forEach((val: any) => {
-        if(this.chartData.labels)
-          this.chartData.labels.push(val.teacher);
-        this.chartData.datasets[0].data.push(parseInt(val.nbr_courses, 10)); // Add course counts to data
-      });
-       this.listCountryData = data.results.bindings.map((binding: { name: { value: any; }; nb: { value: string; }; }) => ({
-        Country: binding.name.value,
-        Value: parseInt(binding.nb.value, 10),
-      }));
+      if (res) res.remove();
+
+      const new_res = document.createElement("div");
+      new_res.id = `result-${index}`;
+
+      const delete_button = document.createElement('button');
+      delete_button.textContent = 'delete Table';
+      delete_button.onclick = () => this.deleteResult(index);
+
+      new_res.appendChild(this.createTable(data));
+      new_res.appendChild(delete_button);
+
+      button.insertAdjacentElement("afterend", new_res);
       console.log(data);
-      console.log(this.listCountryData);
     },
     error => {
       console.error('Error fetching data from GraphDB:', error);
     }
   );
+}
+
+deleteResult (index:number):void {
+
+  const res = document.getElementById(`result-${index}`);
+
+  if (!res) return console.error ("Error error res index on delete");
+
+  res.remove()
+}
+
+createTable(data: any): HTMLElement {
+  const table = document.createElement('table');
+
+  // Applying styles directly to the table
+  table.style.width = '100%';
+  table.style.borderCollapse = 'collapse';
+  table.style.margin = '20px 0';
+
+  const headers = data.head.vars;
+  const headerRow = document.createElement('tr');
+
+  // Create and style header cells
+  for (const head of headers) {
+    const th = document.createElement('th');
+    th.textContent = head;
+
+    // Apply styles to th
+    th.style.backgroundColor = '#007bff';
+    th.style.color = 'white';
+    th.style.border = '1px solid #ddd';
+    th.style.padding = '10px';
+    th.style.textAlign = 'left';
+
+    headerRow.appendChild(th);
+  }
+
+  // Append header row to the table
+  table.appendChild(headerRow);
+
+  // Create rows for the table body
+  const bindings = data.results.bindings;
+  for (const vals of bindings) {
+    const row = document.createElement('tr');
+
+    // For each value, create a td element
+    for (const header of headers) {
+      const td = document.createElement('td');
+      td.textContent = vals[header] ? vals[header].value : '';
+
+      // Apply styles to td
+      td.style.border = '1px solid #ddd';
+      td.style.padding = '10px';
+      td.style.textAlign = 'left';
+
+      row.appendChild(td);
+    }
+
+    // Append row to the table
+    table.appendChild(row);
+  }
+
+  return table;
 }
 
 createGraph(): void { //D3 GRAPH
