@@ -275,8 +275,6 @@ ORDER BY DESC(?ratio)
 LIMIT 3`,
   ]
 
-  selectedRequest: number = 0;
-
 listCountryData = [
   {Country: "", Value: 0},
 ];
@@ -340,7 +338,7 @@ queryRequestToGraphDB(index:number): void {
 
       // Creating delete button
       const delete_button = document.createElement('button');
-      delete_button.textContent = 'delete Table';
+      delete_button.textContent = 'Delete results';
       delete_button.onclick = () => this.deleteResult(index);
 
       //Creating table
@@ -351,8 +349,8 @@ queryRequestToGraphDB(index:number): void {
 
       // Adding elements to div
       new_res.appendChild(table);
-      new_res.appendChild(delete_button);
       new_res.appendChild(svg);
+      new_res.appendChild(delete_button);
 
       // Drawing Graph
       this.createGraph(data, index);
@@ -490,10 +488,92 @@ createTable(data: any): HTMLElement {
   return table;
 }
 
-  createGraph(_data:any, index:number): void { //D3 GRAPH
-    // Extract country names and ratios from the SPARQL result
-    const countries = _data.results.bindings.map((binding: any) => binding.countryName.value);
-    const ratios = _data.results.bindings.map((binding: any) => parseFloat(binding.ratio.value));
+createGraph(_data:any, index:number): void { //D3 GRAPH
 
+  let listCountryData = [
+    {Country: "", Value: 0},
+  ];
+
+  console.log (_data);
+
+  listCountryData = _data.results.bindings.map((binding: { countryName: { value: any; }; ratio: { value: string; }; }) => ({
+    Country: binding.countryName.value,
+    Value: binding.ratio.value,
+  }));
+
+  const data = listCountryData.map(d => ({
+    Country: d.Country,
+    Value: d.Value,
+  }));
+
+// Specify the chart’s dimensions.
+const width = 928;
+const height = 500;
+const marginTop = 20;
+const marginRight = 0;
+const marginBottom = 30;
+const marginLeft = 40;
+
+// Create the horizontal scale and its axis generator.
+const x = d3.scaleBand()
+  .domain(data.map(d => d.Country)) // Use Country for the x axis
+  .range([marginLeft, width - marginRight])
+  .padding(0.1);
+
+const xAxis = d3.axisBottom(x).tickSizeOuter(0);
+
+// Create the vertical scale.
+const y = d3.scaleLinear()
+  .domain([0, d3.max(data, d => d.Value) ?? 0])
+  .range([height - marginBottom, marginTop]);
+
+// Create the SVG container.
+const svg = d3.create("svg")
+  .attr("viewBox", [0, 0, width, height])
+  .attr("width", width)
+  .attr("height", height)
+  .attr("style", "max-width: 100%; height: auto;")
+  .attr("class", "child");
+
+// Append the bars.
+svg.append("g")
+  .attr("class", "bars")
+  .attr("fill", "steelblue")
+.selectAll("rect")
+.data(data)
+.join("rect")
+  .attr("x", d => x(d.Country) ?? 0) // Use Country for x-axis positioning
+  .attr("y", d => y(d.Value) ?? 0) // Use Value for the y-axis
+  .attr("height", d => Math.max(0, y(0) - y(d.Value))) // Ensure height is never undefined or negative
+  .attr("width", x.bandwidth());
+
+// Append the axes.
+svg.append("g")
+  .attr("class", "x-axis")
+  .attr("transform", `translate(0,${height - marginBottom})`)
+  .call(xAxis);
+
+svg.append("g")
+  .attr("class", "y-axis")
+  .attr("transform", `translate(${marginLeft},0)`)
+  .call(d3.axisLeft(y))
+  .call(g => g.select(".domain").remove());
+
+
+
+  const chartId = `chart-${index}`;
+
+  // Select the container (with id="chart") and ensure it's available
+  const container = d3.select(`#${chartId}`).node() as HTMLElement;
+  if (container) {
+
+    // Append the SVG node to the container
+    const child = d3.select("#child").node() as HTMLElement | null;
+    d3.select(`#${chartId} svg`).remove()
+
+    container.appendChild(svg.node()!);
+  } else {
+    console.error("Element with id 'chart' not found.");
+  }
   }
 }

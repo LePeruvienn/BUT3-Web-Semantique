@@ -216,6 +216,7 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
     <pre>{{listStrings[2]}}</pre>
   </details>
   <button id="button-2"(click)="queryRequestToGraphDB(2)"> Lancer la requête personnes affectées</button>
+  <div id="chart-2"></div>
   <p> => <i> Analyse des résultats </i> : <strong>Vanatu</strong> est loin devant avec plus de 3 fois sa population actuelles, qui as été affecté par des catastrophes.</p>
   <p> Ensuite, nous faisons une reqûetes par rapport au <strong>nombre totale de personne décédées</strong> à cause de la catastrophe</p>
   <details>
@@ -223,8 +224,7 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
     <pre>{{listStrings[3]}}</pre>
   </details>
   <button id="button-3"(click)="queryRequestToGraphDB(3)"> Lancer la requête personnes décédées</button>
-  <div>
-   </div>
+  <div id="chart-3"></div>
   <p> => <i>Analyse des résultats</i> : <strong>Haiti</strong> est loin devant avec plus de <strong>2%</strong> de sa population actuelle qui est morte lors de catastrophes.</p>
 
   <p><strong>Pour les catastrophe naturelle</strong> :</p>
@@ -233,11 +233,13 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
     <pre>{{listStrings[4]}}</pre>
   </details>
   <button id="button-4"(click)="queryRequestToGraphDB(4)"> Lancer la requête personnes affectées</button>
+  <div id="chart-4"></div>
   <details>
     <summary style="cursor: pointer;"><u>Afficher la requête personnes décédées</u></summary>
     <pre>{{listStrings[5]}}</pre>
   </details>
   <button id="button-5"(click)="queryRequestToGraphDB(5)"> Lancer la requête personnes décédées</button>
+  <div id="chart-5"></div>
   <p> => <i>Analyse des résultats </i> : Le résultats <strong>ne change pas</strong> par rapport à en <strong>général</strong></p>
 
   <p><strong>Pour les catastrophe technologique</strong> :</p>
@@ -246,6 +248,7 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
     <pre>{{listStrings[6]}}</pre>
   </details>
   <button id="button-6"(click)="queryRequestToGraphDB(6)"> Lancer la requête personnes affectées</button>
+  <div id="chart-6"></div>
   <p> => <i>Analyse des résultats </i> : Les <strong>Maldives</strong> sont loin devant avec <strong>la moitié</strong> de sa population qui as été affecté par des catastrophe technologique.</p>
 
 
@@ -254,6 +257,7 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
     <pre>{{listStrings[7]}}</pre>
   </details>
   <button id="button-7"(click)="queryRequestToGraphDB(7)"> Lancer la requête personnes décédées</button>
+  <div id="chart-7"></div>
   <p> => <i>Analyse des résultats </i> <strong>Tuvalu</strong> loin devant avec <strong>0.15%</strong> de sa population acutelle morte dans des catastrophe technologique.</p>
   <h4>Conclusion</h4>
   <p>Les pays les plus affecté humainement sont ceux par des catastrophes <strong>naturelle</strong>. Les catastrophea <strong>technologique</strong> ont moins d&#39;impact, sauf pour les <strong>Maldives</strong> dans lequels il représente <strong>la moitée</strong> de la population.</p>
@@ -271,6 +275,7 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
   <pre>{{listStrings[8]}}</pre>
   <p><strong>En Général</strong> : </p>
   <button id="button-8"(click)="queryRequestToGraphDB(8)"> Lancer la requête dégats économique en générale</button>
+  <div id="chart-8"></div>
   <p> => <i>Analyse des résultats </i> : On voit que la <strong>Dominique</strong> est 3 fois plus grandes que les 2 autres. C&#39;est elle est qui est le plus touché économiquement. Avec <strong>0.3%</strong> de son PIB qui équivaut au dégats subit par des catastrophe naturelle.</p>
   <p><strong>Pour les catastrophes naturelle</strong> : </p>
 
@@ -279,6 +284,7 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
     <pre>{{listStrings[9]}}</pre>
   </details>
   <button id="button-9" (click)="queryRequestToGraphDB(9)"> Lancer la requête dégats économique en générale</button>
+  <div id="chart-9"></div>
   <p> => <i>Analyse des résultats </i> : Meme chose que pour en <strong>général</strong></p>
 
   <p><strong>Pour le catastrophes technologique</strong> : </p>
@@ -288,6 +294,7 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
     <pre>{{listStrings[10]}}</pre>
   </details>
   <button id="button-10"(click)="queryRequestToGraphDB(10)"> Lancer la requête dégats économique en générale</button>
+  <div id="chart-10"></div>
   <p> => <i>Analyse des résultats </i> : Complétement différent que pour les catastrophe naturelle. <strong>Lebanon</strong> est très <strong>loin devant</strong> mais sinon les autres pays sont négigable.</p>
   <h4>Conclusion</h4>
   <p>La <strong>Dominique</strong> est a plus touché par les catastrophe économiquement, mais sinon on revoit apparaitre <strong>Haiti</strong> en deuxième place.</p>
