@@ -1,8 +1,23 @@
 # BUT3 Projet Web Sémantique
 
+https://leperuvienn.github.io/BUT3-Web-Semantique/
+
+## Prérequis
+
+- Avoir un serveur locale **GraphDB**
+- Importer les données necessaire :
+    - [construct_country.ttl](https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/construct_country.ttl)
+    - [construct_region.ttl](https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/construct_region.ttl)
+    - [triples.ttl](https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/triples.ttl)
+    - [ontologie.ttl](https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/ontologie.ttl)
+
+- Avoir un **SPARQL EndPoint** fonctionnel.
+
 ## 1. Trouver une question intéressante à laquelle répondre.
 
-Après avoir receuilli des donnés depuis le site internet [ourworldindata](https://ourworldindata.org/natural-disasters) sur les différentes catastrophes naturelles nous nous somme poser une grandre question centrale :
+Après avoir receuilli des donnés depuis le site internet [ourworldindata](https://ourworldindata.org/natural-disasters) sur les différentes catastrophes naturelles. Vous pouvez retrouver les données dans le fichier [disasters_data.xlsx](https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/data_set/distasters_data.xlsx).
+
+Nous avons alors voulu répondre à cette question :
 
 - ### Quelles sont les pays les plus impacté par les catastrophes naturelle et technologique ?
 
@@ -16,13 +31,6 @@ Grace à cette grande questions nous pourrons, répondre notamment à plusieurs 
 - **Quelles sont les pays qui sont le plus touché par les désastres économiquement?**
     - Pour les catastrophe naturelle et technologique
     - Par rapport à leurs PIB
-
-- **Quelles sont les paramètres géographique, humain et économique qui influe le nombre de désastre dans un pays ?**
-    - Pour les catastrophe naturelle et technologique
-    - Nombre de catastrophe par rapport à la population
-    - Nombre de catastrophe par rapport à la taille du pays
-    - Nombre de catastrophe par rapport l'indice de développement humain
-
 
 ## 2. Créez une ontologie pour décrire le domaine.
 
@@ -483,97 +491,16 @@ LIMIT 3
 
 La **Dominique** est a plus touché par les catastrophe économiquement, mais sinon on revoit apparaitre **Haiti** en deuxième place.
 
-
-### Quelles sont les paramètres géographique, humain et économique qui influe le nombre de désastre dans un pays ?
-
-- Pour les pays et continents
-- Pour les catastrophe naturelle et technologique
-- Nombre de catastrophe par rapport à la population
-- Nombre de catastrophe par rapport à la taille du pays
-- Nombre de catastrophe par rapport l'indice de développement humain
-
-#### Requête
-
-Nous allons d'abord faire une requête qui affiche toutes ces propritétées.
-
-```sparql
-PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-
-SELECT ?countryName (COUNT (?disaster) AS ?nbDisaster) ?area ?lifeExpectancy ?idh
-WHERE {
-    ?disaster rdf:type iut:Disaster ;
-              iut:occuredIn ?location ;
-    		  iut:hasImpact ?impact .
-    
-    ?location iut:isInCountry ?country .
-    
-    ?country iut:countryName ?countryName ;
-             iut:lifeExpectancy ?lifeExpectancy ;
-             iut:area ?area ;
-             iut:humanDevelopmentIndex ?idh .
-}
-GROUP BY ?countryName ?lifeExpectancy ?area ?idh
-ORDER BY DESC(?nbDisaster)
-LIMIT 3
-```
-
-| countryName               | nbDisaster | population   | area     | lifeExpectancy | idh   |
-|---------------------------|------------|--------------|----------|----------------|-------|
-| China                     | 2698       | 1442965000   | 9596961  | 76.252         | 0.768 |
-| India                     | 1620       | 1326093247   | 3287263  | 70.03          | 0.633 |
-| United States of America  | 1422       | 332278200    | 9826675  | 78.69024       | 0.921 |
-
-- **Population**
-
-On remarque que ce sont les pays avec une grande population qui sont le plus haut.
-
-Si on change le paramètre  `ORDER BY DESC(?nbDisaster)` en `ORDER BY DESC(?population)` on obtiendra les pays avec le plus grand nombre de population, voyons ce que ça donne :
-
-| countryName               | nbDisaster | population   | area     | lifeExpectancy | idh   |
-|---------------------------|------------|--------------|----------|----------------|-------|
-| China                     | 2698       | 1442965000   | 9596961  | 76.252         | 0.768 |
-| India                     | 1620       | 1326093247   | 3287263  | 70.03          | 0.633 |
-| United States of America  | 1422       | 332278200    | 9826675  | 78.69024       | 0.921 |
-
-!! On obtient la **meme chose** ! La population à alors un impact directe sur le nombre de désastre !
-
-- **IDH**
-
-On peut rajouter à la requêtes pour récupèrer les pays les plus infeceter et les trier par rapport à leurs IDH
-
-```sparql
-PREFIX iut: <https://cours.iut-orsay.fr/app/npbd/projet/apinel2/>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-
-SELECT ?countryName (SUM(?affected) AS ?totalAffected) ?population ?idh ((?totalAffected / ?population) AS ?ratio)
-WHERE {
-    ?disaster rdf:type iut:Disaster ;
-              iut:occuredIn ?location ;
-    		  iut:hasImpact ?impact .
-    
-    ?location iut:isInCountry ?country .
-    
-    ?impact rdf:type iut:HumanImpact ;
-    		iut:totalAffected ?affected .
-    
-    ?country iut:countryName ?countryName ;
-             iut:population ?population ;
-             iut:lifeExpectancy ?lifeExpectancy ;
-             iut:area ?area ;
-             iut:humanDevelopmentIndex ?idh .
-
-
-}
-GROUP BY ?countryName ?population ?idh ?area ?lifeExpectancy
-ORDER BY DESC(?ratio)
-LIMIT 10
-```
-
-
 ## 6. Visualisez les résultats de cette requête dans une application
 
-
+Afin de pouvoir présentez notre travail nous avons utilisé le framework Angular que vous avons lié à l'API de graphDB afin de pouvoir executé nos requetes. Tout le code source de l'application est sur le Github. Vous pouvez acceder au site internet en cliquand sur ce [lien](https://leperuvienn.github.io/BUT3-Web-Semantique/).
 
 ## 7. Documentez le processus qui a mené à la mise en œuvre.
+
+Le `README.md` résume toutes les étapes du projet et comment on as répondu à la question. La site internet répertorie aussi toute la document avec une versions plus intéractive ou on peu lancer les requetes directement sur le [site web](https://leperuvienn.github.io/BUT3-Web-Semantique/).
+
+## 8. Conclusion !
+
+Au cours de ce projet, nous avons importé et traité un grand volume de données afin d'explorer et de répondre à nos questions. Cependant, malgré les efforts déployés, nous avons constaté que toutes les données importées n'ont pas pu être pleinement exploitées. Certaines d'entre elles se sont révélées inutiles pour répondre à nos objectifs, tandis que d'autres ont généré des résultats trop limités ou insuffisamment satisfaisants pour apporter une réelle valeur ajoutée à l'analyse.
+
+Ces limitations nous rappellent l'importance d'une phase de sélection et de pré-traitement des données en amont, ainsi que les défis inhérents à la gestion des données hétérogènes et complexes. Néanmoins, ce travail nous a permis de mieux comprendre les enjeux liés à l'analyse des catastrophes naturelles et technologiques, tout en identifiant des pistes pour améliorer l'exploitation des données dans de futurs projets.
