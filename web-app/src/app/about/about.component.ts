@@ -431,7 +431,8 @@ deleteResult (index:number):void {
 
   if (!res) return console.error ("Error error res index on delete");
 
-  res.remove()
+  res.remove();
+  d3.select(`#chart-${index} svg`).remove()
 }
 
 createTable(data: any): HTMLElement {
