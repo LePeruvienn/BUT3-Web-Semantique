@@ -6,11 +6,14 @@
   github
   </a>
   <h1>BUT3 Projet Web Sémantique</h1>
+  <p><strong> Prérequis </strong></p>
+  <p> Lancer votre serveur local <strong>GraphDB</strong> et importer les données RDF qui sont dans le dossier <a href="https://github.com/LePeruvienn/BUT3-Web-Semantique/tree/main/rdf">/rdf</a> du dépot. Les fichiers à importer sont tout les fichiers se terminé par <code>.ttl</code>.</p>
   <label for="sparqlEndpoint">Veuillez entrer l'URL de votre SPARQL endpoint :</label>
-  <input type="url" id="sparqlEndpoint" name="sparqlEndpoint" placeholder="https://votre-endpoint.com">
+  <input type="url" id="sparqlEndpoint" name="sparqlEndpoint" placeholder="http://localhost:7200/repositories/[name]">
   <p><i>Sans un URL valide les requête ne fonctionnerons pas !</i></p>
   <h2>1. Trouver une question intéressante à laquelle répondre.</h2>
-  <p>Après avoir receuilli des donnés depuis le site internet <a href="https://ourworldindata.org/natural-disasters">ourworldindata</a> sur les différentes catastrophes naturelles nous nous somme poser une grandre question centrale :</p>
+  <p>Après avoir receuilli des donnés depuis le site internet <a href="https://ourworldindata.org/natural-disasters">ourworldindata</a> sur les différentes catastrophes naturelles. Vous pouvez retrouver les données dans le fichier <a href="https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/data_set/distasters_data.xlsx">disasters_data.xlsx</a></p>
+  <p> Nnous somme poser alors la grandre question centrale :</p>
   <ul>
      <li>
         <h3>Quelles sont les pays les plus impacté par les catastrophes naturelle et technologique ?</h3>
@@ -35,6 +38,9 @@
         </ul>
      </li>
   </ul>
+  <p>
+    Le but est de pouvoir normaliser l'impact des catastrophes de chaque pays à leurs population et leurs économie afin de voir quelles sont les pays qui sont le plus affecté par les catastrophes.
+  </p>
   <h2>2. Créez une ontologie pour décrire le domaine.</h2>
   <p>Pour le projet nous avons utilisé le logicielle <strong>Protégé</strong> qui nous as permit de créer notre ontologie. Si vous souhaitez directement allez consulter les données, vous pouvez allez voir le fichier <a href="https://github.com/LePeruvienn/BUT3-Web-Semantique/blob/main/rdf/ontologie.ttl">ontologie.ttl</a>.</p>
   <h3>Description des données</h3>
@@ -299,8 +305,13 @@ if(isNotNull(cells["Latitude"].value) && isNotNull(cells["Longitude"].value), "P
   <h4>Conclusion</h4>
   <p>La <strong>Dominique</strong> est a plus touché par les catastrophe économiquement, mais sinon on revoit apparaitre <strong>Haiti</strong> en deuxième place.</p>
   <h2>6. Visualisez les résultats de cette requête dans une application</h2>
+  Afin de pouvoir présentez notre travail nous avons utilisé le framework <strong>Angular</strong> que vous avons lié à l'API de graphDB afin de pouvoir executé nos requetes. Tout le code source de l'application est sur le <a href="https://github.com/LePeruvienn/BUT3-Web-Semantique"><strong>Github</strong></a>.
   <h2>7. Documentez le processus qui a mené à la mise en œuvre.</h2>
-  <h2>8. Essayer vous même !</h2>
+  Ce sites internet est notre sorte de petit rapport de projet ! Une autres versions est aussi disponbile sur <a href="https://github.com/LePeruvienn/BUT3-Web-Semantique"><strong>Github</strong></a> mais elle est très similaire.
+  <h2>8. Conclusion !</h2>
+  <p>Au cours de ce projet, nous avons importé et traité un grand volume de données afin d'explorer et de répondre à nos questions. Cependant, malgré les efforts déployés, nous avons constaté que toutes les données importées n'ont pas pu être pleinement exploitées. Certaines d'entre elles se sont révélées inutiles pour répondre à nos objectifs, tandis que d'autres ont généré des résultats trop limités ou insuffisamment satisfaisants pour apporter une réelle valeur ajoutée à l'analyse.</p>
+  <p>Ces limitations nous rappellent l'importance d'une phase de sélection et de pré-traitement des données en amont, ainsi que les défis inhérents à la gestion des données hétérogènes et complexes. Néanmoins, ce travail nous a permis de mieux comprendre les enjeux liés à l'analyse des catastrophes naturelles et technologiques, tout en identifiant des pistes pour améliorer l'exploitation des données dans de futurs projets.</p>
+  <h2>9. Essayer vous même !</h2>
   Voici un endroit pour effectuer des requetes SPARQL afin de pouvoir explorer nos données ! Amusez vous :)
   <textarea id="customQuery">
   </textarea>
